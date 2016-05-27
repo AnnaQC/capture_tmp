@@ -1,0 +1,64 @@
+﻿<div class="panel panel-warning capture-card" id="contact_id_{{::contact.id}}" style="min-height: 116px" ng-cloak>
+    <div class="panel-body {{contact._selected?'selected':''}}">
+
+        <div class="pull-left">
+            <div class="checkbox" style="margin: 0">
+                <label style="font-size: 12px">
+                    <input type="checkbox" ng-model="contact._selected" style="margin-top: 2px" ng-click="saveHistory()"> Select{{contact._selected?'ed':''}}
+                </label>
+            </div>
+        </div>
+
+        <div class="pull-right card-delete" ng-hide="isResearching()">
+            <a href="" class="capture-close" aria-hidden="true" title="Delete contact" ng-click="deleteContacts(contact)">&times; </a>
+        </div>
+
+        <div class="pull-right" style="margin-right: 8px; white-space: nowrap">
+            <a href="" class="btn btn-xs btn-link" title="Research contact" ng-click="researchContacts([contact]);"><i class="glyphicon glyphicon-flash"></i></a>
+            <a href="" class="btn btn-xs btn-link" title="Export contact" ng-click="exportContacts([contact]);"><i class="glyphicon glyphicon-cloud-upload"></i></a>
+            <a href="" class="btn btn-xs btn-link" title="Edit contact" ng-click="editContact(contact);"><i class="glyphicon glyphicon-pencil"></i></a>
+        </div>
+
+        <div class="pull-right" style="margin-right: 8px">
+            <span class="label label-primary" style="width: 120px" ng-show="contact._saved && !contact._saving">
+                Exported&nbsp;&nbsp;
+                <i class="glyphicon glyphicon-ok" title="{{contact}}" ng-show="!contact._link"></i>
+                <a ng-show="contact._link" target="_blank" href="{{contact._link}}"><i class="glyphicon glyphicon-open" title="Open exported record" style="color:white; font-size: 12px"></i></a>
+            </span>
+            <span class="label label-primary" style="width: 120px" ng-show="contact._saving">
+                <img class="loading" style="height: 18px" />
+                Exporting...
+            </span>
+        </div>
+
+        <div class="pull-right" style="margin-right: 8px;">
+            <span class="label label-primary" style="width: 120px" ng-show="!contact._researchJobId && contact._enhanced">
+                Researched&nbsp;&nbsp;
+                <i class="glyphicon glyphicon-ok" title="{{contact.flags}}"></i>
+            </span>
+            <span class="label label-primary" style="width: 120px" ng-show="contact._researchJobId">
+                <!--img class ="loading" style="height: 18px" /-->
+                Researching... <i class="fa fa-spinner fa-spin"></i>
+            </span>
+
+        </div>
+
+        <div class="pull-right" style="margin-right: 8px" title="{{contact.bio}}">
+            <span class="label label-primary" style="width: 120px" ng-show="contact.bio && contact.bio.length > 50">
+                Bio&nbsp;&nbsp;
+                <i class="glyphicon glyphicon-ok"></i>
+            </span>
+        </div>
+
+        <div class="pull-right" style="margin-right: 8px" ng-show="isLocal">
+            <span class="label label-primary">
+                <span ng-bind="contact.c | date:'MM/dd/yyyy'"></span>
+            </span>
+        </div>
+
+        <contact-card-details showDiscover="showDiscover"></contact-card-details>
+
+      
+
+    </div>
+</div>

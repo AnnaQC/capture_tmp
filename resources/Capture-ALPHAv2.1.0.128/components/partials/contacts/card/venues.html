@@ -1,0 +1,25 @@
+﻿<div style="width: 100%; overflow: hidden; margin-top: 1em" ng-if="contact.venues.length > 0">
+
+    <!-- Contracted Social Venues -->
+    <div class="nowrap" ng-show="!expandSocial">
+        <a ng-repeat="venue in contact.venues | limitTo:10" href="" ng-click="dive(contact, venue.website)" target="_blank" title="{{venue.website}}" ng-hide0="venue.top">
+            <img class="social-image social-{{getSocialVenueClassName(venue)}}">
+        </a>
+        <a href="" class="btn btn-xs btn-link" title="Show more" ng-click="expandSocial=true"><i class="glyphicon glyphicon-triangle-bottom"></i></a>
+    </div>
+    <div ng-show="expandSocial">
+
+        <div class="capture-card-cell" ng-repeat="venue in contact.venues">
+            <img class="social-image social-{{getSocialVenueClassName(venue)}}" style="margin-right: 8px">
+            <a ng-click="dive(contact, venue.website)" href="" target="_blank">{{venue.website}}</a>
+        </div>
+        <div class="capture-card-cell" ng-if="contact.sourceurl">
+            <img class="social-image social-blog" style="margin-right: 8px">
+            <a ng-click="dive(contact, contact.sourceurl)" href="" target="_blank">{{contact.sourceurl}}</a>
+        </div>
+        <div class="text-center" style="margin-top: 8px">
+            <a href="" class="btn btn-xs btn-link" title="Show less" ng-click="expandSocial=false"><i class="glyphicon glyphicon-triangle-top"></i> Show less</a>
+        </div>
+    </div>
+
+</div>

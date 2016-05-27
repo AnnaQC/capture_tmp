@@ -1,0 +1,26 @@
+<div class="container" ng-show="!pageOfFilteredContacts || pageOfFilteredContacts.length === 0" style="padding-left: 0px; padding-right: 8px ">
+
+    <div class="text-center" style="height: 400px; width: 100%; display: table">
+        <div style="vertical-align:middle; display: table-cell;">
+            <p class="text-muted">Your Contact list is empty.</p>
+            <p class="text-muted">Learn how to <a href="" ng-click="showTips()">use Capture.</a></p>
+            <p class="text-muted">Get some practice on <a id="capture-sample" href="" ng-click="openLink('https://www.ringlead.com/capture-sample/', true)">Capture Sample Page.</a></p>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="container" ng-repeat="contact in pageOfFilteredContacts track by contact.id" style="padding-left: 0px; padding-right: 8px ">
+    <contact-card></contact-card>
+</div>
+
+
+
+<!--<p class="text-muted">Or, watch<br /><a href="" ng-click="openLink('https://vimeo.com/album/3652207', true)" target="_blank">Tutorials</a> | <a href="" ng-click="openLink('https://vimeo.com/album/3659413', true)" target="_blank">Best Practices</a> | <a href="" ng-click="openLink('https://vimeo.com/album/3654787', true)" target="_blank">Troubleshooting</a></p>-->
+<!--<div class="tooltipstered" title="This is my div's tooltip message!">
+    This div has a tooltip when you hover over it!
+</div>-->
+
+<!--<contact-card ng-if="isLocal"></contact-card>-->
+<!--<div ng-include="'components/partials/contacts/card2.html'"></div>-->

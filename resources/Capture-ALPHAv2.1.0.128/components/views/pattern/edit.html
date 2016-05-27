@@ -1,0 +1,13 @@
+<div class="modal fade edit-pattern-modal" ng-init="modal.selector='.edit-pattern-modal'">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <textarea style="max-height:420px; max-width:540px; height:420px;" class="form-control" ng-model="modal.text"/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
+                <button type="button" class="btn btn-primary" ng-click="save()">Save</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

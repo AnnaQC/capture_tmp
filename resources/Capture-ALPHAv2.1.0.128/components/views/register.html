@@ -1,0 +1,105 @@
+<div id="wrapper" ng-controller="home">
+
+    <div id="page-wrapper" style="background-color: #f3f3f4; min-height: 600px">
+        <div class="wrapper wrapper-content animated fadeInRight" style="padding: 0">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="wrapper wrapper-content" style="padding: 0">
+                        <div class="row" ng-controller="register">
+
+                            <div ng-include="'components/partials/header.min.html'" />
+                            <div ng-hide="!emailLocked" ng-include="'components/partials/nav.html'" />
+
+                            <div class="container">
+
+
+                                <form role="form" class="form-horizontal">
+
+
+                                    <div class="form-group text-center">
+                                        <h4>Registration</h4>
+                                        <p>Please register your product to receive support.</p>
+                                    </div>
+
+                                    <div class="row" ng-show="errorMsg">
+                                        <div class="col-xs-12">
+                                            <div class="alert alert-danger">{{errorMsg}}</div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group" ng-class="{'has-error':!profile.name}">
+
+                                        <label class="control-label col-xs-3 text-right" for="regInputName">Name</label>
+                                        <div class="col-xs-8">
+                                            <input type="text" class="form-control" id="regInputName" placeholder="Enter your full name" ng-model="profile.name">
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group" ng-class="{'has-error':!profile.email}">
+
+                                        <label class="control-label col-xs-3 text-right" for="regInputEmail">Email</label>
+                                        <div class="col-xs-8">
+                                            <input type="email" class="form-control" id="regInputEmail" ng-disabled="emailLocked" placeholder="Enter work email" ng-model="profile.email">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" ng-class="{'has-error':!profile.phone}">
+                                        <label class="control-label col-xs-3 text-right" for="regInputPhone">Phone</label>
+                                        <div class="col-xs-8">
+                                            <input type="tel" class="form-control" id="regInputPhone" placeholder="Enter work phone number" ng-model="profile.phone">
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group" ng-class="{'has-error':!profile.company}">
+                                        <label class="control-label col-xs-3 text-right" for="regInputCompany">Company</label>
+                                        <div class="col-xs-8">
+                                            <input type="text" class="form-control" id="regInputCompany" placeholder="Enter your company name" ng-model="profile.company">
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group" ng-class="{'has-error':!profile.title}">
+                                        <label class="control-label col-xs-3 text-right" for="regInputTitle">Job Title</label>
+                                        <div class="col-xs-8">
+                                            <input type="text" class="form-control" id="regInputTitle" placeholder="Enter your job title" ng-model="profile.title">
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group" ng-class="{'has-error':!profile.target}">
+                                        <label class="control-label col-xs-3 text-right" for="regInputTarget">My CRM is</label>
+                                        <div class="col-xs-8">
+                                            <select class="form-control" id="regInputTarget" ng-model="profile.target" placeholder="Select your export target" ng-options="target.value as target.label for target in targets"></select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-3 text-right" for="regInputTitle">License Key</label>
+                                        <div class="col-xs-8">
+                                            <input type="text" class="form-control" id="regInputKey" placeholder="Enter your license key (optional)" ng-model="profile.key">
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-xs-6 col-xs-offset-3">
+                                            <div class="btn btn-primary btn-block" ng-click="accept()" ng-disable="registering">Register</div>
+                                        </div>
+
+                                    </div>
+
+                                </form>
+
+                                <div ng-include="'components/partials/footer.min.html'" />
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

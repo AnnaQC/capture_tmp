@@ -1,0 +1,577 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>Capture! Sample Page</title>
+		<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type" /><script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var o=t[n]={exports:{}};e[n][0].call(o.exports,function(t){var o=e[n][1][t];return r(o||t)},o,o.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(e,t,n){function r(e,t){return function(){o(e,[(new Date).getTime()].concat(a(arguments)),null,t)}}var o=e("handle"),i=e(2),a=e(3);"undefined"==typeof window.newrelic&&(newrelic=NREUM);var u=["setPageViewName","addPageAction","setCustomAttribute","finished","addToTrace","inlineHit"],c=["addPageAction"],f="api-";i(u,function(e,t){newrelic[t]=r(f+t,"api")}),i(c,function(e,t){newrelic[t]=r(f+t)}),t.exports=newrelic,newrelic.noticeError=function(e){"string"==typeof e&&(e=new Error(e)),o("err",[e,(new Date).getTime()])}},{}],2:[function(e,t,n){function r(e,t){var n=[],r="",i=0;for(r in e)o.call(e,r)&&(n[i]=t(r,e[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;t.exports=r},{}],3:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,o=n-t||0,i=Array(0>o?0:o);++r<o;)i[r]=e[t+r];return i}t.exports=r},{}],ee:[function(e,t,n){function r(){}function o(e){function t(e){return e&&e instanceof r?e:e?u(e,a,i):i()}function n(n,r,o){e&&e(n,r,o);for(var i=t(o),a=l(n),u=a.length,c=0;u>c;c++)a[c].apply(i,r);var s=f[g[n]];return s&&s.push([m,n,r,i]),i}function p(e,t){w[e]=l(e).concat(t)}function l(e){return w[e]||[]}function d(e){return s[e]=s[e]||o(n)}function v(e,t){c(e,function(e,n){t=t||"feature",g[n]=t,t in f||(f[t]=[])})}var w={},g={},m={on:p,emit:n,get:d,listeners:l,context:t,buffer:v};return m}function i(){return new r}var a="nr@context",u=e("gos"),c=e(2),f={},s={},p=t.exports=o();p.backlog=f},{}],gos:[function(e,t,n){function r(e,t,n){if(o.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return e[t]=r,r}var o=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){o.buffer([e],r),o.emit(e,t,n)}var o=e("ee").get("handle");t.exports=r,r.ee=o},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,i,function(){return o++})}var o=1,i="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!w++){var e=v.info=NREUM.info,t=s.getElementsByTagName("script")[0];if(e&&e.licenseKey&&e.applicationID&&t){c(l,function(t,n){e[t]||(e[t]=n)});var n="https"===p.split(":")[0]||e.sslForHttp;v.proto=n?"https://":"http://",u("mark",["onload",a()],null,"api");var r=s.createElement("script");r.src=v.proto+e.agent,t.parentNode.insertBefore(r,t)}}}function o(){"complete"===s.readyState&&i()}function i(){u("mark",["domContent",a()],null,"api")}function a(){return(new Date).getTime()}var u=e("handle"),c=e(2),f=window,s=f.document;NREUM.o={ST:setTimeout,CT:clearTimeout,XHR:f.XMLHttpRequest,REQ:f.Request,EV:f.Event,PR:f.Promise,MO:f.MutationObserver},e(1);var p=""+location,l={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-918.min.js"},d=window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent),v=t.exports={offset:a(),origin:p,features:{},xhrWrappable:d};s.addEventListener?(s.addEventListener("DOMContentLoaded",i,!1),f.addEventListener("load",r,!1)):(s.attachEvent("onreadystatechange",o),f.attachEvent("onload",r)),u("mark",["firstbyte",a()],null,"api");var w=0},{}]},{},["loader"]);</script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"agent":"","applicationID":"3850203","applicationTime":464,"transactionName":"YFAGbUQFV0dZVhVfXlkaIkxYB01dV1tOUltWWwNWGBJQUU9GT1FUWVAWUFVKW1VLUFtiVFpFCFhCAW9dXUI=","errorBeacon":"bam.nr-data.net","licenseKey":"5c0ddebd3d","queueTime":0,"beacon":"bam.nr-data.net"}</script>
+		<!--<link href="/css/cc.css" media="screen" rel="stylesheet" />-->
+		<style type="text/css">
+body
+        {
+            font-family: arial;
+            font-size: small;
+        }
+        table.ContactList
+        {
+            font-family: arial;
+            font-size: small;
+        }
+        
+        #name
+        {
+        }		</style>
+		<script type="text/javascript">
+
+        function highlight(classname) {
+            var spans = document.getElementsByTagName('span');
+
+            for (var i = 0; i < spans.length; i++) {
+                var span = spans[i];
+
+                if (span.className == classname) {
+                    span.style.backgroundColor = '#66CCFF';
+                }
+                else {
+                    span.style.backgroundColor = '#FFFFFF';
+                }
+
+            }
+
+        }
+    </script>
+		<style id="clearly_highlighting_css" type="text/css">
+/* selection */ html.clearly_highlighting_enabled ::-moz-selection { background: rgba(246, 238, 150, 0.99); } html.clearly_highlighting_enabled ::selection { background: rgba(246, 238, 150, 0.99); } /* cursor */ html.clearly_highlighting_enabled {    /* cursor and hot-spot position -- requires a default cursor, after the URL one */    cursor: url("chrome-extension://pioclpoplcdbaefihamjohnefbikjilc/clearly/images/highlight--cursor.png") 14 16, text; } /* highlight tag */ em.clearly_highlight_element {    font-style: inherit !important; font-weight: inherit !important;    background-image: url("chrome-extension://pioclpoplcdbaefihamjohnefbikjilc/clearly/images/highlight--yellow.png");    background-repeat: repeat-x; background-position: top left; background-size: 100% 100%; } /* the delete-buttons are positioned relative to this */ em.clearly_highlight_element.clearly_highlight_first { position: relative; } /* delete buttons */ em.clearly_highlight_element a.clearly_highlight_delete_element {    display: none; cursor: pointer;    padding: 0; margin: 0; line-height: 0;    position: absolute; width: 34px; height: 34px; left: -17px; top: -17px;    background-image: url("chrome-extension://pioclpoplcdbaefihamjohnefbikjilc/clearly/images/highlight--delete-sprite.png"); background-repeat: no-repeat; background-position: 0px 0px; } em.clearly_highlight_element a.clearly_highlight_delete_element:hover { background-position: -34px 0px; } /* retina */ @media (min--moz-device-pixel-ratio: 2), (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2) {    em.clearly_highlight_element { background-image: url("chrome-extension://pioclpoplcdbaefihamjohnefbikjilc/clearly/images/highlight--yellow@2x.png"); }    em.clearly_highlight_element a.clearly_highlight_delete_element { background-image: url("chrome-extension://pioclpoplcdbaefihamjohnefbikjilc/clearly/images/highlight--delete-sprite@2x.png"); background-size: 68px 34px; } }		</style>
+		<style type="text/css">
+[touch-action="none"]{ -ms-touch-action: none; touch-action: none; }[touch-action="pan-x"]{ -ms-touch-action: pan-x; touch-action: pan-x; }[touch-action="pan-y"]{ -ms-touch-action: pan-y; touch-action: pan-y; }[touch-action="scroll"],[touch-action="pan-x pan-y"],[touch-action="pan-y pan-x"]{ -ms-touch-action: pan-x pan-y; touch-action: pan-x pan-y; }		</style>
+	</head>
+	<body bgcolor="#ffffff" leftmargin="0" marginheight="0" marginwidth="0" style="cursor: auto;" topmargin="0">
+		<div align="center">
+			<table border="0" cellpadding="0" cellspacing="0" width="757">
+				<!--DWLayoutTable-->
+				<tbody>
+					<tr>
+						<td style="border-bottom: black 2px solid" valign="top">
+							<h1 style="text-align: center;">
+								<img src="https://ringlead-marketing-prod.s3.amazonaws.com/static/capture-sample/img/Capture-logo-blue.png" style="border-width: 0px; border-style: solid; width: 400px;" /></h1>
+						</td>
+					</tr>
+					<tr>
+						<td align="center">
+							&nbsp; <a href="#" onclick="highlight('name')"><span class="name">Name</span></a>&nbsp;&nbsp; <a href="#" onclick="highlight('title')"><span class="title">Title</span></a>&nbsp;&nbsp; <a href="#" onclick="highlight('company')"><span class="company">Company</span></a>&nbsp;&nbsp; <a href="#" onclick="highlight('email')"><span class="email">Email</span></a> &nbsp;&nbsp; <a href="#" onclick="highlight('phone')"><span class="phone">Phone</span></a> &nbsp;&nbsp; <a href="#" onclick="highlight('fax')"><span class="fax">Fax</span></a> &nbsp;&nbsp; <a href="#" onclick="highlight('website')"><span class="website">Website</span></a><br />
+							<a href="#" onclick="highlight('address')"><span class="address">Address</span></a>&nbsp;&nbsp; <a href="#" onclick="highlight('city')"><span class="city">City</span></a> &nbsp;&nbsp; <a href="#" onclick="highlight('state')"><span class="state">State</span></a> &nbsp;&nbsp; <a href="#" onclick="highlight('zip')"><span class="zip">Zip</span></a> &nbsp;&nbsp; <a href="#" onclick="highlight('venue')"><span class="venue">Venues</span></a> &nbsp;&nbsp; <a href="#" onclick="highlight('clear')"><span class="notclear">Clear</span></a></td>
+					</tr>
+					<tr>
+						<td align="center" valign="top">
+							&nbsp; <!-- Start Email Examples-->
+							<table border="1" bordercolor="#000000" cellpadding="3" cellspacing="1" class="ContactList" width="100%">
+								<tbody>
+									<tr>
+										<td width="50%">
+											<table class="ContactList">
+												<tbody>
+													<tr>
+														<td>
+															<b><span class="name">Donato Diorio</span></b><br />
+															<span class="title emailformat">Chief Executive Officer</span><br />
+															<span class="company">Broadlook Technologies</span><br />
+															<span class="address">125 N Executive Dr Suite 200</span><br />
+															<span class="city">Brookfield</span>, <span class="state">WI</span> <span class="zip">53005</span><br />
+															<a href="http://www.broadlook.com/"><span class="website">http://www.broadlook.com</span></a></td>
+														<td>
+															<p>
+																Email:<a href="mailto:donato@broadlook.com"><span class="email">donato@broadlook.com</span></a><br />
+																Office:&nbsp;&nbsp;&nbsp;&nbsp; <span class="phone">262-754-8080</span><br />
+																Cell:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="phone">414-899-4204</span><br />
+																Fax:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="fax">262-754-8081</span><br />
+																Blog: <a href="http://www.idonato.com"><span style="color:blue"><span class="venue">www.idonato.com</span></span></a><br />
+																<a href="http://www.youtube.com/broadlook"><span style="color:blue"><span class="venue">Youtube</span></span></a><span style="color:#0070C0"> </span>|&nbsp; <a href="http://www.linkedin.com/in/donatodiorio"><span class="venue">LinkedIN</span></a>&nbsp;|&nbsp; <span class="venue"><a href="http://twitter.com/idonato">Twitter</a>&nbsp;<br />
+																<a href="http://facebook.com/donato.diorio">Facebook</a>&nbsp;</span>&nbsp;| <a href="https://plus.google.com/111906991590957600453/posts">Google+</a></p>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+										<td style="background-image:url('https://ringlead-marketing-prod.s3.amazonaws.com/static/capture-sample/img/iphone-screen.jpg');background-repeat:no-repeat;padding-left:30px;" width="50%">
+											<br />
+											<br />
+											Who did you talk with at the conference?<br />
+											<br />
+											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sky-Net Software Systems<br />
+											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1515 Terminator Drive<br />
+											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sante Fe, New Mexico 87505<br />
+											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;800-555-1234<br />
+											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contact: Sarah Conner<br />
+											<br />
+											Thanks, I&#39;ll reach out to her!</td>
+									</tr>
+								</tbody>
+							</table>
+							<!-- End Email Examples--><br />
+							<!-- Excel Examples-->
+							<table border="1" cellpadding="3" cellspacing="1" class="ContactList" width="100%">
+								<tbody>
+									<tr align="center" bgcolor="#D5D5D5">
+										<td>
+											<b>&nbsp;</b></td>
+										<td>
+											<b>A</b></td>
+										<td>
+											<b>B</b></td>
+										<td>
+											<b>C</b></td>
+										<td>
+											<b>D</b></td>
+										<td>
+											<b>E</b></td>
+										<td>
+											<b>F</b></td>
+									</tr>
+									<tr>
+										<td bgcolor="#D5D5D5">
+											<b>1</b></td>
+										<td>
+											<b>Name</b></td>
+										<td>
+											<b>Title</b></td>
+										<td>
+											<b>Company</b></td>
+										<td>
+											<b>Phone</b></td>
+										<td>
+											<b>Fax</b></td>
+										<td>
+											<b>Email</b></td>
+									</tr>
+									<tr>
+										<td bgcolor="#D5D5D5">
+											<b>2</b></td>
+										<td>
+											<span class="name">Able Zeilhofer</span></td>
+										<td>
+											<span class="title">Office Manager</span></td>
+										<td>
+											<span class="company">Brightbean</span></td>
+										<td>
+											<span class="phone">262-555-1234</span></td>
+										<td>
+											<span class="fax">262-555-1231</span></td>
+										<td>
+											<span class="email">azielhofer@example.com</span></td>
+									</tr>
+									<tr>
+										<td bgcolor="#D5D5D5">
+											<b>3</b></td>
+										<td>
+											<span class="name">Brett Yount</span></td>
+										<td>
+											<span class="title">Sales Associate</span></td>
+										<td>
+											<span class="company">Centinoodle Ltd</span></td>
+										<td>
+											<span class="phone">262-555-4321</span></td>
+										<td>
+											<span class="fax">262-555-4322</span></td>
+										<td>
+											<span class="email">brett.yount@example.com</span></td>
+									</tr>
+									<tr>
+										<td bgcolor="#D5D5D5">
+											<b>4</b></td>
+										<td>
+											<span class="name">Cassie Xuan</span></td>
+										<td>
+											<span class="title">Marketing Director</span></td>
+										<td>
+											<span class="company">Thoughtverse</span></td>
+										<td>
+											<span class="phone">414-555-5678</span></td>
+										<td>
+											<span class="fax">414-555-5671</span></td>
+										<td>
+											<span class="email">cassie@example.com</span></td>
+									</tr>
+									<tr>
+										<td bgcolor="#D5D5D5">
+											<b>5</b></td>
+										<td>
+											<span class="name">Donald White</span></td>
+										<td>
+											<span class="title">CEO</span></td>
+										<td>
+											<span class="company">Mammothcode Inc.</span></td>
+										<td>
+											<span class="phone">414-555-8765</span></td>
+										<td>
+											<span class="fax">414-555-8761</span></td>
+										<td>
+											<span class="email">donw@example.com</span></td>
+									</tr>
+									<tr>
+										<td bgcolor="#D5D5D5">
+											<b>6</b></td>
+										<td>
+											<span class="name">Erin Valentine</span></td>
+										<td>
+											<span class="title">Executive Assistant</span></td>
+										<td>
+											<span class="company">Panoramicsnipe LLC</span></td>
+										<td>
+											<span class="phone">920-555-1111</span></td>
+										<td>
+											<span class="fax">920-555-1112</span></td>
+										<td>
+											<span class="email">valenter@example.com</span></td>
+									</tr>
+								</tbody>
+							</table>
+							<!-- End Excel Example --><br />
+							<br />
+							<!-- Begin contact list-->
+							<table border="1" bordercolor="#000000" cellpadding="3" cellspacing="1" class="ContactList" width="100%">
+								<tbody>
+									<tr>
+										<td valign="top" width="33%">
+											<!--Column 1--><span class="name">Veronica Smith</span><br />
+											<span class="title">HR Director</span><br />
+											<span class="company">Arctic Compression Labs, Inc.</span><br />
+											<span class="address">4210 Adams Dr.</span><br />
+											<span class="city">Fairbanks</span>, <span class="state">AK</span> <span class="zip"> 99709</span><br />
+											<span class="phone">907-555-2177</span><br />
+											<span class="fax">907-555-2188 (F)</span><br />
+											<span class="email">vsmith@example.com</span><br />
+											<span class="website">www.broadlook.net</span><br />
+											<span class="venue">http://www.linkedin.com/companies/broadlook-technologies</span><br />
+											<span class="venue">http://www.facebook.com/people/Broadlook-Dk/1653595765</span><br />
+											<span class="venue">http://www.twitter.com/Broadlook</span><br />
+											<span class="venue">http://tungle.me/Broadlook</span><br />
+											<span class="venue">http://broadlook.wordpress.com/</span><br />
+											<span class="venue">http://www.slideshare.net/Broadlook</span></td>
+										<td valign="top" width="33%">
+											<!--Column 2--><span class="name">Shelba Vilar</span><br />
+											<span class="title">Director of Human Resources</span><br />
+											<span class="company">Adobe Auto Body</span><br />
+											<span class="address">1110 W. Jefferson</span><br />
+											<span class="city">Phoenix</span>, <span class="state">AZ</span> <span class="zip">85007</span><br />
+											<span class="phone">602-555-2365</span><br />
+											<span class="phone">800-555-5677</span><br />
+											<span class="venue">http://brightkite.com/people/Broadlook</span><br />
+											<span class="venue">http://twitter.com/Broadlook </span><br />
+											<span class="venue">http://www.myspace.com/434180501 skype:broadlook?call</span><br />
+											<span class="venue">http://digg.com/users/Broadlook</span><br />
+											<span class="venue">http://www.reddit.com/user/Broadlook/</span><br />
+											<span class="venue">http://technorati.com/people/broadlook</span><br />
+											<span class="venue">http://www.stumbleupon.com/stumbler/Broadlook/</span></td>
+										<td valign="top" width="33%">
+											<!--Column 1--><span class="name">LORETTA A. JOHNSON</span><br />
+											<span class="title">HUMAN RESOURCES, DIRECTOR</span><br />
+											<span class="company">LIVESTOCK LOGISTIC SOLUTIONS</span><br />
+											<span class="address">3524 WASHINGTON ST.</span><br />
+											<span class="city">MONTGOMERY</span>, <span class="state">AL</span> <span class="zip"> 36130</span><br />
+											<span class="phone">334.555.7873</span><br />
+											<span class="fax">3345553044 (F)</span><br />
+											<span class="email">loretta@example.com</span><br />
+											<span class="website">http://www.broadlook.net</span><br />
+											<span class="venue">http://www.idonato.com/feed/</span><br />
+											<span class="venue">http://broadlook.wordpress.com/</span><br />
+											<span class="venue">http://www.blogger.com/profile/15241666693665182413</span><br />
+											<span class="venue">http://profiles.yahoo.com/u/RLRE3UFTQQUXO7IAPQEAAX4VPU</span><br />
+											<span class="venue">http://www.google.com/profiles/broadlook.technologies</span></td>
+									</tr>
+									<tr>
+										<td valign="top">
+											<!--Column 2--><span class="name">Dr. Guadalupe Guinard, PHD</span><br />
+											<span class="title">DIRECTOR</span><br />
+											<span class="company">Lunar Spice Co</span><br />
+											<span class="address">P.O. Box 8675</span><br />
+											<span class="city">MATHER</span>, <span class="state">CA</span> <span class="zip">95655</span><br />
+											<span class="phone">916 555 4106</span><br />
+											<span class="fax">916 555 4115 (F)</span><br />
+											<span class="venue">http://broadlook.wordpress.com/</span><br />
+											<span class="venue">http://brightkite.com/people/Broadlook</span><br />
+											<span class="venue">http://foursquare.com/user/-1523786</span><br />
+											<span class="venue">http://qik.com/Broadlook</span><br />
+											<span class="venue">http://vimeo.com/user3991736</span><br />
+											<span class="venue">http://www.pandora.com/people/social3212#</span><br />
+											<span class="venue">http://www.flickr.com/photos/broadlook/</span></td>
+										<td valign="top">
+											<!--Column 1--><span class="name">Beth GENGO</span><br />
+											<span class="title">CFO </span><br />
+											<span class="company">LUNAR SPICE CO.</span><br />
+											<span class="address">4100 S. Monroe</span><br />
+											P.O. Box 281501<br />
+											<span class="city">Sacramento</span>, <span class="state">CALIFORNIA</span> <span class="zip">95814</span><br />
+											<span class="phone">Phone:9165552467</span><br />
+											<span class="fax">Fax:9165554737 (F)</span><br />
+											<span class="email">bg@example.com</span><br />
+											<span class="venue">http://www.google.com/profiles/broadlook.technologies</span><br />
+											<span class="venue">http://brightkite.com/people/Broadlook</span><br />
+											<span class="venue">http://foursquare.com/user/-1523786 </span></td>
+										<td valign="top">
+											<!--Column 2--><span class="name">Beth Gengo</span><br />
+											<span class="title">Chief Financial Officer </span><br />
+											<span class="company">Lunar Spice Company</span><br />
+											<span class="address">4100 S. Monroe</span><br />
+											P.O. Box 281501<br />
+											<span class="city">SACRAMENTO</span>, <span class="state">CA</span> <span class="zip">95814</span><br />
+											<span class="phone">916-555-2467</span><br />
+											<span class="fax">916-555-4737 (F)</span><br />
+											<span class="email">bg@example.com</span><br />
+											<span class="venue">http://qik.com/Broadlook </span></td>
+									</tr>
+									<tr>
+										<td valign="top">
+											<!--Column 1--><span class="name">MARGIE HINKER, CPA</span><br />
+											<span class="title">OWNER</span><br />
+											<span class="company">Holey Cow Donuts</span><br />
+											<span class="address">1500 JACKSON RD.</span><br />
+											SUITE 201<br />
+											<span class="city">HARTFORD</span>, <span class="state">CT</span> <span class="zip">06106-5127</span><br />
+											<span class="phone">860-555-3003</span><br />
+											<span class="fax">860-555-4153 (F)</span><br />
+											http://technorati.com/people/broadlook</td>
+										<td valign="top">
+											<!--Column 2--><span class="name">TOM WILKEN SR.</span><br />
+											<span class="title">VICE PRESIDENT</span><br />
+											<span class="company">EXPERT EXTRAVAGANZA, INCORPORATED</span><br />
+											<span class="address">P.O. BOX 215302</span><br />
+											<span class="city">DENVER</span>, <span class="state">COLORADO</span> <span class="zip">80246</span><br />
+											<span class="phone">(303)555-3175</span><br />
+											<span class="fax">(303)555-0278 (F)</span></td>
+										<td valign="top">
+											<!--Column 1--><span class="name">Amanda Strohmeier</span><br />
+											<span class="title">VP</span><br />
+											<span class="company">HOLEY COW DONUTS</span><br />
+											<span class="address">1500 Jackson Rd.</span><br />
+											SUITE 203<br />
+											<span class="city">HARFORD</span>, <span class="state">ct</span> <span class="zip">06106-5127</span><br />
+											<span class="phone">860.555.3003</span><br />
+											<span class="fax">860.555.4153 (F)</span></td>
+									</tr>
+									<tr>
+										<td valign="top">
+											<!--Column 2--><span class="name">Robert P. Conolly</span><br />
+											<span class="title">Chief Executive Officer</span><br />
+											<span class="company">Kowalski Ball Bearings, LLC</span><br />
+											Engineering Department<br />
+											<span class="address">6200 Harrison St. SW</span><br />
+											<span class="city">Washington</span>, <span class="state">DC</span> <span class="zip"> 20002</span><br />
+											<span class="phone">202-555-2997</span><br />
+											<span class="fax">202-555-1371 (F)</span></td>
+										<td>
+											<span class="name">Andrew A. White</span><br />
+											<span class="title">Marketing Manager</span><br />
+											<span class="company">Livestock Logistic Solutions</span><br />
+											<span class="address">811 Washington St. SW</span><br />
+											<span class="city">Washington</span>, <span class="state">DC</span> <span class="zip"> 20002</span><br />
+											<span class="phone">202-555-2997</span><br />
+											<span class="fax">202-555-1371 (F)</span><br />
+											<span class="venu">http://www.pintrest.com/andrewwhite</span> <span class="venu">http://www.quora.com/andrew-white/</span> <span class="venu">http://www.xing.com/profiler/andrew_white2</span> <span class="venu">http://www.so.cl/#/@Andrew-White</span> <span class="venu">http://www.youtube.com/channel/UCkOus5kQUKjCvtGvw6p0sPw/</span></td>
+										<td valign="top">
+											<span class="name">Betsy George</span><br />
+											<span class="title">Logistics Engineer</span><br />
+											<span class="company">Livestock Logistic Solutions</span><br />
+											<span class="address">813 Washington St. SW</span><br />
+											<span class="city">Washington</span>, <span class="state">DC</span> <span class="zip"> 20002</span><br />
+											<span class="phone">880-711-2934</span> <span class="venu">http://www.reddit.com/user/bgeorge23/</span> <span class="venu">http://www.digg.com/profile/betsy_george/</span> <span class="venu">http://www.stumbleupon.com/stumbler/betsygeorge/</span></td>
+									</tr>
+								</tbody>
+							</table>
+							<!-- End contact list--><br />
+							<br />
+							<br />
+							<table border="1" bordercolor="#000000" cellpadding="3" cellspacing="1" class="ContactList" width="716">
+								<caption>
+									CRMShield Examples Set 2</caption>
+								<tbody>
+									<tr>
+										<td bgcolor="#ffffff" valign="top" width="50%">
+											<p align="center">
+												<b>FIRST CONTACT</b><br />
+												&nbsp;</p>
+										</td>
+										<td bgcolor="#ffffff" valign="top" width="204">
+											<p align="center">
+												<b>SECOND CONTACT</b><br />
+												&nbsp;</p>
+										</td>
+									</tr>
+									<tr>
+										<td valign="top" width="50%">
+											<!--Column 1--><span class="name">Robert P. Conolly</span><br />
+											<span class="title">HR Director</span><br />
+											<span class="company">Widget Company</span><br />
+											<span class="phone">217-555-1625</span><br />
+											<span class="email">rconolly@example.com</span></td>
+										<td valign="top" width="50%">
+											<!--Column 2--><span class="name">Amanda Strohmeier</span><br />
+											<span class="title">Director of Human Resources</span><br />
+											<span class="company">Widget Co</span><br />
+											<span class="phone">217.555.0169</span><br />
+											<span class="email">astrhmeir@example.com</span></td>
+									</tr>
+									<tr>
+										<td valign="top" width="50%">
+											<!--Column 1--><span class="name">Beth Gengo</span><br />
+											<span class="title">HUMAN RESOURCES, DIRECTOR</span><br />
+											<span class="company">Widget Co.</span><br />
+											<span class="phone">(555)555 1293</span><br />
+											<span class="email">bgengo@example.com</span></td>
+										<td valign="top" width="50%">
+											<!--Column 2--><span class="name">Shelba Vilar</span><br />
+											<span class="title">Director of HR </span><br />
+											<span class="company">Widget Co Inc., The</span><br />
+											<span class="phone">502 555 4245</span><br />
+											<span class="email">svilar@example.com</span></td>
+									</tr>
+									<tr>
+										<td valign="top" width="50%">
+											<!--Column 1--><span class="name">Odra Lenane</span><br />
+											<span class="title">HR Consultant </span><br />
+											<span class="company">Widget Company Inc, The</span><br />
+											<span class="phone">217.555.1625</span><br />
+											<span class="email">alenane@example.com</span></td>
+										<td valign="top" width="50%">
+											<!--Column 2--><span class="name">Melinda Greenway</span><br />
+											<span class="title">Sales Mgr</span><br />
+											<span class="company">The Widget Co.</span><br />
+											<span class="phone">651-555-8615</span><br />
+											<span class="email">mgreenway@example.com</span></td>
+									</tr>
+									<tr>
+										<td valign="top" width="50%">
+											<!--Column 1--><span class="name">Roz Hallas</span><br />
+											<span class="title">Sales Mgr.</span><br />
+											<span class="company">Widget Company, The</span><br />
+											<span class="phone">(503)555 4954</span><br />
+											<span class="email">rhallas@example.com</span></td>
+										<td valign="top" width="50%">
+											<!--Column 2--><span class="name">Bill Hall</span><br />
+											<span class="title">Sales Manager</span><br />
+											<span class="company">Widget Co, The</span><br />
+											<span class="phone">502-555-4245</span><br />
+											<span class="email">bhall@example.com</span></td>
+									</tr>
+									<tr>
+										<td valign="top" width="50%">
+											<!--Column 1--><span class="name">Patti Sakowicz</span><br />
+											<span class="title">Associate Director</span><br />
+											<span class="company">Widget Co Inc, The</span><br />
+											<span class="phone">217-555-1625</span><br />
+											<span class="email">psakowicz@example.com</span></td>
+										<td valign="top" width="50%">
+											<!--Column 2--><span class="name">Mathilde Landis</span><br />
+											<span class="title">Purchasing Director</span><br />
+											<span class="company">The Widget Company Inc</span><br />
+											<span class="phone">217-555-0169</span><br />
+											<span class="email">mlandis@example.com</span></td>
+									</tr>
+									<!--**********************************************-->
+									<tr>
+										<td valign="top" width="50%">
+											<!--Column 1--><span class="name">Dr. Mervin Benbrook</span><br />
+											<span class="title">Project Director</span><br />
+											<span class="company">Widget Co. Inc, The</span><br />
+											<span class="phone">217.555.0268</span><br />
+											<span class="email">mbenbrook@example.com</span></td>
+										<td valign="top" width="50%">
+											<!--Column 2--><span class="name">Marv Cerritos</span><br />
+											<span class="title">CEO</span><br />
+											<span class="company">Widget Company Incorporated</span><br />
+											<span class="phone">607-555-1293</span><br />
+											<span class="email">mcerritos@example.com</span></td>
+									</tr>
+									<tr>
+										<td valign="top" width="50%">
+											<!--Column 1--><span class="name">Lynetta S. Flake</span><br />
+											<span class="title">Engineer</span><br />
+											<span class="company">The Widget Company Incorporated</span><br />
+											<span class="phone">651-555-8615</span><br />
+											<span class="email">lflake@example.com</span></td>
+										<td valign="top" width="50%">
+											<!--Column 2--><span class="name">Maxine Stamm</span><br />
+											<span class="title">Vice President</span><br />
+											<span class="company">The Widget Company Inc.</span><br />
+											<span class="phone">217-555-1625</span><br />
+											<span class="email">mstamm@example.com</span></td>
+									</tr>
+									<tr>
+										<td valign="top" width="50%">
+											<!--Column 1--><span class="name">Janiece C. Baese</span><br />
+											<span class="title">Financing Manager</span><br />
+											<span class="company">Widget Company Inc.</span><br />
+											<span class="phone">217-555-0169</span><br />
+											<span class="email">jbaese@example.com</span></td>
+										<td valign="top" width="50%">
+											<!--Column 2--><span class="name">Richard J. Tooley</span><br />
+											<span class="title">Manager</span><br />
+											<span class="company">Widget Co. Inc., The</span><br />
+											<span class="phone">217-555-6358</span><br />
+											<span class="email">rtooley@example.com</span></td>
+									</tr>
+									<tr>
+										<td valign="top" width="50%">
+											<!--Column 1--><span class="name">Louie Barksdale</span><br />
+											<span class="title">Quality Control Manager</span><br />
+											<span class="company">Widget Company Incorporated, The</span><br />
+											<span class="phone">217-555-1625</span><br />
+											<span class="email">lbarksdale@example.com</span></td>
+										<td valign="top" width="50%">
+											<!--Column 2--><span class="name">Malcolm Svetlik</span><br />
+											<span class="title">Franchising Manager</span><br />
+											<span class="company">Widget Co., The</span><br />
+											<span class="phone">217-555-0169</span><br />
+											<span class="email">msvetlik@example.com</span></td>
+									</tr>
+									<tr>
+										<td valign="top" width="50%">
+											<!--Column 1--><span class="name">Mike Kenyon</span><br />
+											<span class="title">Accountant</span><br />
+											<span class="company">The Widget Company</span><br />
+											<span class="phone">502-555-4245</span><br />
+											<span class="email">mkenyon@example.com</span></td>
+										<td valign="top" width="50%">
+											<!--Column 2--><span class="name">Larry Johnson</span><br />
+											<span class="title">Customer Relations Manager</span><br />
+											<span class="company">The Widget Co</span><br />
+											<span class="phone">217-555-1625</span><br />
+											<span class="email">ljohnson@example.com</span></td>
+									</tr>
+									<tr>
+										<td valign="top" width="50%">
+											<!--Column 1--><span class="name">Vania Glew</span><br />
+											<span class="title">Distribution Manager</span><br />
+											<span class="company">Widget Company Inc., The</span><br />
+											<span class="phone">217-555-0169</span><br />
+											<span class="email">vglew@example.com</span></td>
+										<td valign="top" width="50%">
+											<!--Column 2--></td>
+									</tr>
+								</tbody>
+							</table>
+							<!-- End contact list-->
+							<p>
+								All of the information in the above table is fictional and intended for demonstration purposes only.&nbsp; Any coincidences with real entities are purely unintentional.</p>
+							<p>
+								&nbsp;</p>
+							<p>
+								&nbsp;</p>
+						</td>
+					</tr>
+					<tr>
+						<td height="73" valign="top">
+							<div align="center">
+								<br />
+								<br />
+								<span class="small"><font face="Arial" size="2">Copyright &copy; 2011 Broadlook Technologies. All rights reserved. </font></span></div>
+							<div align="center">
+								&nbsp;</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<!-- End ImageReady Slices --></div>
+		<p>
+			&nbsp;</p>
+	</body>
+</html>

@@ -1,0 +1,22 @@
+<div ng-include="'components/partials/nav.html'" />
+
+<div ng-controller="searches">
+    <div class="row">
+        <div class="col-xs-12">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="" ng-click="" data-target="#CommunitySearches" data-toggle="tab">Community</a></li>
+                <li><a href="" data-target="#FavoriteSearches" data-toggle="tab"><span style="font-size:0.8em;" class="glyphicon glyphicon-star"/>&nbsp;Favorites</a></li>
+                <li><a href="" data-target="#MySearches" data-toggle="tab">My Searches</a></li>
+                <li><a href="" ng-click="" data-target="#TeamSearches" data-toggle="tab">Team</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="CommunitySearches" ng-include="templates.tab" ng-init="init('community')" ng-controller="searchTab" />
+                <div class="tab-pane fade" id="FavoriteSearches" ng-include="templates.tab" ng-init="init('favorites')" ng-controller="searchTab"/>
+                <div class="tab-pane fade" id="MySearches" ng-include="templates.tab" ng-init="init('person')" ng-controller="searchTab"/>
+                <div class="tab-pane fade" id="TeamSearches" ng-include="templates.tab" ng-init="init('team')" ng-controller="searchTab"/>
+            </div>
+        </div>
+    </div>
+</div>
