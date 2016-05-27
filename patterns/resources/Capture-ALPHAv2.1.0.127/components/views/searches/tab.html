@@ -1,0 +1,56 @@
+<div >
+    <br>
+
+
+    <div class="input-group">
+        <span class="input-group-btn" ng-show="targetScope=='person'">
+            <button class="btn btn-default input-sm btn-default" type="button" data-toggle="tooltip" title="Add a new search" ng-click="searches.create()"><span class="glyphicon glyphicon-plus"></span></button>
+        </span>
+        <input type="text" class="form-control input-sm" placeholder="<search by keywords>" ng-enter="searches.find()" ng-keyup="searches.find()" ng-model="searches.keywords" data-toggle="tooltip" title="Enter keywords to search for separated by spaces"/>
+        <span class="input-group-btn">
+            <button class="btn btn-default input-sm btn-default" type="button" ng-click="searches.find()" data-toggle="tooltip" title="Search"><span class="glyphicon glyphicon-search"></span></button>
+
+
+        </span>
+    </div>
+
+
+    <div ng-show="targetScope=='team'">
+        <div class="input-group"  ng-show="teams.list.length">
+            <span class="input-group-addon  input-sm">Team:</span>
+            <select class="form-control  input-sm" ng-model="teams.selected" ng-options="team.teamcode as team.teamname for team in teams.list" ng-change="teams.change()"/>
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default dropdown-toggle input-sm" data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-cog"/>
+                </button>
+                <ul class="dropdown-menu pull-right">
+                    <li role="presentation"><a href="" ng-click="teams.share(teams.list)">Share</a></li>
+                    <li role="presentation"><a href="" ng-click="teams.leave()">Leave</a></li>
+                    <li role="presentation" class="divider"></li>
+                    <li role="presentation"><a href="" ng-click="teams.create()" >Create Team</a></li>
+                    <li role="presentation"><a href="" ng-click="teams.join()">Join Team</a></li>
+                </ul>
+            </span>
+        </div>
+        <div class="col-xs-12 text-center" ng-hide="teams.list.length">
+            <a href="" ng-click="teams.create()">&lt;Click here to create a team&gt;</a>
+        </div>
+        <div class="col-xs-12 text-center" ng-hide="teams.list.length">
+            <a href="" ng-click="teams.retrieve()">&lt;Reload teams&gt;</a>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="row">
+        <div class="col-xs-12">
+            <br>
+            <div class="row" ng-repeat="searchId in searches.list">
+                <div ng-include="'components/partials/searches/card.html'"/>
+            </div>
+        </div>
+    </div>
+</div>

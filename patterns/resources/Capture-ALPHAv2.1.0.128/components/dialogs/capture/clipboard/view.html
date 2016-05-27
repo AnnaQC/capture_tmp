@@ -1,0 +1,32 @@
+<!-- Capture Clipbaord Modal -->
+<div ng-controller="dialogs.capture.clipboard" ng-init="modalSelector='#capture-clipboard-modal'">
+    <div class="modal fade" id="capture-clipboard-modal" tabindex="-1" role="dialog" aria-labelledby="capture-clipboard-modal-Label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p>Click the box below and press Ctrl+V to paste your Clipboard content.</p>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-model="htmlFormatting"> Html
+                        </label>
+                    </div>
+                    <textarea ng-hide="htmlFormatting" style="resize: none;" class="form-control" rows="10" cols="60" ng-show="clipboardFormat!='html'" ng-model="clipboardData" ></textarea>
+
+                    <div class="panel panel-default" ng-show="htmlFormatting" style="height:214px !important;">
+                        <div class="panel-body" style="height:214px !important; overflow: auto;">
+                            <div class="editable" ng-model="clipboardData" contenteditable="true" style="min-height:170px !important;"/>
+                        </div>
+                    </div>
+
+
+                    <a href="" class="btn btn-default" ng-click="clipboardData = null">Clear</a>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
+                    <button type="button" class="btn btn-primary" ng-click="confirm()">Capture</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Capture Clipbaord Modal -->

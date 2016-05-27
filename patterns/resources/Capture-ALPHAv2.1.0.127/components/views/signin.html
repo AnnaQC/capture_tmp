@@ -1,0 +1,138 @@
+<div id="wrapper" ng-controller="home">
+
+    <div id="page-wrapper" style="background-color: #f3f3f4; min-height: 600px">
+        <div class="wrapper wrapper-content animated fadeInRight" style="padding: 0">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="wrapper wrapper-content" style="padding: 0">
+                        <div class="row">
+
+
+                            <div ng-include="'components/dialogs/view.html'" />
+                            <div ng-include="'components/partials/header.min.html'" />
+
+                            <div class="col-lg-4">
+                                <div class="ibox float-e-margins" ng-controller="signIn">
+
+                                    <div class="ibox-title">
+                                        <h5>Signing in...</h5>
+                                    </div>
+
+                                    <div class="ibox-content" style1="padding: 0; border-width: 0px">
+
+
+                                        <!--<div ng-controller="signIn" class="container">
+                                        <div ng-include="'components/partials/header.min.html'" />-->
+                                        <div class="row" ng-hide="signInFailure">
+                                            <div class="col-xs-12 text-center">
+                                                <h4 style="margin-top: 1em">Signing in...</h4>
+                                                <div class="alert alert-info text-center" ng-show="!interactive">
+                                                    Please wait, attempting automated sign-in...
+                                                </div>
+                                                <div class="alert alert-info text-center" ng-show="interactive">
+                                                    Please <a href="" ng-click="signInToChrome()">sign in to Chrome</a> to continue.
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div ng-show="signInFailure">
+
+
+
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <div class="alert alert-danger text-center">
+                                                        Capture! was unable to find your account: {{signInFailureDescription}}
+                                                        <br />
+                                                        Please make sure that you are signed  in to Chrome.
+                                                        <strong data-toggle="tooltip" title="Click Chrome Menu button and look for Sign into Chrome browser with your Google credentials.">(How?)</strong>
+                                                        <!--and then <a href="" ng-click="signIn()">try again</a>
+                                                        <a href="" ng-click="signIn()">.</a> <a href="" ng-click="signInToChrome()">Sign in to Chrome.</a>-->
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-xs-4 col-xs-offset-2">
+                                                    <div class="btn btn-default btn-block" ng-click="signInToChrome()" ng-disable="false">Sign in to Chrome</div>
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <div class="btn btn-default btn-block" ng-click="signIn()" ng-disable="false">Try Again</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row" style="margin-top: 50px">
+                                                <div class="col-xs-12">
+                                                    <div class="alert alert-warning text-center">
+                                                        Still no luck? Let's try the manual mode, enter your email below.
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <form role="form" class="form-horizontal" style="margin-top: 10px">
+
+                                                <!--<div class="row">
+                                                    <div class="col-xs-12 text-center">
+                                                        <h4>Manual Sign In</h4>
+                                                    </div>
+                                                </div>-->
+
+                                                <div class="row" ng-show="errorMsg">
+                                                    <div class="col-xs-12">
+                                                        <div class="alert alert-danger">{{errorMsg}}</div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-group" ng-class="{'has-error':!credentials.email}">
+                                                    <div class="col-xs-2">
+                                                        <label class="control-label pull-right" for="manInputEmail">Email</label>
+                                                    </div>
+                                                    <div class="col-xs-8">
+                                                        <input type="email" class="form-control" id="manInputEmail" ng-disabled="false" placeholder="Enter your Chrome user email" ng-model="credentials.email">
+
+                                                    </div>
+                                                    <div class="col-xs-2">
+                                                        <div class="btn btn-primary" ng-click="errorMsg=manualSignIn()" ng-disable="false">Sign In</div>
+                                                    </div>
+                                                </div>
+                                                <!--<div class="form-group" ng-class="{'has-error':!credentials.sitekey}">
+                                                    <label class="control-label col-xs-3 text-right" for="manInputSitekey">Sitekey</label>
+                                                    <div class="col-xs-8">
+                                                        <input type="email" class="form-control" id="manInputSitekey" ng-disabled="false" placeholder="Enter sitekey (provided by RingLead)" ng-model="credentials.sitekey">
+                                                    </div>
+                                                </div>-->
+                                                <!--<div class="row">
+                                                    <div class="col-xs-6 col-xs-offset-3">
+                                                        <div class="btn btn-primary btn-block" ng-click="errorMsg=manualSignIn()" ng-disable="false">Sign In</div>
+                                                    </div>
+                                                </div>-->
+
+                                            </form>
+
+
+                                            <div class="row" style="margin-top: 60px">
+                                                <div class="col-xs-12">
+                                                    <div class="alert alert-info text-center">
+                                                        <p><a href="https://www.ringlead.com/" target="_blank">Click here to get assistance.</a></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+
+                                        <!--<div ng-include="'components/partials/footer.min.html'" />-->
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

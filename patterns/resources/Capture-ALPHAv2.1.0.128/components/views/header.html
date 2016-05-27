@@ -1,0 +1,20 @@
+<nav class="navbar navbar-default" role="navigation" style="border-style: none; -webkit-box-shadow: none; margin-bottom: 0em" ng-controller="header">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <a href="" class="pull-right btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"/></a>
+
+            <a href="" class="pull-right btn-xs no-underline" ng-click="configureExportTarget()">{{exportTarget}}
+                <span class="label" ng-class="{'label-success':exportTargetState, 'label-warning':!exportTargetState}" style="font-weight: normal">{{ exportTargetState ? 'ON' : 'OFF' }}</span>
+            </a>
+
+            <ul class="dropdown-menu pull-right">
+                <li><a href="" ng-click="settings()">Settings</a></li>
+                <li><a href="" ng-click="subscription()">Subscription</a></li>
+                <li ><a href="" ng-click="register()">Registration</a></li>
+                <!--<li><a href="" ng-click="showTab('signin');signout();">Sign Out</a></li>-->
+            </ul>
+        </div>
+
+    </div>
+</nav>

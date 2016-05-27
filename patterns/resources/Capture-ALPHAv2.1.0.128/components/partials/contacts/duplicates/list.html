@@ -1,0 +1,37 @@
+<div class="panel panel-{{contact.links.length == 0?'info':'danger'}}">
+  <div class="panel-heading clearfix">
+       <h3 class="panel-title pull-left">Found Duplicates</h3>
+       <div class="pull-right">
+           <span class="glyphicon glyphicon-refresh clickable" data-toggle="tooltip" data-placement="bottom" title="Search for duplicates again" ng-click="findDups(contact)"></span>
+       </div>
+
+  </div>
+  <div class="panel-body">
+       <table class="table table-condensed">
+            <tr ng-repeat="l in contact.links">
+                 <td>
+                      <div class="col-xs-1 ellipsis nopadding" data-toggle="tooltip" data-placement="top" title="{{l._type}}">
+                           <small>{{l._type}}</small>
+                      </div>
+                      <div class="col-xs-4 ellipsis nopadding" data-toggle="tooltip" data-placement="top" title="{{l.first + ' ' + l.last}}">
+                           {{l.first}} {{l.last}}
+                      </div>
+                      <div class="col-xs-5 ellipsis nopadding" data-toggle="tooltip" data-placement="top" title="{{l.company}}">
+                           {{l.company}}
+                      </div>
+                      <div class="col-xs-2 pull-right text-right  nopadding">
+                          <!--<div class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="left" title="View existing record" ng-click="loadPage(l._link, false)">
+                              <span class="glyphicon glyphicon-eye-open"></span>
+                          </div>-->
+                          <a class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="left" title="View existing record" ng-click="loadPage(l._link, false)" ng-href="{{l._link}}">
+                              <span class="glyphicon glyphicon-eye-open"></span>
+                          </a>
+                          <div class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="left" title="Merge into this contact: {{l._id}}" ng-click="mergeDups(contact, l._type, l._id)">
+                              <span class="glyphicon glyphicon-cloud-upload"></span>
+                          </div>
+                      </div>
+                 </td>
+            </tr>
+       </table>
+  </div>
+</div>
