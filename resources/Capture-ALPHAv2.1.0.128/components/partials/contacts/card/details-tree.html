@@ -1,0 +1,64 @@
+﻿<div style="width: 100%; overflow: hidden; white-space: nowrap; margin-top: 8px; ">
+
+    <div>
+        <div>
+            <a href="" data-toggle="collapse" data-target="#personal-details-{{contact.id}}"
+               class="btn btn-link btn-xs" ng-click="collapsed=!collapsed">
+                <i class="fa" ng-class="{'fa-plus-square-o': collapsed, 'fa-minus-square-o': !collapsed}"></i>
+            </a> Name: {{contact.first}} {{contact.middle}} {{contact.last}}
+        </div>
+        <div id="personal-details-{{contact.id}}" class="collapse in">
+            <ul class="details-tree-list">
+                <contact-card-tree-node field="Job Title" value="{{contact.jobtitle}}"></contact-card-tree-node>
+                <contact-card-tree-node field="Email" value="{{contact.email}}"></contact-card-tree-node>
+                <contact-card-tree-node field="Email 2" value="{{contact.email2}}"></contact-card-tree-node>
+                <contact-card-tree-node field="Phone" value="{{contact.phone}}"></contact-card-tree-node>
+                <contact-card-tree-node field="Phone 2" value="{{contact.phone2}}"></contact-card-tree-node>
+                <contact-card-tree-node field="Facebook" value="{{contact.facebook}}" link="{{contact.facebook}}"></contact-card-tree-node>
+                <contact-card-tree-node field="LinkedIn" value="{{contact.linkedin}}" link="{{contact.linkedin}}"></contact-card-tree-node>
+                <contact-card-tree-node field="Twitter" value="{{contact.twitter}}" link="{{contact.twitter}}"></contact-card-tree-node>
+            </ul>
+
+        </div>
+    </div>
+
+    <div ng-show="contact.company || contact.website || contact.address || contact.city">
+        <div>
+            <a href="" data-toggle="collapse" data-target="#company-details-{{contact.id}}"
+               class="btn btn-link btn-xs" ng-click="collapsed2=!collapsed2">
+                <i class="fa" ng-class="{'fa-plus-square-o': collapsed2, 'fa-minus-square-o': !collapsed2}"></i>
+            </a> Company: {{contact.company}}
+        </div>
+        <div id="company-details-{{contact.id}}" class="collapse in">
+            <ul class="details-tree-list">
+                <contact-card-tree-node field="Web site" value="{{contact.website}}" link="{{contact.website}}"></contact-card-tree-node>
+                <contact-card-tree-node field="Address" value="{{contact.address}}"></contact-card-tree-node>
+                <contact-card-tree-node field="# of Employees" value="{{contact.employees}}"></contact-card-tree-node>
+                <contact-card-tree-node field="Revenue" value="{{contact.revenue}}"></contact-card-tree-node>
+                <contact-card-tree-node field="Industry" value="{{contact.indstry}}"></contact-card-tree-node>
+                <contact-card-tree-node ng-repeat="venue in contact.venues | filter: { top: false }" field="{{getVenueName(venue.type)}}" value="{{venue.website}}" link="{{venue.website}}"></contact-card-tree-node>
+            </ul>
+        </div>
+    </div>
+
+    <div ng-show="contact.venues.length > 0" ng-init="collapsed3=true">
+        <div>
+            <a href="" data-toggle="collapse" data-target="#social-details-{{contact.id}}"
+               class="btn btn-link btn-xs" ng-click="collapsed3=!collapsed3">
+                <i class="fa" ng-class="{'fa-plus-square-o': collapsed3, 'fa-minus-square-o': !collapsed3}"></i>
+            </a> Social Links: {{contact.venues.length}}
+        </div>
+        <div id="social-details-{{contact.id}}" class="collapse">
+            <ul class="details-tree-list">
+                <contact-card-tree-node ng-repeat="venue in contact.venues" field="{{venue.type}}" value="{{venue.website}}" link="{{venue.website}}"></contact-card-tree-node>
+            </ul>
+
+            <!--<div class="capture-card-cell" ng-repeat="venue in contact.venues">
+                <img class="social-image social-{{getSocialVenueClassName(venue)}}" style="margin-right: 8px">
+                <a ng-click="dive(contact, venue.website)" href="" target="_blank">{{venue.website}}</a>
+            </div>-->
+            {{contact.venues}}
+        </div>
+    </div>
+
+</div>

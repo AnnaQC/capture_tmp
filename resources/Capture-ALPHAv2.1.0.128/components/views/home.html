@@ -1,0 +1,139 @@
+<div class="container-fluid" ng-controller="home">
+
+    <div ng-include="'components/dialogs/view.html'" />
+    <div ng-include="'components/modules/broadlook/multimerge/modal.html'" />
+    <div ng-include="'components/partials/header.min.html'" />
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+            <!-- Account -->
+            <div ng-controller="AccountController">
+
+
+                <!--<div ng-show="license.licenseType === 'Trial'" class="alert alert-warning text-center" style="margin-top: 3px; margin-bottom: 3px; padding:3px; line-height: 14px;" role="alert">
+                    Trial {{license.subStatus.toLowerCase()}}. <a href="" ng-click="subscription()">Subscribe Now.</a>
+                </div>-->
+                <!--<div ng-show="license && license.messages && license.messages.length > 0">
+                    <div style="margin-top: 10px; margin-bottom: 3px">
+                        <div class="alert alert-info text-center alert-dismissible" role="alert" ng-show="!message.hidden" ng-repeat="message in license.messages">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close" ng-click="hideMessage(message.id)"><span aria-hidden="true">&times;</span></button>
+                            <span ng-bind-html="message.text"></span>
+                        </div>
+                    </div>
+                </div>-->
+
+                <!--Top Menu-->
+                <nav class="navbar navbar-default" role="navigation" style="border-style: none; -webkit-box-shadow: none; margin-bottom: 0; margin-top: 0; min-height: 34px">
+                    <div class="container-fluid">
+
+                        <div class="navbar-header" style="font-family: 'Segoe UI', Arial, sans-serif">
+
+                            <div class="pull-left">
+                                <audio id="capture-audio" src="/images/camera-click-sound.mp3"></audio>
+                                <a href="" class="btn btn-default navbar-btn" id="capture-button"
+                                   style="letter-spacing: 1px; font-family: 'Segoe UI', Arial, sans-serif; text-align: center; margin: 4px 0; padding: 6px; border-style: none"
+                                   title="Click to Capture"
+                                   ng-click="clickToCapture($event)" ng-show="registered" ng-disabled="!license || !license.subscribed">
+                                    <img src="../../images/camera-round-2.png" style="width: 48px"  />
+                                    <!--<span>Click to<br />Capture</span>-->
+                                    <!--<i class="fa fa-camera" style="font-size: 16px;"></i>-->
+                                </a>
+                            </div>
+
+                            <div id="capture-source" style="margin-left: 3px">
+                                <label style="font-weight: 100">
+                                    <input type="radio" ng-model="runtime.source" value="page" />
+                                    Page
+                                </label><br />
+                                <label style="font-weight: 100">
+                                    <input type="radio" ng-model="runtime.source" value="selection" />
+                                    Text Selection
+                                </label><br />
+                                <label style="font-weight: 100">
+                                    <input type="radio" ng-model="runtime.source" value="clipboard" />
+                                    From Clipboard
+                                </label>
+                            </div>
+
+                            <div class="pull-right">
+
+                                <div class="pull-left">
+                                    <a href="" type="button" class="btn btn-link navbar-btn"
+                                       style="margin-right: 8px; letter-spacing: 1px; margin-top: 0px; margin-bottom: 0px"
+                                       ng-click="openStore()">Credits:&nbsp;{{license.contactTokens}}</a>
+                                    <!--<br />
+                                    <a href="" type="button" class="btn btn-link navbar-btn"
+                                       ng-show="license.licenseType === 'Trial'"
+                                       style="margin-right: 8px; letter-spacing: 1px; margin-top: 0px; margin-bottom: 0px"
+                                       ng-click="subscription()"><span class="text-danger">Trial {{license.subStatus.toLowerCase()}}</span></a>-->
+                                </div>
+
+                                <a href="" type="button" class="btn btn-primary navbar-btn {{tab1=='signin'?'active':''}}"
+                                   style="margin-right: 8px"
+                                   ng-click="showTab('signin')" ng-show="!loggedin">Sign In</a>
+
+                                <a href="" class="pull-right btn btn-default navbar-btn" data-toggle="dropdown">
+                                    <i class="glyphicon glyphicon-menu-hamburger"></i>
+                                </a>
+
+                                <ul class="dropdown-menu pull-right">
+                                    <li class="{{tab2=='settings'?'active':''}}" ng-hide="(!license || !license.subscribed)"><a href="" ng-click="showSettings()" ng-show="registered" ng-disabled="(!license || !license.subscribed)">Settings</a></li>
+                                    <li class="{{tab2=='status'?'active':''}}"><a href="" ng-click="subscription()" ng-show="registered">Subscription</a></li>
+                                    <li ng-hide="(!license || !license.subscribed)"><a href="" ng-click="initSearches(); showTab('searchmenu');" ng-show="registered" ng-disabled="(!license || !license.subscribed)">Searches</a></li>
+                                </ul>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </nav>
+
+
+
+                <div id="Account" ng-show="tab1!='contact'">
+
+                    <div class="spacer"></div>
+
+                    <div ng-show="tab1=='searchmenu' && license.subStatus==''">
+                        <p>Checking license...</p>
+                    </div>
+
+                    <!--Sign In Help-->
+                    <div ng-show="tab1=='signin'">
+                        <p>Please <a href="" ng-click="signin(false)">sign in</a> with your Google credentials.</p>
+                        <p>Have questions? Get help <a href="http://support.broadlook.com" target="_blank">here.</a></p>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <div id="ContactController" ng-controller="ContactController" ng-init="layoutDone()" ng-show="canSee">
+                <div class="viewer">
+                    <div>
+                        <a id="anchor_row_top"></a>
+                        <div ng-include="'components/partials/contacts/menu.html'" />
+                        <div id="scrollArea" style="height: 445px; overflow-x: hidden; overflow-y: auto;">
+                            <loader loading="loading" message="Loading Contacts...">
+                                <div ng-include="'components/views/contacts/contacts.html'" />
+                            </loader>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-controller="CCaptureController" ng-show="canSee && allowed">
+            </div>
+
+            <div ng-controller="SearchController" ng-show="canSee && allowed">
+                <div ng-include="'components/views/searches/searches.html'" />
+            </div>
+
+        </div>
+    </div>
+
+</div>

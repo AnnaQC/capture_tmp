@@ -1,0 +1,385 @@
+[
+    {
+        "ID": "1d3dce53-9c4f-4dc4-84b4-6284b6576637",
+        "Name": "Careers at StackOverflow",
+        "Description": "User Profiles on Stack Overflow Careers Page",
+        "Domains": ["careers.stackoverflow.com"],
+        "UserDomains": [],
+        "SchemaVersion": "1.0.0",
+	"DocumentType": "CapturePatternVer1",
+	"CreatedDate": "2014-08-13",
+	"AuthorName": "Justin Stull",
+        "Paths": [
+            {
+                "Name": "User Profile",
+                "Description": "",
+                "UrlPatterns": ["^(http)(s)?(://)(careers.stackoverflow.com/).*$"],
+                "Layouts": [
+                    {
+                        "Name": "Public / Not Signed In",
+                        "Description": "",
+                        "Qualifiers": [
+                            { "Selectors": [{ "Selector": "BODY.strip DIV.container DIV#content" }], "ValidationType": "Exists" },
+                            { "Selectors": [{ "Selector": "DIV#section-personal.personal.section DIV.display H1" }], "ValidationType": "Exists" }
+                        ],
+                        "Groups": [
+                            {
+                                "Group": "Profile",
+                                "Selectors": ["BODY.strip DIV.container DIV#content"],
+                                "GroupFields": [
+                                    {
+                                        "Group": "Name",
+                                        "Selectors": ["DIV.cv.public DIV.personal-block DIV#section-personal.personal.section DIV.display H1"],
+                                        "GroupFields": [
+                                            { "Field": "FullName", "Selectors": [{ "Selector": "", "Processors": [{ "Name": "TrimWhiteSpace" }, { "Name": "SplitFullName" }] }] }
+                                        ]
+                                    },
+                                    {
+                                        "Group": "Position", "Modifier": "Current",
+                                        "Selectors": ["DIV.cv.public DIV.personal-block.with-sticky DIV#currently-at-container DIV.section.currently-at.display"],
+                                        "GroupFields": [
+                                            { "Field": "CompanyTitle", "Selectors": [{ "Selector": "", "Processors": [{ "Name": "TrimWhiteSpace" }, { "Name": "SplitCompanyTitle" }] }] },
+                                            { "Field": "Title", "Selectors": [{ "Selector": "STRONG:nth-of-type(1)", "Processors": ["CleanHTML", "DetectCompanyTitle"] }] },
+                                            { "Field": "Company", "Selectors": [{ "Selector": "STRONG:nth-of-type(2)", "Processors": ["CleanHTML", "DetectCompanyTitle"] }] }
+                                        ]
+                                    },
+                                    {
+                                        "Group": "Position", "Modifier": "Latest",
+                                        "Selectors": ["DIV.cv.public DIV#cv-sections DIV#cv-experience.section.cv-section-type DIV[id^=section-].repeater.cv-section.first"],
+                                        "GroupFields": [
+                                            { "Field": "Title", "Selectors": [{ "Selector": "DIV.display DIV.preview H3", "Processors": ["CleanHTML"] }] },
+                                            { "Field": "Company", "Selectors": [{ "Selector": "DIV.display DIV.preview H3 SPAN.location", "Processors": ["CleanHTML"] }] },
+                                            { "Field": "Description", "Selectors": [{ "Selector": "DIV.display DIV.description.markdown.collapsible P", "Processors": ["CleanHTML"] }] },
+                                            { "Field": "TeniorLocation", "Selectors": [{ "Selector": "DIV.display DIV.preview P.time-frame", "Processors": ["CleanHTML", "DetectTenior", "DetectLocation"] }] }
+                                        ]
+                                    },
+                                    {
+                                        "Group": "Positions", "Multiple": true,
+                                        "Selectors": ["DIV.cv.public DIV#cv-sections DIV#cv-experience.section.cv-section-type DIV[id^=section-].repeater.cv-section"],
+                                        "GroupFields": [
+                                            { "Field": "Title", "Selectors": [{ "Selector": "DIV.display DIV.preview H3", "Processors": ["CleanHTML"] }] },
+                                            { "Field": "Company", "Selectors": [{ "Selector": "DIV.display DIV.preview H3 SPAN.location", "Processors": ["CleanHTML"] }] },
+                                            { "Field": "Description", "Selectors": [{ "Selector": "DIV.display DIV.description.markdown.collapsible P", "Processors": ["CleanHTML"] }] },
+                                            { "Field": "TeniorLocation", "Selectors": [{ "Selector": "DIV.display DIV.preview P.time-frame", "Processors": ["CleanHTML", "DetectTenior", "DetectLocation"] }] }
+                                        ]
+                                    },
+                                    {
+                                        "Group": "Education", "Modifier": "Latest",
+                                        "Selectors": ["DIV.cv.public DIV#cv-sections DIV#cv-education.section.cv-section-type DIV[id^=section-].repeater.cv-section.first"],
+                                        "GroupFields": [
+                                            { "Field": "Title", "Selectors": [{ "Selector": "DIV.display DIV.preview H3", "Processors": ["CleanHTML"] }] },
+                                            { "Field": "Company", "Selectors": [{ "Selector": "DIV.display DIV.preview H3 SPAN.location", "Processors": ["CleanHTML"] }] },
+                                            { "Field": "Description", "Selectors": [{ "Selector": "DIV.display DIV.description.markdown.collapsible P", "Processors": ["CleanHTML"] }] },
+                                            { "Field": "TeniorLocation", "Selectors": [{ "Selector": "DIV.display DIV.preview P.time-frame", "Processors": ["CleanHTML", "DetectTenior", "DetectLocation"] }] }
+                                        ]
+                                    },
+                                    {
+                                        "Group": "Educations", "Multiple": true,
+                                        "Selectors": ["DIV.cv.public DIV#cv-sections DIV#cv-education.section.cv-section-type DIV[id^=section-].repeater.cv-section"],
+                                        "GroupFields": [
+                                            { "Field": "Title", "Selectors": [{ "Selector": "DIV.display DIV.preview H3", "Processors": ["CleanHTML"] }] },
+                                            { "Field": "Company", "Selectors": [{ "Selector": "DIV.display DIV.preview H3 SPAN.location", "Processors": ["CleanHTML"] }] },
+                                            { "Field": "Description", "Selectors": [{ "Selector": "DIV.display DIV.description.markdown.collapsible P", "Processors": ["CleanHTML"] }] },
+                                            { "Field": "TeniorLocation", "Selectors": [{ "Selector": "DIV.display DIV.preview P.time-frame", "Processors": ["CleanHTML", "DetectTenior", "DetectLocation"] }] }
+                                        ]
+                                    },
+                                    { "Field": "BIO", "Selectors": [{ "Selector": "DIV.cv.public DIV DIV#cv-other.section DIV.display", "Processors": ["CleanHTML"] }] },
+                                    { "Field": "Twitter", "Selectors": [{ "Selector": "DIV.cv.public DIV DIV#section-personal.personal.section DIV.display DIV P A.twitter", "Processors": ["DiscoverURL"] }] },
+                                    { "Field": "Website", "Selectors": [{ "Selector": "DIV.cv.public DIV DIV#section-personal.personal.section DIV.display DIV P#website A", "Processors": ["DiscoverURL"] }] }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "ID": "0ca988ae-d2ca-4fb1-93c0-4718e2423964",
+        "Name": "GitHub",
+        "Description": "User Profiles on Github",
+        "Domains": ["www.github.com", "github.com"],
+        "UserDomains": [],
+        "SchemaVersion": "1.0.0",
+	"DocumentType": "CapturePatternVer1",
+	"CreatedDate": "2014-08-15",
+	"AuthorName": "Justin Stull",
+        "Paths": [
+            {
+                "Name": "User Profile",
+                "Description": "",
+                "UrlPatterns": ["^(http)(s)?(://)(www.)?(github.com/).*$"],
+                "Layouts": [
+                    {
+                        "Name": "Profile",
+                        "Description": "",
+                        "Qualifiers": [ {"Selectors": [{ "Selector": "DIV#site-container.context-loader-container DIV.container DIV.columns.profilecols.js-username DIV.column.one-fourth.vcard"}], "ValidationType": "Exists" }
+                        ],
+                        "Groups": [
+                            {
+                                "Group": "Profile",
+                                "Selectors": ["DIV#site-container.context-loader-container DIV.container DIV.columns.profilecols.js-username DIV.column.one-fourth.vcard"],
+                                "GroupFields": [
+                                    {
+                                        "Group": "Name",
+                                        "Selectors": ["H1.vcard-names SPAN.vcard-fullname"],
+                                        "GroupFields": [
+                                            { "Field": "FullName", "Selectors": [{ "Selector": "", "Processors": [{ "Name": "TrimWhiteSpace" }, { "Name": "SplitFullName" }] }] }
+                                        ]
+                                    },
+                                    { "Field": "Company", "Selectors": [{ "Selector": "UL.vcard-details LI.vcard-detail[itemprop=worksFor]", "Processors": ["CleanHTML"] }] },
+                                    { "Field": "Email", "Selectors": [{ "Selector": "UL.vcard-details LI.vcard-detail A.email", "Processors": ["CleanHTML"] }] },
+                                    { "Field": "GitHub", "Selectors": [{ "Selector": "H1.vcard-names SPAN.vcard-username", "Processors": ["DiscoverURL"] }] },
+                                    { "Field": "Location", "Selectors": [{ "Selector": "UL.vcard-details LI.vcard-detail[itemprop=homeLocation]", "Processors": ["DiscoverURL"] }] },
+                                    { "Field": "Website", "Selectors": [{ "Selector": "UL.vcard-details LI.vcard-detail[itemprop=url]", "Processors": ["DiscoverURL"] }] }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "ID": "23b36c07-2f4f-4917-b4b0-7a22ab9fd582",
+        "Name": "Facebook",
+        "Description": "Profiles on Facebook",
+        "Domains": ["www.facebook.com", "facebook.com"],
+        "UserDomains": [],
+        "SchemaVersion": "1.0.0",
+	"DocumentType": "CapturePatternVer1",
+	"CreatedDate": "2014-08-19",
+	"AuthorName": "Justin Stull",
+        "Paths": [
+            {
+                "Name": "User Profile",
+                "Description": "",
+                "UrlPatterns": ["^(http)(s)?(://)(www.)?(facebook.com/search/).*(/(likers|intersect))$"],
+                "Layouts": [
+                    {
+                        "Name": "Search Profiles",
+                        "Description": "",
+                        "Qualifiers": [
+                            {"Selectors": [{ "Selector": "BODY DIV._li DIV#globalContainer.uiContextualLayerParent DIV#content.fb_content.clearfix DIV DIV#initial_browse_result DIV.mts.pvm DIV.clearfix DIV#browse_result_area.lfloat DIV DIV#BrowseResultsContainer DIV._4_yl DIV DIV.clearfix._zw"}], "ValidationType": "Exists" }
+                        ],
+                        "Groups": [
+                            {
+                                "Group": "Profiles", "Multiple": true,
+                                "Selectors": ["DIV#browse_result_area DIV DIV#BrowseResultsContainer._1yt DIV._4_yl",
+                                    "DIV#browse_result_area DIV DIV#browse_result_below_fold DIV._1yt DIV._4_yl",
+                                    "DIV#browse_result_area DIV DIV[id^=fbBrowseScrollingPagerContainer] DIV._1yt DIV._4_yl"],
+                                "GroupFields": [
+                                    {
+                                        "Group": "Name",
+                                        "Selectors": ["DIV DIV.clearfix._zw DIV._42ef DIV._1zf DIV._zs.fwb A "],
+                                        "GroupFields": [
+                                            { "Field": "FullName", "Selectors": [{ "Selector": "", "Processors": [{ "Name": "TrimWhiteSpace" }, { "Name": "SplitFullName" }] }] }
+                                        ]
+                                    },
+                                    {
+                                        "Field": "Subject", "Selectors": [
+                                            { "Selector": "DIV DIV.clearfix._zw DIV._42ef DIV._1zf DIV[data-bt*=sub_headers]._dj_ A", "Processors": ["DiscoverURL"] },
+                                            { "Selector": "DIV DIV.clearfix._zw DIV._42ef DIV._1zf DIV[data-bt*=sub_headers]._dj_", "Processors": ["DiscoverURL"] }
+                                        ]
+                                    },
+                                    { "Field": "Miscellaneous", "Selectors": [{ "Selector": "DIV DIV.clearfix._zw DIV._42ef DIV._1zf DIV[data-bt*=snippets]._946 DIV DIV._ajw DIV._52eh:nth-of-type(1)", "Processors": ["DiscoverURL"] }] },
+                                    { "Field": "Miscellaneous", "Selectors": [{ "Selector": "DIV DIV.clearfix._zw DIV._42ef DIV._1zf DIV[data-bt*=snippets]._946 DIV DIV._ajw DIV._52eh:nth-of-type(2)", "Processors": ["DiscoverURL"] }] },
+                                    { "Field": "Miscellaneous", "Selectors": [{ "Selector": "DIV DIV.clearfix._zw DIV._42ef DIV._1zf DIV[data-bt*=snippets]._946 DIV DIV._ajw DIV._52eh:nth-of-type(3)", "Processors": ["DiscoverURL"] }] },
+                                    { "Field": "Miscellaneous", "Selectors": [{ "Selector": "DIV DIV.clearfix._zw DIV._42ef DIV._1zf DIV[data-bt*=snippets]._946 DIV DIV._ajw DIV._52eh:nth-of-type(4)", "Processors": ["DiscoverURL"] }] }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "ID": "d65ac5fc-44fe-4a2c-8a1e-49fcc56cafea",
+        "Name": "Salesforce",
+        "Description": "Contacts or Leads on Salesforce",
+        "Domains": ["^(na)[\\d]*(.salesforce.com)$", "www.salesforce.com", "salesforce.com"],
+        "UserDomains": [],
+        "SchemaVersion": "1.0.0",
+	"DocumentType": "CapturePatternVer1",
+	"CreatedDate": "2014-09-18",
+	"AuthorName": "Justin Stull",
+        "Paths": [
+            {
+                "Name": "Lead Profile",
+                "Description": "",
+                "UrlPatterns": ["^(http)(s)?(://)((www|na[\\d]*).)?(salesforce.com/00Q).*$"],
+                "Layouts": [
+                    {
+                        "Name": "Lead Profile Layout",
+                        "Description": "",
+                        "Qualifiers": [
+                            { "Selectors": [{ "Selector": "TD#lea2_ilecell"}], "ValidationType": "Exists" }
+                        ],
+                        "Groups": [
+                            {
+                                "Group": "Profile",
+                                "Selectors": ["BODY.detailPage.sfdcBody"],
+                                "GroupFields": [
+                                    {
+                                        "Group": "Name",
+                                        "Selectors": ["DIV#contentWrapper DIV.bodyDiv TABLE#bodyTable.outer TBODY TR TD#bodyCell.oRight DIV#ep.bDetailBlock DIV.pbBody DIV.pbSubsection TABLE.detailList TBODY TR TD#lea2_ilecell DIV#lea2_ileinner"],
+                                        "GroupFields": [
+                                            { "Field": "FullName", "Selectors": [{ "Selector": "", "Processors": [{ "Name": "TrimWhiteSpace" }, { "Name": "SplitFullName" }] }] }
+                                        ]
+                                    },
+                                    { "Field": "Title", "Selectors": [{ "Selector": "DIV#contentWrapper DIV.bodyDiv TABLE#bodyTable.outer TBODY TR TD#bodyCell.oRight DIV#ep.bDetailBlock DIV.pbBody DIV.pbSubsection TABLE.detailList TBODY TR TD#lea4_ilecell DIV#lea4_ileinner", "Processors": ["CleanHTML", "DetectName"] }] },
+                                    { "Field": "Company", "Selectors": [{ "Selector": "DIV#contentWrapper DIV.bodyDiv TABLE#bodyTable.outer TBODY TR TD#bodyCell.oRight DIV#ep.bDetailBlock DIV.pbBody DIV.pbSubsection TABLE.detailList TBODY TR TD#lea3_ilecell DIV#lea3_ileinner", "Processors": ["CleanHTML", "DetectName"] }] },
+                                    {
+                                        "Field": "Email", "Selectors": [
+                                            { "Selector": "DIV#contentWrapper DIV.bodyDiv TABLE#bodyTable.outer TBODY TR TD#bodyCell.oRight DIV#ep.bDetailBlock DIV.pbBody DIV.pbSubsection TABLE.detailList TBODY TR TD#lea11_ilecell DIV#lea11_ileinner DIV.gmailLink A:nth-of-type(1)", "Processors": ["DiscoverURL"] },
+                                            { "Selector": "DIV#contentWrapper DIV.bodyDiv TABLE#bodyTable.outer TBODY TR TD#bodyCell.oRight DIV#ep.bDetailBlock DIV.pbBody DIV.pbSubsection TABLE.detailList TBODY TR TD#lea11_ilecell DIV#lea11_ileinner A:nth-of-type(1)", "Processors": ["DiscoverURL"] }
+                                        ]
+                                    },
+                                    { "Field": "PhoneHome", "Selectors": [{ "Selector": "DIV#contentWrapper DIV.bodyDiv TABLE#bodyTable.outer TBODY TR TD#bodyCell.oRight DIV#ep.bDetailBlock DIV.pbBody DIV.pbSubsection TABLE.detailList TBODY TR TD#lea8_ilecell DIV#lea8_ileinner", "Processors": ["DiscoverURL"] }] },
+                                    { "Field": "PhoneOther", "Selectors": [{ "Selector": "DIV#contentWrapper DIV.bodyDiv TABLE#bodyTable.outer TBODY TR TD#bodyCell.oRight DIV#ep.bDetailBlock DIV.pbBody DIV.pbSubsection TABLE.detailList TBODY TR TD#lea9_ilecell DIV#lea9_ileinner", "Processors": ["DiscoverURL"] }] },
+                                    { "Field": "Fax", "Selectors": [{ "Selector": "DIV#contentWrapper DIV.bodyDiv TABLE#bodyTable.outer TBODY TR TD#bodyCell.oRight DIV#ep.bDetailBlock DIV.pbBody DIV.pbSubsection TABLE.detailList TBODY TR TD#lea10_ilecell DIV#lea10_ileinner", "Processors": ["DiscoverURL"] }] },
+                                    { "Field": "Website", "Selectors": [{ "Selector": "DIV#contentWrapper DIV.bodyDiv TABLE#bodyTable.outer TBODY TR TD#bodyCell.oRight DIV#ep.bDetailBlock DIV.pbBody DIV.pbSubsection TABLE.detailList TBODY TR TD#lea12_ilecell DIV#lea12_ileinner", "Processors": ["CleanHTML", "DetectName"] }] }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "Name": "Contact Profile",
+                "Description": "",
+                "UrlPatterns": ["^(http)(s)?(://)((www|na[\\d]*).)?(salesforce.com/003).*$"],
+                "Layouts": [
+                    {
+                        "Name": "Profile",
+                        "Description": "",
+                        "Qualifiers": [
+                            {"Selectors": [{ "Selector": "TD#con2_ilecell"}], "ValidationType": "Exists" }
+                        ],
+                        "Groups": [
+                            {
+                                "Group": "Profile",
+                                "Selectors": ["BODY.detailPage.sfdcBody"],
+                                "GroupFields": [
+                                    {
+                                        "Group": "Name",
+                                        "Selectors": ["DIV#contentWrapper DIV.bodyDiv TABLE#bodyTable.outer TBODY TR TD#bodyCell.oRight DIV#ep.bDetailBlock DIV.pbBody DIV.pbSubsection TABLE.detailList TBODY TR TD#con2_ilecell.dataCol.inlineEditWrite DIV#con2_ileinner"],
+                                        "GroupFields": [
+                                            { "Field": "FullName", "Selectors": [{ "Selector": "", "Processors": [{ "Name": "TrimWhiteSpace" }, { "Name": "SplitFullName" }] }] }
+                                        ]
+                                    },
+                                    { "Field": "Title", "Selectors": [{ "Selector": "DIV#contentWrapper DIV.bodyDiv TABLE#bodyTable.outer TBODY TR TD#bodyCell.oRight DIV#ep.bDetailBlock DIV.pbBody DIV.pbSubsection TABLE.detailList TBODY TR TD#con5_ilecell.dataCol.inlineEditWrite DIV#con5_ileinner", "Processors": ["CleanHTML", "DetectName"] }] },
+                                    { "Field": "Company", "Selectors": [{ "Selector": "DIV#contentWrapper DIV.bodyDiv TABLE#bodyTable.outer TBODY TR TD#bodyCell.oRight DIV#ep.bDetailBlock DIV.pbBody DIV.pbSubsection TABLE.detailList TBODY TR TD#con4_ilecell.dataCol.inlineEditWrite DIV#con4_ileinner", "Processors": ["CleanHTML", "DetectName"] }] },
+                                    {
+                                        "Field": "Email", "Selectors": [
+                                            { "Selector": "DIV#contentWrapper DIV.bodyDiv TABLE#bodyTable.outer TBODY TR TD#bodyCell.oRight DIV#ep.bDetailBlock DIV.pbBody DIV.pbSubsection TABLE.detailList TBODY TR TD#con15_ilecell DIV#con15_ileinner DIV.gmailLink A:nth-of-type(1)", "Processors": ["DiscoverURL"] },
+                                            { "Selector": "DIV#contentWrapper DIV.bodyDiv TABLE#bodyTable.outer TBODY TR TD#bodyCell.oRight DIV#ep.bDetailBlock DIV.pbBody DIV.pbSubsection TABLE.detailList TBODY TR TD#con15_ilecell DIV#con15_ileinner A:nth-of-type(1)", "Processors": ["DiscoverURL"] }
+                                        ]
+                                    },
+                                    { "Field": "PhoneHome", "Selectors": [{ "Selector": "DIV#contentWrapper DIV.bodyDiv TABLE#bodyTable.outer TBODY TR TD#bodyCell.oRight DIV#ep.bDetailBlock DIV.pbBody DIV.pbSubsection TABLE.detailList TBODY TR TD#con13_ilecell.dataCol.inlineEditWrite DIV#con13_ileinner", "Processors": ["DiscoverURL"] }] },
+                                    { "Field": "PhoneOther", "Selectors": [{ "Selector": "DIV#contentWrapper DIV.bodyDiv TABLE#bodyTable.outer TBODY TR TD#bodyCell.oRight DIV#ep.bDetailBlock DIV.pbBody DIV.pbSubsection TABLE.detailList TBODY TR TD#con14_ilecell.dataCol.inlineEditWrite DIV#con14_ileinner", "Processors": ["DiscoverURL"] }] },
+                                    { "Field": "PhoneAssistant", "Selectors": [{ "Selector": "DIV#contentWrapper DIV.bodyDiv TABLE#bodyTable.outer TBODY TR TD#bodyCell.oRight DIV#ep.bDetailBlock DIV.pbBody DIV.pbSubsection TABLE.detailList TBODY TR TD#con17_ilecell.dataCol.inlineEditWrite DIV#con17_ileinner", "Processors": ["DiscoverURL"] }] },
+
+                                    { "Field": "PhoneDirect", "Selectors": [{ "Selector": "DIV#contentWrapper DIV.bodyDiv TABLE#bodyTable.outer TBODY TR TD#bodyCell.oRight DIV#ep.bDetailBlock DIV.pbBody DIV.pbSubsection TABLE.detailList TBODY TR TD#con10_ilecell.dataCol.inlineEditWrite DIV#con10_ileinner", "Processors": ["DiscoverURL"] }] },
+                                    { "Field": "PhoneMobile", "Selectors": [{ "Selector": "DIV#contentWrapper DIV.bodyDiv TABLE#bodyTable.outer TBODY TR TD#bodyCell.oRight DIV#ep.bDetailBlock DIV.pbBody DIV.pbSubsection TABLE.detailList TBODY TR TD#con12_ilecell.dataCol.inlineEditWrite DIV#con12_ileinner", "Processors": ["DiscoverURL"] }] },
+
+                                    { "Field": "Fax", "Selectors": [{ "Selector": "DIV#contentWrapper DIV.bodyDiv TABLE#bodyTable.outer TBODY TR TD#bodyCell.oRight DIV#ep.bDetailBlock DIV.pbBody DIV.pbSubsection TABLE.detailList TBODY TR TD#con11_ilecell.dataCol.inlineEditWrite DIV#con11_ileinner", "Processors": ["DiscoverURL"] }] },
+                                    { "Field": "Website", "Selectors": [{ "Selector": "DIV#contentWrapper DIV.bodyDiv TABLE#bodyTable.outer TBODY TR TD#bodyCell.oRight DIV#ep.bDetailBlock DIV.pbBody DIV.pbSubsection TABLE.detailList TBODY TR TD#lea12_ilecell.dataCol.inlineEditWrite DIV#lea12_ileinner", "Processors": ["CleanHTML", "DetectName"] }] }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "Name": "Company Profile",
+                "Description": "",
+                "UrlPatterns": ["^(http)(s)?(://)((www|na[\\d]*).)?(salesforce.com/001).*$"],
+                "Layouts": [
+                    {
+                        "Name": "Profile",
+                        "Description": "",
+                        "Qualifiers": [
+                            {"Selectors":[{ "Selector": "TD#acc2_ilecell"}], "ValidationType": "Exists" }
+                        ],
+                        "Groups": [
+                            {
+                                "Group": "Profile",
+                                "Selectors": ["BODY.detailPage.sfdcBody"],
+                                "GroupFields": [
+                                    { "Field": "Company", "Selectors": [{ "Selector": "DIV#contentWrapper DIV.bodyDiv TABLE#bodyTable.outer TBODY TR TD#bodyCell.oRight DIV#ep.bDetailBlock DIV.pbBody DIV.pbSubsection TABLE.detailList TBODY TR TD#acc2_ilecell.dataCol.inlineEditWrite DIV#acc2_ileinner", "Processors": ["CleanHTML", "DetectName"] }] },
+                                    { "Field": "Phone", "Selectors": [{ "Selector": "DIV#contentWrapper DIV.bodyDiv TABLE#bodyTable.outer TBODY TR TD#bodyCell.oRight DIV#ep.bDetailBlock DIV.pbBody DIV.pbSubsection TABLE.detailList TBODY TR TD#acc10_ilecell.dataCol.inlineEditWrite DIV#acc10_ileinner", "Processors": ["DiscoverURL"] }] },
+                                    { "Field": "PhoneOther", "Selectors": [{ "Selector": "DIV#contentWrapper DIV.bodyDiv TABLE#bodyTable.outer TBODY TR TD#bodyCell.oRight DIV#ep.bDetailBlock DIV.pbBody DIV.pbSubsection TABLE.detailList TBODY TR TD#acc11_ilecell.dataCol.inlineEditWrite DIV#acc11_ileinner", "Processors": ["DiscoverURL"] }] },
+                                    { "Field": "Fax", "Selectors": [{ "Selector": "DIV#contentWrapper DIV.bodyDiv TABLE#bodyTable.outer TBODY TR TD#bodyCell.oRight DIV#ep.bDetailBlock DIV.pbBody DIV.pbSubsection TABLE.detailList TBODY TR TD#acc9_ilecell.dataCol.inlineEditWrite DIV#acc9_ileinner", "Processors": ["DiscoverURL"] }] },
+                                    { "Field": "Website", "Selectors": [{ "Selector": "DIV#contentWrapper DIV.bodyDiv TABLE#bodyTable.outer TBODY TR TD#bodyCell.oRight DIV#ep.bDetailBlock DIV.pbBody DIV.pbSubsection TABLE.detailList TBODY TR TD#acc12_ilecell.dataCol.inlineEditWrite DIV#acc12_ileinner", "Processors": ["CleanHTML", "DetectName"] }] }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "ID": "f09dde95-fdef-4098-ba17-2c6038437b9c",
+        "Name": "Dynamics",
+        "Description": "Contacts and Leads in Dynamics CRM",
+        "Domains": ["^[A-z\\d]*(.crm.dynamics.com)$", "crm.dynamics.com", "dynamics.com"],
+        "UserDomains": [],
+        "SchemaVersion": "1.0.0",
+	"DocumentType": "CapturePatternVer1",
+	"CreatedDate": "2014-09-23",
+	"AuthorName": "Justin Stull",
+        "Paths": [
+            {
+                "Name": "Generic URL",
+                "Description": "",
+                "UrlPatterns": ["^(http)(s)?(://)((.*)\\.)?(crm\\.)?(dynamics.com/main.aspx#)[\\d]*$"],
+                "Layouts": [
+                    {
+                        "Name": "Lead",
+                        "Description": "",
+                        "Qualifiers": [
+                            {"Selectors": [{ "Selector": "SPAN#Tabnav_accts-main A.navTabButtonLink SPAN.navTabButtonLabel SPAN.navTabButtonText:contains(Accounts)"}], "ValidationType": "NotExists" }
+                        ],
+                        "Groups": [
+                            {
+                                "Group": "Profile",
+                                "Selectors": ["IFRAME[title^=Content][title$=Area]"],
+                                "GroupFields": [
+                                    {
+                                        "Group": "Name",
+                                        "Selectors": [""],
+                                        "GroupFields": [
+                                            { "Field": "FullName", "Selectors": [{ "Selector": "DIV#FormTitle.ms-crm-Form-Title-Data H1", "Processors": ["CleanHTML", "DetectName"] }] },
+                                            { "Field": "FirstName", "Selectors": [{ "Selector": "DIV#firstname DIV.ms-crm-Inline-Value SPAN", "Processors": ["CleanHTML", "DetectName"] }] },
+                                            { "Field": "LastName", "Selectors": [{ "Selector": "DIV#lastname DIV.ms-crm-Inline-Value SPAN", "Processors": ["CleanHTML", "DetectName"] }] }
+                                        ]
+                                    },
+                                    {
+                                        "Group": "Position",
+                                        "Selectors": [""],
+                                        "GroupFields": [
+                                            { "Field": "Title", "Selectors": [{ "Selector": "DIV#jobtitle  DIV.ms-crm-Inline-Value SPAN", "Processors": ["CleanHTML", "DetectName"] }] },
+                                            { "Field": "Company", "Selectors": [{ "Selector": "DIV#companyname  DIV.ms-crm-Inline-Value SPAN", "Processors": ["CleanHTML", "DetectName"] }] }
+                                        ]
+                                    },
+                                    { "Field": "Email", "Selectors": [{ "Selector": "DIV#emailaddress1  DIV.ms-crm-Inline-Value SPAN", "Processors": ["CleanHTML", "DetectName"] }] },
+                                    { "Field": "Telephone1", "Selectors": [{ "Selector": "DIV#telephone1 DIV.ms-crm-Inline-Value SPAN", "Processors": ["CleanHTML", "DetectName"] }] },
+                                    { "Field": "Telephone2", "Selectors": [{ "Selector": "DIV#telephone2 DIV.ms-crm-Inline-Value SPAN", "Processors": ["CleanHTML", "DetectName"] }] },
+                                    { "Field": "Telephone3", "Selectors": [{ "Selector": "DIV#telephone3 DIV.ms-crm-Inline-Value SPAN", "Processors": ["CleanHTML", "DetectName"] }] },
+                                    { "Field": "Telephone4", "Selectors": [{ "Selector": "DIV#mobilephone DIV.ms-crm-Inline-Value SPAN", "Processors": ["CleanHTML", "DetectName"] }] },
+                                    { "Field": "Fax", "Selectors": [{ "Selector": "DIV#fax DIV.ms-crm-Inline-Value SPAN", "Processors": ["CleanHTML", "DetectName"] }] },
+                                    { "Field": "Website", "Selectors": [{ "Selector": "DIV#websiteurl DIV.ms-crm-Inline-Value SPAN", "Processors": ["CleanHTML", "DetectName"] }] },
+                                    { "Field": "City", "Selectors": [{ "Selector": "DIV#address1_city DIV.ms-crm-Inline-Value SPAN", "Processors": ["CleanHTML", "DetectName"] }] },
+                                    { "Field": "State", "Selectors": [{ "Selector": "DIV#address1_stateorprovince DIV.ms-crm-Inline-Value SPAN", "Processors": ["CleanHTML", "DetectName"] }] }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "Name": "Contact",
+                        "Description": "",
+                        "Qualifiers": [
+                            { "Selectors": [{ "Selector": "IFrame#contentIFrame0", "Selector": "A#header_crm

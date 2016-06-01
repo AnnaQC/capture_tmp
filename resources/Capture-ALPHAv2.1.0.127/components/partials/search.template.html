@@ -1,0 +1,55 @@
+﻿<!--begin card object -->
+<div class="col-xs-12 col-sm-8 col-md-6">
+
+    <div class="panel panel-default panel-cardview">
+
+        <div class="panel-body">
+
+            <h4>{{search.name}}
+                <small ng-show="search.isInMyCollection">
+                    <span class="label label-default pull-right" ng-show="search.isPrivate">Private</span>
+                    <span class="label label-primary pull-right" ng-show="!search.isPrivate"><i class="glyphicon glyphicon-star-empty"></i>Public</span>
+                </small>
+            </h4>
+            <h6>{{search.author}} <small>{{search.createdOn | date : date : mediumDate }}</small></h6>
+
+            <p>{{search.description}}</p>
+
+            <pre>{{search.searchString}}</pre>
+
+            <div>
+                <ul class="nav nav-pills">
+                    <li ng-show="!search.isInMyCollection"><a href="#" ng-click="run(search)">Try</a></li>
+                    <li ng-show="search.isInMyCollection"><a href="#" ng-click="run(search)">Run</a></li>
+                    <li ng-show="search.isInMyCollection"><a href="#" ng-click="edit(search)">Edit</a></li>
+                    <li ng-show="!search.isInMyCollection"><a href="#" ng-click="!search.added ? addToMyCollection(search) : null">Add</a></li>
+                    
+                    <li><a href="#" ng-click="showComments=!showComments">Comment <span class="badge" ng-show="search.comments.length > 0">{{search.comments.length}}</span></a></li>
+                    <li><a href="#" ng-click="!search.isRated ? likeSearch(search) : null">Like <span class="badge" ng-show="search.rating>0">{{search.rating}}</span></a></li>
+                    <li ng-show="search.isInMyCollection"><a href="#" ng-click="remove(search)"><i class="glyphicon glyphicon-remove"></i></a></li>
+                </ul>
+            </div>
+
+            <div ng-show="showComments">
+
+                <div ng-repeat="comment in search.comments" style="margin-top: 0.75em; margin-left: 3em !important;">
+                    <strong><span ng-show="comment.mine">Me</span><span ng-show="!comment.mine">{{comment.author}}</span></strong> {{comment.comment}}
+                                                        <br />
+                    <small>{{comment.createdOn | date : date : mediumDate}}</small> <a href="#" ng-show="comment.mine" ng-click="deleteComment(comment)"><small>Delete</small></a>
+                </div>
+
+
+                <textarea class="form-control" placeholder="Add a comment" ng-model="commentForm.comment"></textarea>
+
+                <div>
+                    <ul class="nav nav-pills">
+                        <li><a href="#" ng-click="submitCommentForm(search.searchID)">Add</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- end card object -->
