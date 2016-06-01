@@ -6,7 +6,6 @@ Created on Apr 26, 2016
 
 """
 
-
 def login(driver, page):
     """
     login to selected website

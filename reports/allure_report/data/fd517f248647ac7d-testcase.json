@@ -1,0 +1,341 @@
+{
+  "uid" : "fd517f248647ac7d",
+  "name" : "LinkedinPatternTest.test_profile_ptrn_by_logged_in_user",
+  "title" : "Test profile ptrn by logged in user",
+  "time" : {
+    "start" : 1464788638322,
+    "stop" : 1464788659361,
+    "duration" : 21039
+  },
+  "summary" : {
+    "attachments" : 35,
+    "steps" : 5
+  },
+  "failure" : {
+    "message" : "AssertionError: Incorrect data was found in captured results. See mismatches in attached detailes.",
+    "stackTrace" : "self = <tests.test_linkedin_pattern.LinkedinPatternTest testMethod=test_profile_ptrn_by_logged_in_user>\n\n    @allure.story('Linkedin user profile pattern. User is logged in to linkedin')\n    \n    def test_profile_ptrn_by_logged_in_user(self):\n        \"\"\"\n            As logged in to linkedin user I open some user profile in browser.\n            Read data from the opened page.\n            Get data from result is captured by extension.\n            And check if data from the page is present within the captured results.\n            Tested attributes:\n            {\n             \"bio\" - summary,\n             \"full\" - users fullname,\n             \"company\" - current company name,\n             \"first\" - firstname,\n             \"last\" - lastname,\n             \"city\" - locality,\n             \"jobtitle\" - job,\n             \"linkedin\" - link from the contact info,\n             \"twitter\" - link from the contact info,\n             \"email\" - address from the contact info\n             }\n            \"\"\"\n        # initialization\n        handler = pattern_handler\n        driver = self.driver\n        linkidin = linkidin_profile.LinkidinLoginPage(driver)\n        test_page = linkidin_profile.LinkidinProfilePage(driver, is_logged=True)\n        # login by test user\n        linkidin.login(linkidin.sign_in_link, linkidin.login_form, linkidin.default_user)\n        # Open test page and get parsed data by Webdriver as expected results\n        test_page.open()\n        with allure.step('Read attributes from profile page'):\n            expected = test_page.parse_text()\n        # read actual data from captured results\n        with allure.step('Read attributes from result is captured by extension'):\n            actual = handler.get_actual_data_from_js_console(driver)\n        with allure.step('Check if captured results contain data from page'):\n            self.assertTrue(comparator.is_pattern_data_according_to_page(actual, expected),\n>                           \"Incorrect data was found in captured results. See mismatches in attached detailes.\")\nE           AssertionError: Incorrect data was found in captured results. See mismatches in attached detailes.\n\ntest_linkedin_pattern.py:52: AssertionError"
+  },
+  "description" : {
+    "value" : "\n        As logged in to linkedin user I open some user profile in browser.\n        Read data from the opened page.\n        Get data from result is captured by extension.\n        And check if data from the page is present within the captured results.\n        Tested attributes:\n        {\n         \"bio\" - summary,\n         \"full\" - users fullname,\n         \"company\" - current company name,\n         \"first\" - firstname,\n         \"last\" - lastname,\n         \"city\" - locality,\n         \"jobtitle\" - job,\n         \"linkedin\" - link from the contact info,\n         \"twitter\" - link from the contact info,\n         \"email\" - address from the contact info\n         }\n        ",
+    "type" : "TEXT"
+  },
+  "severity" : "NORMAL",
+  "status" : "FAILED",
+  "testId" : null,
+  "suite" : {
+    "uid" : "84f76f79d5eadf53",
+    "name" : "tests.test_linkedin_pattern",
+    "title" : "Test linkedin pattern"
+  },
+  "steps" : [ {
+    "name" : "Login by user account: {'login': 'qa_pm1@soft-industry.com', 'pwd': 'testacc2016'}",
+    "title" : "Login by user account: {'login': 'qa_pm1@soft-industry.com', 'pwd': 'testacc2016'}",
+    "time" : {
+      "start" : 1464788639729,
+      "stop" : 1464788647527,
+      "duration" : 7798
+    },
+    "summary" : {
+      "attachments" : 0,
+      "steps" : 0
+    },
+    "status" : "PASSED",
+    "attachments" : [ ],
+    "steps" : [ ]
+  }, {
+    "name" : "Open page to parse :https://www.linkedin.com/in/jeffweiner08",
+    "title" : "Open page to parse :https://www.linkedin.com/in/jeffweiner08",
+    "time" : {
+      "start" : 1464788647527,
+      "stop" : 1464788651230,
+      "duration" : 3703
+    },
+    "summary" : {
+      "attachments" : 1,
+      "steps" : 0
+    },
+    "status" : "PASSED",
+    "attachments" : [ {
+      "title" : "https://www.linkedin.com/in/jeffweiner08",
+      "source" : "2d50d082-ee44-445f-adff-1dc9c827edbe-attachment.png",
+      "type" : "image/png",
+      "size" : 1089410,
+      "uid" : "945fb9a3270b71b3"
+    } ],
+    "steps" : [ ]
+  }, {
+    "name" : "Read attributes from profile page",
+    "title" : "Read attributes from profile page",
+    "time" : {
+      "start" : 1464788651230,
+      "stop" : 1464788655287,
+      "duration" : 4057
+    },
+    "summary" : {
+      "attachments" : 1,
+      "steps" : 0
+    },
+    "status" : "PASSED",
+    "attachments" : [ {
+      "title" : "first",
+      "source" : "afda92bf-2511-49f3-99d3-a1595efbdf5c-attachment.txt",
+      "type" : "text/plain",
+      "size" : 4,
+      "uid" : "39e1a98887630139"
+    } ],
+    "steps" : [ ]
+  }, {
+    "name" : "Read attributes from result is captured by extension",
+    "title" : "Read attributes from result is captured by extension",
+    "time" : {
+      "start" : 1464788655287,
+      "stop" : 1464788659355,
+      "duration" : 4068
+    },
+    "summary" : {
+      "attachments" : 32,
+      "steps" : 0
+    },
+    "status" : "PASSED",
+    "attachments" : [ {
+      "title" : "phone1src",
+      "source" : "99825f0b-23c2-447e-8d43-6754596b4a8c-attachment.txt",
+      "type" : "text/plain",
+      "size" : 4,
+      "uid" : "d9d94574b8301f0c"
+    }, {
+      "title" : "bio",
+      "source" : "0374b2a8-606b-46d6-bf20-b88b7979e077-attachment.txt",
+      "type" : "text/plain",
+      "size" : 2,
+      "uid" : "fc7c1b22faf943b"
+    }, {
+      "title" : "twitter",
+      "source" : "17f37319-a452-4f35-8c3b-a45fec3779e8-attachment.txt",
+      "type" : "text/plain",
+      "size" : 24,
+      "uid" : "a3b9705fa47ba62a"
+    }, {
+      "title" : "venues",
+      "source" : "b901d3a0-48ae-4b84-a4eb-afa5619ab36c-attachment.txt",
+      "type" : "text/plain",
+      "size" : 182,
+      "uid" : "fae96104dfe5de0d"
+    }, {
+      "title" : "middle",
+      "source" : "6794b4a8-c55f-486b-b427-d120826819f7-attachment.txt",
+      "type" : "text/plain",
+      "size" : 2,
+      "uid" : "4ce13ee9612fda77"
+    }, {
+      "title" : "id",
+      "source" : "5885e02f-660f-47e1-9280-acfa2ec36f37-attachment.txt",
+      "type" : "text/plain",
+      "size" : 4,
+      "uid" : "2f7d86772385e957"
+    }, {
+      "title" : "city",
+      "source" : "89215d7c-2438-47cb-8b6a-561694a62a08-attachment.txt",
+      "type" : "text/plain",
+      "size" : 24,
+      "uid" : "84ce967794c368b3"
+    }, {
+      "title" : "sourceurl",
+      "source" : "caba82fd-054b-4758-8b96-5dd7323efcf3-attachment.txt",
+      "type" : "text/plain",
+      "size" : 2,
+      "uid" : "77316762621e2cc3"
+    }, {
+      "title" : "zip",
+      "source" : "bef88734-033e-4d41-b6e3-1a5b204849c6-attachment.txt",
+      "type" : "text/plain",
+      "size" : 2,
+      "uid" : "7e72b04c96fa6980"
+    }, {
+      "title" : "jobtitle",
+      "source" : "ada4c7e2-56e3-4df4-a2ce-d2e0d311b8f8-attachment.txt",
+      "type" : "text/plain",
+      "size" : 5,
+      "uid" : "b3c32111c53cc16c"
+    }, {
+      "title" : "mark",
+      "source" : "a60c6462-17ab-48c1-b6af-22e0475a2ff1-attachment.txt",
+      "type" : "text/plain",
+      "size" : 4,
+      "uid" : "f550f670147b039e"
+    }, {
+      "title" : "state",
+      "source" : "4207d8ea-bcb1-4128-877f-2700bb09dce2-attachment.txt",
+      "type" : "text/plain",
+      "size" : 2,
+      "uid" : "5bbe5177080590a2"
+    }, {
+      "title" : "flags",
+      "source" : "71230122-8263-4869-baab-337b56b871f2-attachment.txt",
+      "type" : "text/plain",
+      "size" : 4,
+      "uid" : "9a77d65c38c26882"
+    }, {
+      "title" : "company",
+      "source" : "2c74bc56-623b-4436-8e37-d6f60d8226f7-attachment.txt",
+      "type" : "text/plain",
+      "size" : 10,
+      "uid" : "5b8858d3d5153a6b"
+    }, {
+      "title" : "website",
+      "source" : "3d5ffc97-fcc7-401d-a207-b4d9c7076e23-attachment.txt",
+      "type" : "text/plain",
+      "size" : 2,
+      "uid" : "292ea732e54522c0"
+    }, {
+      "title" : "employeesAvg",
+      "source" : "2e1b354d-87e1-408f-bee1-deade9e9a5bf-attachment.txt",
+      "type" : "text/plain",
+      "size" : 4,
+      "uid" : "61513d8375d3d2c4"
+    }, {
+      "title" : "full",
+      "source" : "d213d68e-f34b-4415-9ea7-419562e54463-attachment.txt",
+      "type" : "text/plain",
+      "size" : 13,
+      "uid" : "737859c3f751c12f"
+    }, {
+      "title" : "phone2",
+      "source" : "bfebeaab-7cba-4b4a-8b8e-6c5b63d08bc8-attachment.txt",
+      "type" : "text/plain",
+      "size" : 2,
+      "uid" : "8c947a4c12eba043"
+    }, {
+      "title" : "address1",
+      "source" : "40af117b-114d-4623-aa13-cea772eb1fbd-attachment.txt",
+      "type" : "text/plain",
+      "size" : 2,
+      "uid" : "bf32aa210fd0ccb7"
+    }, {
+      "title" : "address2",
+      "source" : "939f9a1b-b3fb-4b7c-ab7a-8550215d6328-attachment.txt",
+      "type" : "text/plain",
+      "size" : 2,
+      "uid" : "df162317aba1c4a7"
+    }, {
+      "title" : "phone",
+      "source" : "e90748c4-c040-46d8-a874-157f75ecd10c-attachment.txt",
+      "type" : "text/plain",
+      "size" : 2,
+      "uid" : "5c8379a73f64de69"
+    }, {
+      "title" : "facebook",
+      "source" : "1d7586bf-2659-4eee-aea3-a978076e56df-attachment.txt",
+      "type" : "text/plain",
+      "size" : 4,
+      "uid" : "a7141f7c8f848b41"
+    }, {
+      "title" : "linkedin",
+      "source" : "3413d879-4c64-4fa3-baef-23b04b80b199-attachment.txt",
+      "type" : "text/plain",
+      "size" : 30,
+      "uid" : "c68872a0ee480ce8"
+    }, {
+      "title" : "emailverbool",
+      "source" : "9c6576b4-ed81-4bae-b5e1-4524cf6f6ee2-attachment.txt",
+      "type" : "text/plain",
+      "size" : 5,
+      "uid" : "f5b86b989b960a29"
+    }, {
+      "title" : "data",
+      "source" : "29150898-8491-4aae-8f6f-09ed3f0366dd-attachment.txt",
+      "type" : "text/plain",
+      "size" : 54,
+      "uid" : "b64ebcbae3b4c4ad"
+    }, {
+      "title" : "last",
+      "source" : "63cdfe7b-6759-4045-bd82-b73ec4b25553-attachment.txt",
+      "type" : "text/plain",
+      "size" : 8,
+      "uid" : "c5d3379f8d285984"
+    }, {
+      "title" : "country",
+      "source" : "3dbbbb61-dd29-421f-b3ff-3d145ecec336-attachment.txt",
+      "type" : "text/plain",
+      "size" : 2,
+      "uid" : "3848d45e77e6e57d"
+    }, {
+      "title" : "experience",
+      "source" : "d4303c42-9ca1-46b3-9ee8-6558b5e43a58-attachment.txt",
+      "type" : "text/plain",
+      "size" : 33,
+      "uid" : "1c1c753aae7937a8"
+    }, {
+      "title" : "revenueAvg",
+      "source" : "afd8bd74-5a4b-4dc6-838c-3c2bc4db3aa9-attachment.txt",
+      "type" : "text/plain",
+      "size" : 4,
+      "uid" : "b2fe84537f50d3c3"
+    }, {
+      "title" : "email2verbool",
+      "source" : "5c555d22-d5c2-4e8b-972a-16e785f8bf59-attachment.txt",
+      "type" : "text/plain",
+      "size" : 5,
+      "uid" : "292157c9436a0f57"
+    }, {
+      "title" : "email",
+      "source" : "f8d3acee-175e-45c6-ad59-badeaf20fecd-attachment.txt",
+      "type" : "text/plain",
+      "size" : 2,
+      "uid" : "8ba8cb49dee434a0"
+    }, {
+      "title" : "first",
+      "source" : "5891a834-a0c3-4ecd-9a4c-5ac9767a4503-attachment.txt",
+      "type" : "text/plain",
+      "size" : 6,
+      "uid" : "2f90099d9d31aabc"
+    } ],
+    "steps" : [ ]
+  }, {
+    "name" : "Check if captured results contain data from page",
+    "title" : "Check if captured results contain data from page",
+    "time" : {
+      "start" : 1464788659355,
+      "stop" : 1464788659355,
+      "duration" : 0
+    },
+    "summary" : {
+      "attachments" : 1,
+      "steps" : 0
+    },
+    "status" : "FAILED",
+    "attachments" : [ {
+      "title" : "Error detailes",
+      "source" : "5249dc50-07d9-42d3-8699-0ef687cb0fa6-attachment.txt",
+      "type" : "text/plain",
+      "size" : 1206,
+      "uid" : "145a54a47e8b7565"
+    } ],
+    "steps" : [ ]
+  } ],
+  "attachments" : [ ],
+  "issues" : [ ],
+  "labels" : [ {
+    "name" : "suite-name",
+    "value" : "tests.test_linkedin_pattern"
+  }, {
+    "name" : "feature",
+    "value" : "Linkedin patterns"
+  }, {
+    "name" : "host",
+    "value" : "user-H81M-HD3"
+  }, {
+    "name" : "thread",
+    "value" : "16462-MainThread"
+  }, {
+    "name" : "suite-title",
+    "value" : null
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "story",
+    "value" : "Linkedin user profile pattern. User is logged in to linkedin"
+  } ],
+  "parameters" : [ ]
+}

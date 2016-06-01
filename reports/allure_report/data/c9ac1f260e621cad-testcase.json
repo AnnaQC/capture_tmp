@@ -1,0 +1,308 @@
+{
+  "uid" : "c9ac1f260e621cad",
+  "name" : "LinkedinPatternTest.test_profile_ptrn_by_logged_in_user",
+  "title" : "Test profile ptrn by logged in user",
+  "time" : {
+    "start" : 1464786267620,
+    "stop" : 1464786291763,
+    "duration" : 24143
+  },
+  "summary" : {
+    "attachments" : 30,
+    "steps" : 5
+  },
+  "failure" : null,
+  "description" : {
+    "value" : "\n        As logged in to linkedin user I open some user profile in browser.\n        Read data from the opened page.\n        Get data from result is captured by extension.\n        And check if data from the page is present within the captured results.\n        Tested attributes:\n        {\n         \"bio\" - summary,\n         \"full\" - users fullname,\n         \"company\" - current company name,\n         \"first\" - firstname,\n         \"last\" - lastname,\n         \"city\" - locality,\n         \"jobtitle\" - job,\n         \"linkedin\" - link from the contact info,\n         \"twitter\" - link from the contact info,\n         \"email\" - address from the contact info\n         }\n        ",
+    "type" : "TEXT"
+  },
+  "severity" : "NORMAL",
+  "status" : "PASSED",
+  "testId" : null,
+  "suite" : {
+    "uid" : "2019fd58b6b2f65",
+    "name" : "tests.test_linkedin_pattern",
+    "title" : "Test linkedin pattern"
+  },
+  "steps" : [ {
+    "name" : "Login by user account: {'login': 'qa_pm1@soft-industry.com', 'pwd': 'testacc2016'}",
+    "title" : "Login by user account: {'login': 'qa_pm1@soft-industry.com', 'pwd': 'testacc2016'}",
+    "time" : {
+      "start" : 1464786269005,
+      "stop" : 1464786277096,
+      "duration" : 8091
+    },
+    "summary" : {
+      "attachments" : 0,
+      "steps" : 0
+    },
+    "status" : "PASSED",
+    "attachments" : [ ],
+    "steps" : [ ]
+  }, {
+    "name" : "Read attributes from profile page",
+    "title" : "Read attributes from profile page",
+    "time" : {
+      "start" : 1464786277096,
+      "stop" : 1464786287787,
+      "duration" : 10691
+    },
+    "summary" : {
+      "attachments" : 0,
+      "steps" : 1
+    },
+    "status" : "PASSED",
+    "attachments" : [ ],
+    "steps" : [ {
+      "name" : "Open page to parse :https://www.linkedin.com/in/jeffweiner08",
+      "title" : "Open page to parse :https://www.linkedin.com/in/jeffweiner08",
+      "time" : {
+        "start" : 1464786277096,
+        "stop" : 1464786283723,
+        "duration" : 6627
+      },
+      "summary" : {
+        "attachments" : 0,
+        "steps" : 0
+      },
+      "status" : "PASSED",
+      "attachments" : [ ],
+      "steps" : [ ]
+    } ]
+  }, {
+    "name" : "Read attributes from result is captured by extension",
+    "title" : "Read attributes from result is captured by extension",
+    "time" : {
+      "start" : 1464786287787,
+      "stop" : 1464786291762,
+      "duration" : 3975
+    },
+    "summary" : {
+      "attachments" : 29,
+      "steps" : 0
+    },
+    "status" : "PASSED",
+    "attachments" : [ {
+      "title" : "phone1src",
+      "source" : "e164862e-7585-41c4-8a05-973b95808031-attachment.txt",
+      "type" : "text/plain",
+      "size" : 0,
+      "uid" : "42ecf4aa96a02e56"
+    }, {
+      "title" : "bio",
+      "source" : "4fd15da8-f97b-41d0-aa70-6338f3acc5ac-attachment.txt",
+      "type" : "text/plain",
+      "size" : 0,
+      "uid" : "326e5be2ef4219d4"
+    }, {
+      "title" : "twitter",
+      "source" : "8d259a28-6cda-401b-b2c5-b5ce12a05ba6-attachment.txt",
+      "type" : "text/plain",
+      "size" : 0,
+      "uid" : "a70cd036317e5c8d"
+    }, {
+      "title" : "venues",
+      "source" : "114a7944-8c20-4995-8143-9b946e835d6a-attachment.txt",
+      "type" : "text/plain",
+      "size" : 0,
+      "uid" : "3dfcce7b02532a0"
+    }, {
+      "title" : "email",
+      "source" : "8990ded4-2f2d-4174-bd62-a7fb49268071-attachment.txt",
+      "type" : "text/plain",
+      "size" : 0,
+      "uid" : "a8d02cfcdf390ef0"
+    }, {
+      "title" : "id",
+      "source" : "b72b85c2-16d0-4df7-817e-49bd27fd7ddd-attachment.txt",
+      "type" : "text/plain",
+      "size" : 0,
+      "uid" : "67192e9b8818f82b"
+    }, {
+      "title" : "city",
+      "source" : "c617ef27-e4ba-45f5-b252-767dcf08dbe3-attachment.txt",
+      "type" : "text/plain",
+      "size" : 0,
+      "uid" : "bbce139a0be59a03"
+    }, {
+      "title" : "sourceurl",
+      "source" : "dbd7f6da-0bcc-45be-ab00-c03aa39a0b1b-attachment.txt",
+      "type" : "text/plain",
+      "size" : 0,
+      "uid" : "1f60a5c1c10fd6ea"
+    }, {
+      "title" : "zip",
+      "source" : "8ba2785a-da59-4791-b906-0b7990e4b6ba-attachment.txt",
+      "type" : "text/plain",
+      "size" : 0,
+      "uid" : "c233b4259b68fd53"
+    }, {
+      "title" : "jobtitle",
+      "source" : "7923bf05-0696-4372-b649-033d82b58c74-attachment.txt",
+      "type" : "text/plain",
+      "size" : 0,
+      "uid" : "b7262ed119bec554"
+    }, {
+      "title" : "mark",
+      "source" : "c3766423-dc0c-4073-82fe-ad214ca14403-attachment.txt",
+      "type" : "text/plain",
+      "size" : 0,
+      "uid" : "baf336cd72843b2f"
+    }, {
+      "title" : "state",
+      "source" : "21fee0c7-f8bc-4051-aa3d-3fd0ab98ff54-attachment.txt",
+      "type" : "text/plain",
+      "size" : 0,
+      "uid" : "e30952d68f21ed8f"
+    }, {
+      "title" : "flags",
+      "source" : "28ab08ef-3bee-4866-9806-85423bccfb82-attachment.txt",
+      "type" : "text/plain",
+      "size" : 0,
+      "uid" : "ef377e193001c403"
+    }, {
+      "title" : "company",
+      "source" : "d4fddb29-e641-4814-a7ce-c433fa45ccd7-attachment.txt",
+      "type" : "text/plain",
+      "size" : 0,
+      "uid" : "eb97bd5f04b8842b"
+    }, {
+      "title" : "website",
+      "source" : "9f55ab14-f96e-4ee4-8768-fdab49f65711-attachment.txt",
+      "type" : "text/plain",
+      "size" : 0,
+      "uid" : "1bc8c69e801654a8"
+    }, {
+      "title" : "employeesAvg",
+      "source" : "4ae8e951-0811-425f-b9ea-7ba0078a554c-attachment.txt",
+      "type" : "text/plain",
+      "size" : 0,
+      "uid" : "f154659edca62db2"
+    }, {
+      "title" : "full",
+      "source" : "390a635c-dfc5-4ec2-8adc-42cbdd536937-attachment.txt",
+      "type" : "text/plain",
+      "size" : 0,
+      "uid" : "f69eef983365393f"
+    }, {
+      "title" : "phone2",
+      "source" : "c0097590-78cc-4b5e-9e24-baa82c0f6d61-attachment.txt",
+      "type" : "text/plain",
+      "size" : 0,
+      "uid" : "c9d6be0ec7631af9"
+    }, {
+      "title" : "address1",
+      "source" : "be905a54-1188-4dcd-881b-b1bd7ba9dcba-attachment.txt",
+      "type" : "text/plain",
+      "size" : 0,
+      "uid" : "57fb79a731d30363"
+    }, {
+      "title" : "address2",
+      "source" : "fb3b2516-b552-4f1b-8db1-975ff989f815-attachment.txt",
+      "type" : "text/plain",
+      "size" : 0,
+      "uid" : "24e26e3549e71148"
+    }, {
+      "title" : "phone",
+      "source" : "00467f1c-9632-475c-b4c2-ef3e828f7eb1-attachment.txt",
+      "type" : "text/plain",
+      "size" : 0,
+      "uid" : "39aefd97107ebe9b"
+    }, {
+      "title" : "facebook",
+      "source" : "717f8448-ec1c-45c4-9985-4e4e7478bfd5-attachment.txt",
+      "type" : "text/plain",
+      "size" : 0,
+      "uid" : "86421047750f1fa4"
+    }, {
+      "title" : "linkedin",
+      "source" : "9aa48c69-249d-4de9-8447-283799a6d14d-attachment.txt",
+      "type" : "text/plain",
+      "size" : 0,
+      "uid" : "50599b81f8b39284"
+    }, {
+      "title" : "emailverbool",
+      "source" : "18bedbc4-a1dc-4484-94ef-4d80d3760753-attachment.txt",
+      "type" : "text/plain",
+      "size" : 0,
+      "uid" : "65cde6ee2785079e"
+    }, {
+      "title" : "last",
+      "source" : "35381c23-010f-463f-8301-9f3e4a612117-attachment.txt",
+      "type" : "text/plain",
+      "size" : 0,
+      "uid" : "9426f22ccb187082"
+    }, {
+      "title" : "country",
+      "source" : "4ba68981-801f-4bcf-86d3-c517efd6c3d7-attachment.txt",
+      "type" : "text/plain",
+      "size" : 0,
+      "uid" : "d448a86f4d4d66af"
+    }, {
+      "title" : "revenueAvg",
+      "source" : "50dc8bee-35e7-465e-8a54-270cb3bbbed4-attachment.txt",
+      "type" : "text/plain",
+      "size" : 0,
+      "uid" : "6b2fa61f0ce8c018"
+    }, {
+      "title" : "email2verbool",
+      "source" : "b9a14b26-b445-4aa5-a851-b37bb63cb1e3-attachment.txt",
+      "type" : "text/plain",
+      "size" : 0,
+      "uid" : "4bb892898cd9c2d8"
+    }, {
+      "title" : "first",
+      "source" : "e183916b-f6c6-4487-a53c-101dc2eaceaf-attachment.txt",
+      "type" : "text/plain",
+      "size" : 0,
+      "uid" : "18a56fd6d94b1c9e"
+    } ],
+    "steps" : [ ]
+  }, {
+    "name" : "Check if captured results contain data from page",
+    "title" : "Check if captured results contain data from page",
+    "time" : {
+      "start" : 1464786291762,
+      "stop" : 1464786291762,
+      "duration" : 0
+    },
+    "summary" : {
+      "attachments" : 1,
+      "steps" : 0
+    },
+    "status" : "PASSED",
+    "attachments" : [ {
+      "title" : "Error detailes",
+      "source" : "9a70baef-f52a-4627-89ff-682627305079-attachment.txt",
+      "type" : "text/plain",
+      "size" : 2473,
+      "uid" : "75ff1a285a80b713"
+    } ],
+    "steps" : [ ]
+  } ],
+  "attachments" : [ ],
+  "issues" : [ ],
+  "labels" : [ {
+    "name" : "suite-name",
+    "value" : "tests.test_linkedin_pattern"
+  }, {
+    "name" : "feature",
+    "value" : "Linkedin patterns"
+  }, {
+    "name" : "thread",
+    "value" : "13147-MainThread"
+  }, {
+    "name" : "host",
+    "value" : "user-H81M-HD3"
+  }, {
+    "name" : "suite-title",
+    "value" : null
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "story",
+    "value" : "Linkedin user profile pattern. User is logged in to linkedin"
+  } ],
+  "parameters" : [ ]
+}

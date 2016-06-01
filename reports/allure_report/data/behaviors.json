@@ -1,0 +1,37 @@
+{
+  "features" : [ {
+    "title" : "Linkedin patterns",
+    "statistic" : {
+      "total" : 1,
+      "passed" : 0,
+      "pending" : 0,
+      "canceled" : 0,
+      "failed" : 1,
+      "broken" : 0
+    },
+    "stories" : [ {
+      "uid" : "609d2f6205b496c5",
+      "title" : "Linkedin user profile pattern. User is logged in to linkedin",
+      "statistic" : {
+        "total" : 1,
+        "passed" : 0,
+        "pending" : 0,
+        "canceled" : 0,
+        "failed" : 1,
+        "broken" : 0
+      },
+      "testCases" : [ {
+        "uid" : "26e784288efc9af0",
+        "name" : "LinkedinPatternTest.test_profile_ptrn_by_logged_in_user",
+        "title" : "Test profile ptrn by logged in user",
+        "time" : {
+          "start" : 1464790389139,
+          "stop" : 1464790408142,
+          "duration" : 19003
+        },
+        "severity" : "NORMAL",
+        "status" : "FAILED"
+      } ]
+    } ]
+  } ]
+}

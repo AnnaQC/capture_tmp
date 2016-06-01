@@ -5,6 +5,7 @@ Created on Apr 25, 2016
 @author: user
 
 """
+import allure
 from selenium.webdriver.common.by import By
 
 from pages.base_page import BasePage
@@ -44,8 +45,10 @@ class LinkidinProfilePage(BasePage):
                                  email=self.email)  # experience=self.experience)
             print "Simplified locators dictionary = " + str(self.locators)
 
+    @allure.step('Open page to parse :' + url)
     def open(self):
         self.driver.get(self.url)
+        self.attach_screen_to_report(self.url)
         return self
 
     def expand_contact(self):
@@ -56,17 +59,28 @@ class LinkidinProfilePage(BasePage):
         print "**" * 10 + " Data from page that User have to see" + "**" * 10
         keys = self.locators.keys()
         parsed_text = dict.fromkeys(keys)
+
         for key in keys:
             if key is ('twitter' or 'email'):
                 self.expand_contact()
             parsed_text[key] = self.get_text_of_element(self.locators[key])
 
         parsed_text['first'], parsed_text['last'] = self.separate_fullname(parsed_text['full'])
+
         for key in parsed_text.keys():
+            allure.attach(key, str(parsed_text[key]))
             print "\n"+"--"*20 + "\n"
             print key + " : " + str(parsed_text[key])
         print "\n" + "***"*20
-        return parsed_text
+        return self.prepare_data_to_compare(parsed_text)
+
+    def prepare_data_to_compare(self, parsed_data):
+        linkidin = parsed_data['linkedin']
+        part_to_remove= linkidin.find("www.") + 4
+        parsed_data['linkedin'] = linkidin[part_to_remove:]
+        print parsed_data['linkedin']
+        return parsed_data
+
 
     @staticmethod
     def separate_fullname(fullname):
@@ -83,6 +97,7 @@ class LinkidinLoginPage(BasePage):
     scrollbar = (By.ID,
                  "responsive-nav-scrollable")  # bar that is displayed only for loged in user, we use it presence to now if login was successfull
 
+    @allure.step('Login by user account: {3}')#
     def login(self, sign_in_link, login_form, user_data):
         BasePage.login(self, sign_in_link, login_form, user_data, self.scrollbar)
         return self

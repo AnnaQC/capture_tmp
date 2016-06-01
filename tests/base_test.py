@@ -7,6 +7,7 @@ Created on Apr 25, 2016
 """
 import os
 import unittest
+
 from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
@@ -39,6 +40,7 @@ class BaseTest(unittest.TestCase):
         # options.add_argument("user-data-dir=" + path_to_chrome_profile)
         options.add_argument("load-extension=" + path_to_extension_dir)
         BaseTest.driver = webdriver.Chrome(path_to_driver, chrome_options=options, desired_capabilities=capabilities)
+        BaseTest.driver.maximize_window()
 
         return BaseTest.driver
 

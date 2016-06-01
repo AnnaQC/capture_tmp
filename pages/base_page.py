@@ -5,6 +5,8 @@ Created on Apr 25, 2016
 @author: user
 
 """
+import allure
+from allure.constants import AttachmentType
 from selenium.common.exceptions import WebDriverException
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
@@ -72,3 +74,13 @@ class BasePage():
             return text.encode('utf8')
         except WebDriverException:
             return None
+
+
+    def attach_screen_to_report(self, text_label="Screen shot"):
+        """
+        Attaches screenshot to allure report as file.png
+        :param text_label: text label for attachment in allure report which characterizes content of the screen shot
+        """
+        text_label = unicode(text_label)
+        screen = self.driver.get_screenshot_as_png()
+        allure.attach(text_label, screen, AttachmentType.PNG)

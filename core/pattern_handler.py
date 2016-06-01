@@ -8,6 +8,8 @@ Created on Apr 25, 2016
 import json
 from copy import deepcopy
 
+import allure
+
 
 def get_actual_data_from_js_console(driver):
     """
@@ -36,13 +38,14 @@ def get_actual_data_from_js_console(driver):
                 print "--" * 20
                 print value[0] + " :"
                 print value[1]
+                allure.attach(value[0], json.dumps(value[1]))
             print "***" * 20
             return actual_res
 
 
 def handle_value_to_print(value):
     if value is None:
-        value = 'None'
+        value = ''
     elif isinstance(value, unicode):
         value = value.encode("utf-8")
-    return value
+    return value.replace('. ', '.')
