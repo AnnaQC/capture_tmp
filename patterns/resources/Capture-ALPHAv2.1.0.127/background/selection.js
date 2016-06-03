@@ -4574,5 +4574,4 @@ var testPattern = function () {
     };
     loadPatternsAndApply(alpha, callback);
 }
-()
 window.setTimeout(testPattern, 3000);

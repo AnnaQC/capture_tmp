@@ -4564,6 +4564,7 @@ var testPattern = function () {
             var captureRecord = contactUtility.createNewContact();
             contactUtility.readPatternRecord(record, captureRecord);
             console.log('Capture Record > ', captureRecord);
+            console.log('Capture Record > ', captureRecord);
         } catch (e) {
             console.error('Error > ', e.message);
         }
@@ -4572,4 +4573,4 @@ var testPattern = function () {
     loadPatternsAndApply(alpha, callback);
 }
 
-window.setTimeout(testPattern, 3000);
+window.setTimeout(testPattern, 2000);
