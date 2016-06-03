@@ -1,0 +1,29 @@
+{
+  "defectsList" : [ {
+    "title" : "Product defects",
+    "status" : "FAILED",
+    "defects" : [ {
+      "uid" : "c077206e97993681",
+      "failure" : {
+        "message" : "AssertionError: Incorrect data was found in captured results. See mismatches in attached detailes.",
+        "stackTrace" : "self = <tests.test_linkedin_pattern.LinkedinPatternTest testMethod=test_profile_ptrn_by_logged_in_user>\n\n    @allure.story('Linkedin user profile pattern. User is logged in to linkedin')\n    \n    def test_profile_ptrn_by_logged_in_user(self):\n        \"\"\"\n            As logged in to linkedin user I open some user profile in browser.\n            Read data from the opened page.\n            Get data from result is captured by extension.\n            And check if data from the page is present within the captured results.\n            Tested attributes:\n            {\n             \"bio\" - summary,\n             \"full\" - users fullname,\n             \"company\" - current company name,\n             \"first\" - firstname,\n             \"last\" - lastname,\n             \"city\" - locality,\n             \"jobtitle\" - job,\n             \"linkedin\" - link from the contact info,\n             \"twitter\" - link from the contact info,\n             \"email\" - address from the contact info\n             }\n            \"\"\"\n        # initialization\n        handler = pattern_handler\n        driver = self.driver\n        linkidin = linkidin_profile.LinkidinLoginPage(driver)\n        test_page = linkidin_profile.LinkidinProfilePage(driver, is_logged=True)\n        # login by test user\n        linkidin.login(linkidin.sign_in_link, linkidin.login_form, linkidin.default_user)\n        # Open test page and get parsed data by Webdriver as expected results\n        test_page.open()\n        with allure.step('Read attributes from profile page'):\n            expected = test_page.parse_text()\n        # read actual data from captured results\n        with allure.step('Read attributes from result is captured by extension'):\n            actual = handler.get_actual_data_from_js_console(driver)\n        with allure.step('Check if captured results contain data from page'):\n            self.assertTrue(comparator.is_pattern_data_according_to_page(actual, expected),\n>                           \"Incorrect data was found in captured results. See mismatches in attached detailes.\")\nE           AssertionError: Incorrect data was found in captured results. See mismatches in attached detailes.\n\ntest_linkedin_pattern.py:52: AssertionError"
+      },
+      "testCases" : [ {
+        "uid" : "26e784288efc9af0",
+        "name" : "LinkedinPatternTest.test_profile_ptrn_by_logged_in_user",
+        "title" : "Test profile ptrn by logged in user",
+        "time" : {
+          "start" : 1464790389139,
+          "stop" : 1464790408142,
+          "duration" : 19003
+        },
+        "severity" : "NORMAL",
+        "status" : "FAILED"
+      } ]
+    } ]
+  }, {
+    "title" : "Test defects",
+    "status" : "BROKEN",
+    "defects" : [ ]
+  } ]
+}

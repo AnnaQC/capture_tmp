@@ -1,0 +1,41 @@
+﻿<div class="menu-outer">
+
+    <div class="table">
+        <ul class="horizontal-list">
+
+            <li>
+                <!--Research-->
+                <a href="" title="Research this contact" class="btn btn-primary no-hover-invert"
+                   ng-init="checkResearch(contact)"
+                   ng-disabled="researchButtonBusy(contact) || researchButtonQueued(contact)"
+                   ng-click="researchContacts([contact])">
+                    <i class="fa fa-flash" ng-hide="researchButtonDone(contact) || researchButtonBusy(contact)"></i>
+                    <i class="fa fa-check-circle" ng-show="researchButtonDone(contact)"></i>
+                    <i class="fa fa-spinner fa-spin" ng-show="researchButtonBusy(contact)"></i>
+                    &nbsp;Research
+                </a>
+            </li>
+
+            <li class="{{showDiscover?'active':''}}">
+                <!--Specialized Search-->
+                <a href="" class="btn btn-primary no-hover-invert"
+                   title="Discover more about this person using our specialized searches"
+                   ng-click="showDiscover=!showDiscover;">
+                    <i class="fa fa-globe"></i>
+                    &nbsp;Discover
+                </a>
+            </li>
+
+            <li>
+                <!--Export-->
+                <a href="" class="btn btn-primary no-hover-invert" title="Export contact" ng-click="exportContacts([contact]);">
+                    <i class="fa fa-upload" ng-show="!contact._saved"></i>
+                    <i class="fa fa-check-circle" ng-show="contact._saved"></i>
+                    &nbsp;Export
+                </a>
+            </li>
+        </ul>
+    </div>
+
+</div>
+

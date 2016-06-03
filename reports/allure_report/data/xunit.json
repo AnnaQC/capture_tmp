@@ -1,0 +1,38 @@
+{
+  "time" : {
+    "start" : 1464790389139,
+    "stop" : 1464790408142,
+    "duration" : 19003
+  },
+  "testSuites" : [ {
+    "uid" : "8229a98942ba9e80",
+    "name" : "tests.test_linkedin_pattern",
+    "title" : "Test linkedin pattern",
+    "time" : {
+      "start" : 1464790389139,
+      "stop" : 1464790408142,
+      "duration" : 19003
+    },
+    "statistic" : {
+      "total" : 1,
+      "passed" : 0,
+      "pending" : 0,
+      "canceled" : 0,
+      "failed" : 1,
+      "broken" : 0
+    },
+    "description" : null,
+    "testCases" : [ {
+      "uid" : "26e784288efc9af0",
+      "name" : "LinkedinPatternTest.test_profile_ptrn_by_logged_in_user",
+      "title" : "Test profile ptrn by logged in user",
+      "time" : {
+        "start" : 1464790389139,
+        "stop" : 1464790408142,
+        "duration" : 19003
+      },
+      "severity" : "NORMAL",
+      "status" : "FAILED"
+    } ]
+  } ]
+}

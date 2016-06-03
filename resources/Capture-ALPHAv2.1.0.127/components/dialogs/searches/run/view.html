@@ -1,0 +1,49 @@
+<!-- Edit Search Modal -->
+
+<div class="modal fade" data-backdrop="static" id="run-search-modal" tabindex="-1" role="dialog" aria-labelledby="capture-clipboard-modal-Label" aria-hidden="true" ng-init="modalSelector='#run-search-modal'" ng-controller="searches.run">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
+                <h5 class="modal-title" style="width: 350px; white-space: nowrap;overflow: hidden;text-overflow: ellipsis;"><strong>{{search.name}}</strong></h5>
+            </div>
+
+            <div class="modal-body" style="padding-bottom:0px;">
+                <div class="row">
+                    <div class="col-xs-10 text-left"><h5><small>by {{search.author}} on {{search.createdOn | date : date : mediumDate }}</small></h5></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <p ng-bind-html="search.description | linky:'_blank'"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <pre style="background-color:#FFFFFF !important;">{{search.searchString}}</pre>
+                    </div>
+                </div>
+                <form class="form" role="form">
+
+                    <div class="form-group" ng-repeat="keyword in keywords">
+                        <label class="control-label">{{keyword.name}}</label>
+                        <input type="text" class="form-control" id="{{keyword.id}}" placeholder="<{{keyword.name}}>" ng-model="keyword.value" autocomplete="off" force-model-update />
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="modal-footer text-center">
+                <div class="col-xs-4">
+                    <button type="button" class="btn btn-primary btn-block" ng-click="confirm()">Execute</button>
+                </div>
+                <div class="col-xs-4">
+                    <button type="button" class="btn btn-default btn-block" ng-show="search.searchID" ng-click="edit()">Edit</button>
+                </div>
+                <div class="col-xs-4">
+                    <button type="button" class="btn btn-default btn-block" ng-click="cancel()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Edit Search Modal -->

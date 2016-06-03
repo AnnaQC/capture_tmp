@@ -1,0 +1,158 @@
+<!-- Dialog -->
+<div ng-controller="dialogs.map" ng-init="modalSelector='#dialog-map'">
+    <div class="modal fade" id="dialog-map" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <h2>Map {{label}} Fields</h2>
+                        </div>
+                    </div>
+
+                    <div ng-show="errorMessage" class="alert alert-danger text-center">{{errorMessage}}</div>
+
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <p>&nbsp;</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12 text-left">
+
+                            <h3></h3>
+
+                            <table class="table table-hover table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th title="Required">!</th>
+                                        <th>Field</th>
+                                        <th>Picklist?</th>
+                                        <th>Map as</th>
+                                        <th>Properties</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr ng-repeat="field in fields | orderBy:['-target.required', 'target.label']">
+                                        <td style="border-top-width: 0px"><span ng-show="field.target.required" title="Required">*</span></td>
+                                        <td style="border-top-width: 0px" title="{{field.target.name}}">
+                                            {{field.target.label}}
+                                        </td>
+                                        <td style="border-top-width: 0px"><span title="{{field.target.values}}">{{field.target.values ? 'Yes' : ''}}</span></td>
+                                        <td style="border-top-width: 0px" title="{{field.source.value.resolve}}">
+                                            <select data-ng-model="field.source.type" style="width: 75px" ng-if="field.source.type!=='action'">
+                                                <option value=""></option>
+                                                <option value="capture">Capture</option>
+                                                <option value="text">Text</option>
+                                                <option value="lookup">Lookup</option>
+                                                <option value="picklist" ng-show="field.target.values">Picklist</option>
+                                            </select>
+                                            <div ng-if="field.source.type==='action'">Action</div>
+                                        </td>
+                                        <td style="border-top-width: 0px">
+
+                                            <select ng-if="field.source.type==='capture'" data-ng-model="field.source.value" data-ng-options="item.label for item in defaultCaptureMap.fields track by item.captureField" style="width: 200px">
+                                                <option value="">-- Ignore --</option>
+                                            </select>
+
+                                            <input ng-if="field.source.type==='text'" data-ng-model="field.source.value.text" style="width: 200px" type="text" />
+
+
+                                            <div ng-if="field.source.type==='action'">
+                                                <div title="Execute this action?">
+                                                    <input id="action_enabled_{{$index}}" data-ng-model="field.source.value.enabled" type="checkbox" />
+                                                    <label for="action_enabled_{{$index}}" title="Execute this action?">Enabled</label>
+                                                </div>
+                                                <div ng-show="field.source.value.enabled" title="Value cannot be empty, user choice is required">
+                                                    <input id="action_required_{{$index}}" data-ng-model="field.source.value.required" type="checkbox" />
+                                                    <label for="action_required_{{$index}}" title="Value cannot be empty">Required</label>
+                                                </div>
+                                                <div ng-show="field.source.value.enabled">
+                                                    Initial Value:
+                                                    <select data-ng-model="field.source.value.appProperty" data-ng-options="item.captureField as item.label for item in defaultCaptureMap.fields" style="width: 200px">
+                                                        <option value="">-- none --</option>
+                                                    </select>
+                                                </div>
+                                                <div ng-show="field.source.value.enabled">
+                                                    Dialog Prompt: <input data-ng-model="field.source.value.message" style="width: 200px" type="text" />
+                                                </div>
+                                            </div>
+
+                                            <div ng-if="field.source.type==='lookup'">
+                                                <div>
+                                                    Type:
+                                                    <select data-ng-options="item.name as item.label for item in availableEntities | orderBy:'label'" data-ng-model="field.source.value.type" style="width: 200px">
+                                                    </select>
+                                                </div>
+                                                <div>
+                                                    Search By:
+                                                    <select data-ng-options="item.captureField as item.label for item in defaultCaptureMap.fields" data-ng-model="field.source.value.appProperty" style="width: 200px">
+                                                        <option value="">-- none --</option>
+                                                    </select>
+                                                </div>
+                                                <div  title="Value cannot be empty, user choice is required">
+                                                    <input id="lookup_required_{{$index}}" data-ng-model="field.source.value.required" type="checkbox"/>
+                                                    <label for="lookup_required_{{$index}}" title="Value cannot be empty">Required</label>
+                                                </div>
+                                                <div ng-show="field.target.name === 'AccountId'" title="Allow user to create new Account">
+                                                    <input id="lookup_new_{{$index}}" data-ng-model="field.source.value.allowNew" type="checkbox"/>
+                                                    <label for="lookup_new_{{$index}}" title="Allow to type in new value">Allow Create New</label>
+                                                </div>
+                                                <div>
+                                                    Dialog Prompt: <input data-ng-model="field.source.value.message" style="width: 200px" type="text"/>
+                                                </div>
+                                            </div>
+                                            
+                                            <div ng-if="field.source.type==='picklist'">
+                                                <div>
+                                                    Default value:
+                                                    <select data-ng-model="field.source.value.defaultValue" data-ng-options="item.label for item in field.target.values track by item.value" style="width: 200px">
+                                                        <option value="">-- none --</option>
+                                                    </select>
+                                                </div>
+                                                <div ng-show="field.source.value.defaultValue" title="Fill in automatically, do not show the dialog">
+                                                    <input id="picklist_change_{{$index}}" data-ng-model="field.source.value.hidden" type="checkbox" />
+                                                    <label for="picklist_change_{{$index}}" title="Fill in automatically, do not show">Hidden</label>
+                                                </div>
+                                                <div ng-show="!field.source.value.hidden"  title="Value cannot be empty, user choice is required">
+                                                    <input id="picklist_required_{{$index}}" data-ng-model="field.source.value.required" type="checkbox" />
+                                                    <label for="picklist_required_{{$index}}" title="Value cannot be empty">Required</label>
+                                                </div>
+                                                <!--<div ng-show="!field.source.value.hidden">
+                                                    <input id="picklist_new_{{$index}}" data-ng-model="field.source.value.allowNew" type="checkbox" />
+                                                    <label for="picklist_new_{{$index}}" title="Allow to type in new value">Allow New Value</label>
+                                                </div>-->
+                                                <div ng-show="!field.source.value.hidden">
+                                                    Dialog prompt: <input data-ng-model="field.source.value.message" ng-init="field.source.value.message=field.source.value.message||('Select '+field.target.label)" style="width: 200px" type="text" />
+                                                </div>
+                                            </div>
+
+                                        </td>
+                                        <td style="border-top-width: 0px"></td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-4 col-xs-offset-2">
+                            <div ng-click="save()" class="btn btn-primary btn-block">Save</div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div ng-click="cancel()" class="btn btn-default btn-block">Cancel</div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Dialog -->

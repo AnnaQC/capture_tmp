@@ -1,0 +1,64 @@
+<div id="wrapper" ng-controller="home">
+
+    <div id="page-wrapper" style="background-color: #f3f3f4;  min-height: 600px">
+        <div class="wrapper wrapper-content animated fadeInRight" style="padding: 0">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="wrapper wrapper-content" style="padding: 0">
+                        <div class="row" ng-controller="subaccounts">
+
+                            <div ng-include="'components/partials/header.min.html'" />
+                            <div ng-include="'components/partials/nav.html'" />
+
+                            <div class="container">
+
+                                <div ng-include="'components/dialogs/text/view.html'" />
+                                <div ng-include="'components/dialogs/confirm/view.html'" />
+                                <div ng-include="'components/dialogs/alert/view.html'" />
+
+
+
+                                <div>
+
+
+                                    <h4>Sub-Accounts</h4>
+
+                                    <div class="spacer"></div>
+
+                                    <p class="text-info">
+                                        Sub Accounts can use your Research and Export Tokens.
+                                    </p>
+
+                                    <div class="spacer"></div>
+
+
+                                    <div>
+                                        <div class="input-group" ng-show="isLocal || accounts.list.length > 0" ng-repeat="account in accounts.list">
+                                            <span class="input-group-addon  input-sm">Account:</span>
+                                            <span class="form-control  input-sm">{{account.name}} ({{account.email}}) Limit: {{account.limit ? account.limit : 'Unlimited'}}</span>
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-default dropdown-toggle input-sm" data-toggle="dropdown">
+                                                    <span class="glyphicon glyphicon-cog" />
+                                                </button>
+                                                <ul class="dropdown-menu pull-right">
+                                                    <li role="presentation"><a href="" ng-click="accounts.setLimit(account.email)">Change Limit</a></li>
+                                                    <li role="presentation"><a href="" ng-click="accounts.disconnect(account.email, account.limit)">Disconnect</a></li>
+                                                </ul>
+                                            </span>
+                                        </div>
+                                        <div class="col-xs-12 text-center" ng-show="isLocal">
+                                            <a href="" ng-click="accounts.connect()">&lt;Click here to add a sub-account&gt;</a>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

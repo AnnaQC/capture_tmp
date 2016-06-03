@@ -1,0 +1,164 @@
+﻿<div class="ibox float-e-margins" id="contact_id_{{::contact.id}}" ng-cloak>
+
+    <div class="ibox-title {{contact._selected?'selected':''}}">
+
+        <!--<h5 style="position: relative; left: 19px; top: 3px; max-width: 330px; z-index: 1; white-space: normal"
+            title="Name: {{contact.first}} {{contact.middle}} {{contact.last}}&#10;Title: {{contact.jobtitle}}&#10;Company: {{contact.company}}&#10;Website: {{contact.website}}">
+            <span>{{contact.first}} {{contact.middle}} {{contact.last}}<span style="font-weight: inherit; padding: 0 2px 0 0" ng-if="contact.jobtitle">, </span></span>
+            <span ng-show="contact.jobtitle" style="font-weight: inherit;">{{contact.jobtitle}}</span>
+            <span ng-if="contact.company" style="font-weight: normal; padding: 0 2px"> at </span>
+            <span ng-if="contact.company" style="font-weight: normal;">{{contact.company}}</span>
+            <a href="" style="{{contact._selected?'color: white; ':''}}"
+               ng-if="contact.website" ng-click="openLink(makeURL(contact.website, true), true)">{{contact.website}}</a>
+        </h5>-->
+
+        <h5 style="position: relative; left: 19px; top: 3px; max-width: 330px; z-index: 1"
+            title="Name: {{contact.first}} {{contact.middle}} {{contact.last}}&#10;Title: {{contact.jobtitle}}&#10;Company: {{contact.company}}&#10;Website: {{contact.website}}">
+            <span>{{contact.first}} {{contact.middle}} {{contact.last}}<span style="font-weight: normal; padding: 0 2px 0 0" ng-if="contact.jobtitle">, </span></span>
+            <span ng-show="contact.jobtitle" style="font-weight: normal;">{{contact.jobtitle}}</span>
+            <span ng-if="contact.company" style="font-weight: normal; padding: 0 2px"> at </span>
+            <span ng-if="!contact.website">{{contact.company}}</span>
+            <a href="" style="{{contact._selected?'color: white; ':''}}"
+               ng-if="contact.website" ng-click="openLink(makeURL(contact.website, true), true)">{{contact.company}}</a>
+        </h5>
+
+        <div class="ibox-tools contact-menu">
+
+            <a href="" class="btn btn-xs" style="position: absolute; left: -10px" title="Select contact"
+               ng-click="select([contact], true, !contact._selected)">
+                <i class="fa fa-square-o" ng-show="!contact._selected"></i>
+                <i class="fa fa-check-square-o" ng-show="contact._selected"></i>
+            </a>
+
+            <a href="" class="btn btn-xs {{researchButtonDone(contact)?'btn-primary':'btn-warning'}}" title="Research this contact {{researchButtonDone(contact)?'(Done)':'(Not done)'}}{{isLocal?contact.flags:''}}"
+               ng-init="checkResearch(contact)"
+               ng-disabled="researchButtonBusy(contact) || researchButtonQueued(contact)"
+               ng-click="researchContacts([contact])">
+                <i class="fa fa-cogs" ng-hide="researchButtonBusy(contact)"></i>
+                <i class="fa fa-cogs fa-spin" ng-show="researchButtonBusy(contact)"></i>
+            </a>
+
+            <a href="" class="dropdown-toggle btn btn-xs" data-toggle="dropdown" title="Discover more about this contact using our specialized searches">
+                <i class="fa fa-globe"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-user">
+                <li>
+                    <a href="" ng-click="search('blog', contact)">
+                        <img src="images/rss.png" width="24" height="24" />&nbsp;&nbsp;&nbsp;<span style="color:rgb(103, 106, 108)">Blogs</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="" ng-click="search('googleplus', contact)">
+                        <img src="images/google-plus.png" width="24" height="24" />&nbsp;&nbsp;&nbsp;<span style="color:rgb(103, 106, 108)">Google+</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="" ng-click="search('facebook', contact)">
+                        <img src="images/facebook.png" width="24" height="24" />&nbsp;&nbsp;&nbsp;<span style="color:rgb(103, 106, 108)">Facebook</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="" ng-click="search('linkedin', contact)">
+                        <img src="images/linkedin.png" width="24" height="24" />&nbsp;&nbsp;&nbsp;<span style="color:rgb(103, 106, 108)">LinkedIn</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="" ng-click="search('twitter', contact)">
+                        <img src="images/twitter.png" width="24" height="24" />&nbsp;&nbsp;&nbsp;<span style="color:rgb(103, 106, 108)">Twitter</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="" ng-click="search('youtube', contact)">
+                        <img src="images/youtube.png" width="24" height="24" />&nbsp;&nbsp;&nbsp;<span style="color:rgb(103, 106, 108)">YouTube</span>
+                    </a>
+                </li>
+            </ul>
+
+            <a href="" class="btn btn-xs {{contact._saved?'btn-primary':'btn-warning'}}" title="Export contact {{contact._saved?'(Done)':'(Not done)'}}"
+               ng-click="exportContacts([contact]);">
+                <i class="fa fa-upload"></i>
+            </a>
+
+            <a href="" class="btn btn-xs" title="Edit contact"
+               ng-click="editContact(contact);">
+                <i class="fa fa-pencil"></i>
+            </a>
+
+            <a href="" class="btn btn-xs" title="{{contact._collapsed?'Expand the contact':'Collapse the contact'}}"
+               ng-click="contact._collapsed = !contact._collapsed;">
+                <i class="fa fa-chevron-up" ng-show="!contact._collapsed"></i>
+                <i class="fa fa-chevron-down" ng-show="contact._collapsed"></i>
+            </a>
+
+            <a class="close-link btn btn-xs" title="Delete contact"
+               ng-click="deleteContacts(contact)">
+                <i class="fa fa-times"></i>
+            </a>
+
+        </div>
+    </div>
+
+    <div class="ibox-content" ng-show="!contact._collapsed">
+        <contact-card-tree-node field="Job Title" value="{{contact.jobtitle}}"></contact-card-tree-node>
+        <contact-card-tree-node field="Email" value="{{contact.email}}" link="mailto:{{contact.email}}"
+                                always="1" icon="{{getEmailVerIcon(contact.emailver)}}"
+                                title="{{getEmailVerTitle(contact.emailver, contact.emailver2)}}"></contact-card-tree-node>
+        <contact-card-tree-node field="Email 2" value="{{contact.email2}}"
+                                always="1" icon="{{getEmailVerIcon(contact.email2ver)}}"
+                                title="{{getEmailVerTitle(contact.email2ver, contact.email2ver2)}}"></contact-card-tree-node>
+        <contact-card-tree-node field="Phone" value="{{contact.phone}}"></contact-card-tree-node>
+        <contact-card-tree-node field="Phone 2" value="{{contact.phone2}}"></contact-card-tree-node>
+        <contact-card-tree-node ng-repeat="venue in contact.venues | filter: { personal: true } | orderBy:'type'"
+                                field="{{getVenueName(venue.type, venue.website)}}"
+                                value="{{venue.website}}" link="{{makeURL(venue.website)}}"
+                                contact="contact" icon="camera" action="dive(contact, venue.website)"
+                                title="Open this page and capture"></contact-card-tree-node>
+        <contact-card-tree-node field="Bio" value="{{contact.bio}}"></contact-card-tree-node>
+    </div>
+
+    <div class="ibox-content" ng-show="!contact._collapsed && (contact.company || contact.website || contact.address1 || contact.city)">
+        <contact-card-tree-node field="Company" value="{{contact.company}}"></contact-card-tree-node>
+
+        <contact-card-tree-node field="Web site" value="{{contact.website || 'Unknown'}}" link="{{makeURL(contact.website, true)}}"
+                                icon="search" action="lookupWebsite(contact)"></contact-card-tree-node>
+
+        <div ng-if="contact.addresses" class="pull-right" style="margin-left:-30px; position: relative; top: -2px; z-index: 1001">
+            <a href="" ng-click="selectAddress(contact)">
+                <span data-toggle="tooltip" title="Choose Alternative Address"><i class="fa fa-chevron-circle-down"></i></span>
+            </a>
+        </div>
+        <contact-card-tree-node field="Address" value="{{contact.address1}} {{contact.address2}} {{contact.city}} {{contact.state}}" link="{{makeMapURL(contact)}}"></contact-card-tree-node>
+
+        <contact-card-tree-node field="Employees" value="{{contact.employees}}"></contact-card-tree-node>
+        <contact-card-tree-node field="Revenue" value="{{formatRevenue(contact.revenue)}}"></contact-card-tree-node>
+        <contact-card-tree-node field="Industry" value="{{contact.indstry}}"></contact-card-tree-node>
+        <contact-card-tree-node ng-repeat="venue in contact.venues | filter: { personal: false } | orderBy:'type' "
+                                field="{{getVenueName(venue.type, venue.website)}}"
+                                value="{{venue.website}}" link="{{makeURL(venue.website)}}"
+                                contact="contact" icon="camera" action="dive(contact, venue.website)"
+                                title="Open this page and capture"></contact-card-tree-node>
+
+    </div>
+
+    <div class="ibox-content" ng-init="collapsed4=false" ng-hide="contact._collapsed || !settings.target || settings.target === 'no'">
+
+        <div class="row">
+            <div class="col-xs-3">
+                <p>{{getExportTargetName(settings.target)}}:</p>
+            </div>
+            <div class="col-xs-9">
+                <span>{{contact._searched ? (contact.links.length > 0 ? ('Found '+ contact.links.length) : 'Not found') : 'Not searched'}}</span>
+                <div ng-show="!contact._searching" style="display: inline-block; margin-left: 8px">
+                    <a href="" class="" title="Search {{getExportTargetName(settings.target)}} for duplicates" style="margin-top: -4px; font-size: 12px" ng-click="findDups([contact])"><i class="fa fa-refresh"></i></a>
+                </div>
+                <div ng-show="contact._searching" style="display: inline-block; margin-left: 8px">
+                    <i class="fa fa-spinner fa-spin"></i>
+                </div>
+            </div>
+        </div>
+
+        <contact-card-tree-node ng-repeat="record in contact.links | orderBy:'_type' " always="1" field="{{record._type}}" value="{{record.first}} {{record.middle}} {{record.last}}, {{record.jobtitle}}, {{record.company}}" link="{{record._link}}" contact="contact" action="mergeDups(contact, record._type, record._id)" icon="exchange" title="Update existing {{getExportTargetName(settings.target)}} record"></contact-card-tree-node>
+
+    </div>
+
+</div>

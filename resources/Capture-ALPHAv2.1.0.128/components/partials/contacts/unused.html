@@ -1,0 +1,370 @@
+﻿                    <!-- Registration, Subscription, Settings -->
+                    <div ng-show="tab1=='moremenu'">
+
+                        <!--Subscription-->
+                        <div ng-show="tab2=='status'">
+
+
+                           <!-- <h4>Subscription and Limits</h4>
+
+                            <div class="spacer"></div>
+
+                            <p>
+                                For better performance this data is locally cached. Click <a href="" ng-click="refreshAccount()">Reload Limits</a>  to see the latest counts.
+                            </p>
+
+                            <div class="spacer"></div>
+
+                            <table class="table">
+                                <tr>
+                                    <td>License Type
+                                    </td>
+                                    <td><span>{{license.licenseType}}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Subscription
+                                    </td>
+                                    <td><span>{{license.subStatus}}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Next Billing Period
+                                    </td>
+                                    <td><span>{{license.nextPeriod}}</span>
+                                    </td>
+                                </tr>
+
+                                <tr ng-show="showDetails">
+                                    <td>Beginning Balance (Purchased Tokens)
+                                    </td>
+                                    <td><span>{{license.full.beginning}}</span>
+                                    </td>
+                                </tr>
+                                <tr ng-show="showDetails">
+                                    <td>+ Monthly Limit (Included Tokens)
+                                    </td>
+                                    <td><span>{{license.full.monthly}}</span>
+                                    </td>
+                                </tr>
+                                <tr ng-show="showDetails">
+                                    <td>- Researches Used
+                                    </td>
+                                    <td><span>{{license.full.usage}}
+                                        <a class="btn btn-info btn-sm pull-right" ng-click="showUsage('full')">Research History</a>
+                                        </span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Researches Left
+                                    </td>
+                                    <td>
+                                        <span ng-show="license.contactTokens!=2147483647">{{license.contactTokens}} 
+                                        <a class="btn btn-info btn-sm pull-right" ng-click="showDetails=!showDetails">{{showDetails?'Hide':'Show'}} Details</a></span><span ng-show="license.contactTokens==2147483647">Unlimited</span>
+                                    </td>
+                                </tr>
+
+                                <tr ng-show="showDetails2">
+                                    <td>Beginning Balance (Purchased Exports)
+                                    </td>
+                                    <td><span>{{license.export.beginning}}</span>
+                                    </td>
+                                </tr>
+                                <tr ng-show="showDetails2">
+                                    <td>+ Monthly Limit (Included Exports)
+                                    </td>
+                                    <td><span>{{license.export.monthly}}</span>
+                                    </td>
+                                </tr>
+                                <tr ng-show="showDetails2">
+                                    <td>- Exports Used
+                                    </td>
+                                    <td><span>{{license.export.usage}}<a class="btn btn-info btn-sm pull-right" ng-click="showUsage('export')">Export History</a></span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Exports Left
+                                    </td>
+                                    <td>
+                                        <span ng-show="license.exportLimit!=2147483647">{{license.exportLimit}}
+                                             <a class="btn btn-info btn-sm pull-right" ng-click="showDetails2=!showDetails2">{{showDetails2?'Hide':'Show'}} Details</a>
+                                        </span><span ng-show="license.exportLimit==2147483647">Unlimited</span>
+                                    </td>
+                                </tr>
+
+                            </table>
+
+                            <div class="spacer"></div>
+
+                            <button type="button" class="btn btn-primary" ng-click="openStore()">Go to Online Store</button>
+                            <button type="button" class="btn btn-default" ng-click="refreshAccount()">Reload Limits</button>
+                            <button type="button" class="btn btn-default" ng-click="register()">Update Registration</button>
+
+                            <div class="spacer"></div>-->
+
+                        </div>
+
+
+                        <!--Settings-->
+                        <div ng-show="tab2=='settings'" ng-init="sett_tab=1">
+
+                         <!--   <h4>Settings</h4>
+
+                            <div class="spacer"></div>
+
+                            <a href="" type="button" class="btn btn-default {{sett_tab==1?'active':''}}" style="width: auto"
+                                ng-click="sett_tab=1" title="Manage exclusions">Exclusions</a>
+
+                            <a href="" type="button" class="btn btn-default {{sett_tab==2?'active':''}}" style="width: auto"
+                                ng-click="sett_tab=2" title="Manage export targets">Targets</a>
+
+                            <a href="" type="button" class="btn btn-default {{sett_tab==3?'active':''}}" style="width: auto"
+                                ng-click="sett_tab=3" title="Manage data normalization settings">Data Shield</a>
+
+
+                            <form ng-submit="saveSettings(true, false)" role="form" novalidate class="css-form">
+
+                                <div class="spacer"></div>
+
+                                <div class="form-group" ng-show="sett_tab==2">
+
+                                    <div ng-show="!editingTargets">
+                                        <span ng-show="!account.settings.target">Export target is not selected</span>
+                                        <span ng-show="account.settings.target==='no'">Not connected to any target</span>
+                                        <span ng-show="account.settings.target==='sf'">Connected to <b>Salesforce</b></span>
+                                        <span ng-show="account.settings.target==='ms'">Connected to <b>Microsoft Dynamics CRM</b>
+                                            <br />
+                                            <span ng-show="account.settings.targetUrl">CRM Server: <b>{{account.settings.targetUrl}}</b></span></span>
+                                        <div class="spacer"></div>
+                                        <button type="button" class="btn btn-default" ng-click="editingTargets = true">Change</button>
+                                    </div>
+
+                                    <div ng-show="editingTargets">
+                                        <input type="radio" id="target_no" ng-model="account.settings.target" value="no">
+                                        <label for="target_mk">No CRM</label>
+                                        <br />
+                                      
+                                        <input type="radio" id="target_mk" ng-model="account.settings.target" value="mk" disabled="disabled">
+                                        <label for="target_mk">Marketo </label>
+                                        <br />
+                                        <input type="radio" id="target_ms" ng-model="account.settings.target" value="ms">
+                                        <label for="target_ms">Microsoft Dynamics CRM </label>
+                                        <div ng-show="account.settings.target==='ms'">
+                                            <label for="targe_ms_url">URL</label>
+                                            <input type="text" id="targe_ms_url" ng-model="account.settings.targetUrl" style="width: 400px">
+                                        </div>
+                                        <br />
+                                        <input type="radio" id="target_sf" ng-model="account.settings.target" value="sf">
+                                        <label for="target_sf">Salesforce </label>
+                                        <br />
+                                        <input type="radio" id="target_sg" ng-model="account.settings.target" value="sg" disabled="disabled">
+                                        <label for="target_sg">SugarCRM </label>
+
+                                        <div class="spacer"></div>
+
+                                        <button type="submit" class="btn btn-default" ng-hide="sett_tab==3">Save Settings</button>
+
+                                    </div>
+
+                                </div>
+
+                                <div ng-show="sett_tab==1">
+                                                                     <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" ng-model="account.settings.exclusions">
+                                            Exclusions Enabled
+                                        </label>
+                                    </div>
+                                    <p>
+                                        Do not capture contacts having...<br />
+                                        <small>(Separate items with commas)</small>
+                                    </p>
+                                    <div class="form-group">
+                                        <label for="settInputDomains" ng-disabled="!account.settings.exclusions">Any of these names</label>
+                                        <textarea id="settInputExclNames" class="form-control" rows="1" ng-model="account.settings.excludedNames" ng-disabled="!account.settings.exclusions"></textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="settInputDomains" ng-disabled="!account.settings.exclusions">Any of these emails or email domains</label>
+                                        <textarea id="settInputExclEmails" class="form-control" rows="1" ng-model="account.settings.excludedEmails" ng-disabled="!account.settings.exclusions"></textarea>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label for="settInputDomains" ng-disabled="!account.settings.exclusions">Any of these phone numbers</label>
+                                        <textarea id="settInputExclPhones" class="form-control" rows="1" ng-model="account.settings.excludedPhones" ng-disabled="!account.settings.exclusions"></textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="settInputDomains" ng-disabled="!account.settings.exclusions">A company name containing any of these words</label>
+                                        <textarea id="settInputExclCompaniess" class="form-control" rows="1" ng-model="account.settings.excludedCompanies" ng-disabled="!account.settings.exclusions"></textarea>
+                                    </div>
+
+                                    <div class="spacer"></div>
+
+                                    <button type="submit" class="btn btn-default" ng-hide="sett_tab==3">Save Settings</button>
+
+                                </div>
+
+                                <div ng-show="sett_tab==3">
+
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">Tip</div>
+                                        <div class="panel-body">
+                                            Update status after any modifications to Data Shield scheme.
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label">Service Status</label>
+                                        <p class="form-control-static">{{shieldStatus}}</p>
+                                    </div>
+
+
+
+                                    <a class="btn btn-default" ng-click="openNormalizationSettings()">Manage your Data Shield Account</a>
+                                    <a class="btn btn-default" href="" ng-click="checkNormalizationStatus()">Update Status</a>
+
+
+
+                                </div>
+
+
+                            </form>-->
+
+                        </div>
+
+
+                        <div class="spacer"></div>
+
+                    </div>
+  
+
+
+
+
+
+
+
+
+
+
+<!--Unsaved changes-->
+                        <div class="alert alert-danger fade in" data-alert="alert" ng-show="saveError">
+                            <h4>Save error: {{saveError}}</h4>
+                            <p>The captured data will be lost unless it is saved.</p>
+                            <p>
+                                <button type="button" class="btn btn-danger" ng-click="saveHistory()">Try Again</button>
+                                <button type="button" class="btn btn-default" ng-click="saveError=false">Dismiss (Data may be lost)</button>
+                            </p>
+                        </div>
+
+                        <!--Status-->
+                        <div class="alert alert-danger fade in" data-alert="alert" ng-show="status">
+                            <h4>{{status}}</h4>
+                            <p>
+                                <button type="button" class="btn btn-default" ng-click="status=null">Dismiss</button>
+                            </p>
+                        </div>
+
+                        <!--Reload page link-->
+                        <div class="alert alert-danger fade in" data-alert="alert" ng-show="reload">
+                            <h4>Please reload the page and try again</h4>
+                            <p>
+                                <button type="button" class="btn btn-danger" ng-click="reloadPage()">Reload</button>
+                                <button type="button" class="btn btn-default" ng-click="reload=false">Cancel</button>
+                            </p>
+                        </div>
+
+                        <!--Confirmation dialog-->
+                        <div class="alert alert-{{confirm.style}} fade in" ng-show="confirm.show">
+                            <h4>{{confirm.text}}</h4>
+                            <p>
+                                <button type="button" class="btn btn-{{confirm.style}}" ng-click="confirmBtn1()">{{confirm.btn1text}}</button>
+                                <button type="button" class="btn btn-{{confirm.style}}" ng-click="confirmBtn2()" ng-show="confirm.btn2text">{{confirm.btn2text}}</button>
+                                <button type="button" class="btn btn-default" ng-click="confirmBtn3()">{{confirm.btn3text}}</button>
+                            </p>
+                        </div>
+
+                        <!--Rename the list-->
+                        <!--                       <div class="alert alert-info fade in" ng-show="renameListDlg.show">
+                            <h4>Rename List</h4>
+                            <label for="editMarkNew" class="sr-only control-label">Rename List</label>
+                            <input type="text" class="form-control input-sm" id="renameListName" title="New List" placeholder="Enter New List Name" ng-model="renameListDlg.text" maxlength="25">
+                            <p>
+                                <button type="button" class="btn btn-info" ng-click="applyRenameList()">Ok</button>
+                                <button type="button" class="btn btn-default" ng-click="renameListDlg.show = false">Cancel</button>
+                            </p>
+                        </div>-->
+
+                        <!--New Mark dialog-->
+                        <!--          <div class="alert alert-info fade in" ng-show="markNewDlg.show">
+                            <h4>New List</h4>
+                            <label for="editMarkNew" class="sr-only control-label">New List</label>
+                            <input type="text" class="form-control input-sm" id="newListName" title="New List" placeholder="Enter New List Name" ng-model="markNewDlg.text" maxlength="25">
+                            <p>
+                                <button type="button" class="btn btn-info" ng-click="applyNewMark()">Ok</button>
+                                <button type="button" class="btn btn-default" ng-click="markNewDlg.show = false">Cancel</button>
+                            </p>
+                        </div>-->
+
+                        <!--Apply Mark dialog-->
+                        <!--                <div class="alert alert-info fade in" ng-show="markConfirmDlg.show">
+                            <h4></h4>
+                            <p>Move {{markConfirmDlg.count}} record{{markConfirmDlg.ending}} to list '{{markConfirmDlg.mark}}'?</p>
+                            <p>
+                                <button type="button" class="btn btn-info" ng-click="markConfirmDlg.callback()">Ok</button>
+                                <button type="button" class="btn btn-default" ng-click="markConfirmDlg.show = false">Cancel</button>
+                            </p>
+                        </div>-->
+
+                        <!--Account Finder-->
+                        <div class="alert alert-info fade in" ng-show="accountFinder.show">
+
+                            <h4>Select Account</h4>
+
+                            <input type="text" ng-model="accountFinder.name" ng-change="findAccount(accountFinder.name)" title="Account Name" placeholder="Enter Any Part of Account Name" />
+                            <button ng-click="findAccount(accountFinder.name)">Find</button>
+
+                            <div class="panel-body">
+                                <table class="table table-condensed">
+                                    <tr ng-repeat="l in accountFinder.found">
+                                        <td>
+                                            <div class="col-xs-7 ellipsis nopadding" data-toggle="tooltip" data-placement="top" title="{{l.name}}">
+                                                {{l.name}}
+                                            </div>
+                                            <div class="col-xs-3 ellipsis nopadding" data-toggle="tooltip" data-placement="top" title="{{l.createdDate}}">
+                                                {{l.createdDate | date:'yyyy-MM-dd'}}
+                                            </div>
+                                            <div class="col-xs-2 pull-right text-right nopadding">
+                                                <div class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="left" title="View existing record" ng-click="loadPage(l._link, true)">
+                                                    <span class="glyphicon glyphicon-eye-open"></span>
+                                                </div>
+                                                <div class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="left" title="Use this account: {{l._sfid}}" ng-click="selectAccount(l)">
+                                                    <span class="glyphicon glyphicon-ok"></span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr ng-show="accountFinder.name && accountFinder.found.length == 0">
+                                        <td>
+                                            <div class="col-xs-12 ellipsis nopadding">
+                                                Not found
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <div class="btn btn-danger btn-sm pull-right" ng-click="cancelAccount()">
+                                    Cancel
+                                </div>
+                                <div class="btn btn-default btn-sm pull-right" data-toggle="tooltip" data-placement="left" title="Save without account" ng-click="selectAccount(null)">
+                                    Skip account selection
+                                </div>
+                                <div class="btn btn-default btn-sm pull-right" data-toggle="tooltip" data-placement="left" title="Create new account" ng-enabled="accountFinder.name" ng-click="createAccount()">
+                                    Create new account
+                                </div>
+
+                            </div>
+                        </div>

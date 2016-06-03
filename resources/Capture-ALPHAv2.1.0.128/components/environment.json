@@ -1,0 +1,4 @@
+{
+    "releases": ["local", "alpha", "beta", "production"],
+    "release" : "alpha"
+}

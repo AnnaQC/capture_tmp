@@ -1,0 +1,16 @@
+﻿<div class="row" ng-show="value && value.trim()" title="{{field}}: {{value}}">
+    <div class="col-xs-3">
+        <p>{{field}}:</p>
+    </div>
+    <div class="col-xs-9" ng-show="!link && !icon">
+        <span style="display: inline-block; max-height: 20px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 370px">{{value}}</span>    
+    </div>
+    <div class="col-xs-9" ng-show="!link && icon" ng-mouseover="showDiveBtnF=true" ng-mouseout="showDiveBtnF=false" style="display: inline-flex; max-width: 440px">
+        <a style="text-overflow: ellipsis; overflow-x: hidden" target="_top" href="" ng-click="action(contact, link)">{{value}}</a>
+        <a style="margin-left: .5em" target="_blank" href="" title="{{title}}" ng-click="action(contact, link)"><i class="fa fa-{{icon}}"></i></a>
+    </div>
+    <div class="col-xs-9" ng-show="link" ng-mouseover="showDiveBtnF=true" ng-mouseout="showDiveBtnF=false"  style="display: inline-flex; max-width: 440px">
+        <a style="text-overflow: ellipsis; overflow-x: hidden" target="_top" href="" ng-click="openLink(link, true)">{{value}}</a>
+        <a style="margin-left: .5em" target="_blank" href="" title="{{title}}" ng-click="action(contact, link)" ng-if="icon" ng-show="always || showDiveBtnF"><i class="fa fa-{{icon}}"></i></a>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+﻿<div style="margin-top: 1em; white-space: nowrap" ng-init="limit=3" ng-show="settings.target && settings.target !== 'no'">
+    <div style="margin-bottom: 2px">
+        <span style="font-weight: normal; color: rgb(119, 119, 119); color1: #0C7CBA">{{getExportTargetName(settings.target) }} Data</span>
+        <div style="display: inline-block; margin-left: 8px">
+            <div ng-show="!contact._searching">
+                <a href="" class="" title="Search {{getExportTargetName(settings.target)}} for duplicates" style="margin-top: -4px; font-size: 12px" ng-click="findDups([contact])"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></a>
+            </div>
+            <div ng-show="contact._searching">
+                <img class="loading" style="height: 18px" />
+            </div>
+        </div>
+        <div class="pull-right" style="margin-right: 8px;" ng-show="isLocal">
+            <span class="label label-primary" style="width: 120px" ng-show="contact._searched">
+                Searched&nbsp; &nbsp;
+                <i class="glyphicon glyphicon-ok"></i>
+            </span>
+            <span class="label label-default" style="width: 120px" ng-show="!contact._searched">
+                Not Searched
+            </span>
+        </div>
+        <div style="display: inline-block; margin-left: 8px" ng-show="contact.links.length === 0">
+            <span style="font-style: italic" ng-show="contact._searching">Searching for duplicates...</span>
+            <span style="font-style: italic" ng-show="contact._searched">No duplicates found</span>
+            <!--span style="font-style: italic" ng-show="!crmConnection.Connected">Not logged in</span-->
+        </div>
+    </div>
+    <div style="font-size: 12px; height: 18px; " ng-repeat="record in contact.links | limitTo:limit">
+        <div>
+            <div class="capture-card-cell" style="display: inline-block; max-width: 360px; text-overflow: ellipsis; overflow-x: hidden; color: black; ">
+                <a target="_blank" href="{{record._link}}" title="Name: {{record.first}} {{record.middle}} {{record.last}}&#10;Job Title: {{record.jobtitle}}&#10;Company: {{record.company}}">
+                    <img class="crm-lead crm-{{record._type.toLowerCase()}}-{{settings.target}}" />
+                    {{record.first}} {{record.middle}} {{record.last}}, {{record.jobtitle}}, {{record.company}}
+                </a>
+            </div>
+            <div class="pull-right">
+                <a style="font-size: 12px" href="" title="Update {{getExportTargetName(settings.target)}} record" ng-click="mergeDups(contact, record._type, record._id)"><span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span></a>
+            </div>
+        </div>
+    </div>
+    <div ng-show="contact.links.length > 3">
+        <div ng-show="limit < 9999">
+            <div class="text-center" style="margin-top: 8px">
+                <a href="" class="btn btn-xs btn-link" title="Show more" ng-click="limit = 9999"><i class="glyphicon glyphicon-triangle-bottom"></i> Show more</a>
+            </div>
+        </div>
+        <div ng-show="limit === 9999">
+            <div class="text-center" style="margin-top: 8px">
+                <a href="" class="btn btn-xs btn-link" title="Show less" ng-click="limit = 3"><i class="glyphicon glyphicon-triangle-top"></i> Show less</a>
+            </div>
+        </div>
+    </div>
+</div>
