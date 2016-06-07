@@ -9,10 +9,11 @@ import allure
 from selenium.webdriver.common.by import By
 
 from pages.base_page import BasePage
+from  core.config_reader import ReadConfigs
 
 
 class LinkidinProfilePage(BasePage):
-    url = "https://www.linkedin.com/in/jeffweiner08"  # "https://www.linkedin.com/in/max-pavlov-03712711b"
+    url =  ReadConfigs().read_linkedin_opt()
     # Locators
     full = (By.XPATH, "//span[@class='full-name']")  # user name
     companyTitle = (By.XPATH, "//*[@id='headline']/p'")  # is used in expirience as 'CompanyTitle' value
@@ -25,7 +26,7 @@ class LinkidinProfilePage(BasePage):
     bio = (By.XPATH, ".//div[@class = 'summary']/p")
     city = (By.XPATH, ".//*[@class='locality']//a")
     email = (By.XPATH, ".//*[@id='email-view']//a")  # link is displayed in contact info tab
-    # experience = (By.XPATH, ".//*[contains(@class, 'description')]")#add tomorrow
+    #experience = (By.XPATH, ".//*[contains(@class, 'description')]")#add tomorrow
     # ---tab to show more info
     contact_info_tab = (By.XPATH, '//*[@id="contact-info-tab"]')
     expanded_contact_info = (
@@ -42,11 +43,18 @@ class LinkidinProfilePage(BasePage):
         if is_logged:
             self.locators = dict(bio=self.bio, full=self.full, company=self.company, linkedin=self.linkedin,
                                  twitter=self.twitter, city=self.city, jobtitle=self.jobtitle,
-                                 email=self.email)  # experience=self.experience)
+                                 email=self.email)#, experience=self.experience)
             print "Simplified locators dictionary = " + str(self.locators)
 
     @allure.step('Open page to parse :' + url)
-    def open(self):
+    def open(self, external_page_url=None):
+        """
+        Opens page url specified from config file if external_page_url is None else opens url that is specified as external_page_url
+        :param external_page_url: address of page to test
+        :return:
+        """
+        if external_page_url is not None:
+            self.url = external_page_url
         self.driver.get(self.url)
         self.attach_screen_to_report(self.url)
         return self
@@ -89,8 +97,10 @@ class LinkidinProfilePage(BasePage):
 
 
 class LinkidinLoginPage(BasePage):
+    config = ReadConfigs()
+    config.read_linkedin_opt()
     sign_in_link = "https://www.linkedin.com/uas/login"
-    default_user = {'login': 'qa_pm1@soft-industry.com', 'pwd': 'testacc2016'}
+    default_user = {'login': config.login, 'pwd': config.pwd}
     login_form = {'user_field': (By.ID, "session_key-login"),
                   'pwd_field': (By.ID, "session_password-login"),
                   'submit_btn': (By.ID, "btn-primary")}

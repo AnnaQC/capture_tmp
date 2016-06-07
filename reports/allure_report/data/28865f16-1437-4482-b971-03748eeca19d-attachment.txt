@@ -1,1 +1,0 @@
-[{"website": "linkedin.com/in/jeffweiner08", "personal": true, "top": true, "type": "social"}, {"website": "twitter.com/jeffweiner", "personal": true, "top": true, "type": "social"}]

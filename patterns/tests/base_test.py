@@ -16,7 +16,6 @@ class BaseTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.driver = cls.setup_webdriver()
-        print "setUp"
 
     @classmethod
     def tearDownClass(cls):
