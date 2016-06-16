@@ -1,0 +1,23 @@
+<!-- Dialog -->
+<div ng-controller="dialogs.alert" ng-init="modalSelector='#dialog-alert'">
+    <div class="modal fade" id="dialog-alert" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <p ng-show="!pre">{{message}}</p>
+                            <pre ng-show="pre">{{message}}</pre>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4 col-xs-offset-4">
+                            <div ng-click="ok()" class="btn btn-primary btn-block">OK</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Dialog -->

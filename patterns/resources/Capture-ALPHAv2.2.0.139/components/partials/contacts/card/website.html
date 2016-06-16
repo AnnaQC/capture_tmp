@@ -1,0 +1,12 @@
+﻿<div class="capture-card-cell" style="height: 18px; overflow: hidden">
+    <a ng-show="contact.website" href="http://{{contact.website}}" target="_blank" title="Website: {{contact.website}}" style="display: inline-block; text-overflow: ellipsis; overflow: hidden; line-height: 18px">
+        <span style="font-weight: bold">{{contact.website}}</span>
+    </a>
+    <span ng-show="!contact.website" style="font-style: italic; font-weight: bold">No website</span>
+    <a href="" class="" style="font-size: 12px; position: relative; top: -3px; left: 1em" title="Lookup website" ng-click="lookupWebsite(contact)">
+        <i class="glyphicon glyphicon-search" aria-hidden="true"></i>
+    </a>
+    <a href="" class="" style="font-size: 12px; position: relative; top: -3px; left: 2em" title="Profile website" ng-click="profileWebsite(contact)" ng-show="false">
+        <i class="glyphicon glyphicon-download-alt" aria-hidden="true"></i>
+    </a>
+</div>

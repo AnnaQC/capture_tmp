@@ -1,0 +1,149 @@
+<div class="container" ng-controller="pattern">
+    <div ng-include="'components/dialogs/view.html'"/>
+
+    <div ng-include="'components/views/pattern/edit.html'"/>
+
+    <div ng-include="'components/views/pattern/edit-source.html'"/>
+
+    <div ng-include="'components/partials/nav.html'" />
+
+    <div ng-include="'components/partials/header.min.html'"/>
+
+    <div class="col-xs-12 text-center">
+        <h3>Patterns</h3>
+    </div>
+
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="input-group">
+                <span class="input-group-btn"><button class="btn btn-default" type="button" data-toggle="tooltip" title="Add a new pattern" ng-click="create()"><span class="glyphicon glyphicon-plus"/></button></span>
+                <input type="text" class="form-control" placeholder="<Enter search keywords>" ng-model="searchString">
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                    <ul class="dropdown-menu pull-right">
+                        <li><a href="" ng-click="removeAll()">Delete All</a></li>
+                        <li><a href="" ng-click="restoreFactory()">Restore Pattern Defaults</a></li>
+                    </ul>
+                </div><!-- /btn-group -->
+            </div>
+        </div>
+    </div>
+    <div style="min-height:400px;">
+
+        <table class="table table-hover">
+            <thead>
+
+            <tr>
+                <th style="width:60px;" class="text-center" data-toggle="tooltip" title="Matching importance">#</th>
+                <th style="width:220px;">Name</th>
+                <th style="width:250px;">Description</th>
+                <th style="width:40px;">&nbsp;</th>
+            </tr>
+
+            </thead>
+            <tbody>
+
+            <tr ng-repeat="pattern in patterns | filter:searchString">
+
+                <td class="text-center">
+                    {{$index + 1}}
+                    <div class="col-xs-1 nopadding pull-left"  style="font-size:0.5em !important;">
+                        <div class="glyphicon glyphicon-stop" style="color:white;" ng-show="$first"/>
+                        <div class="glyphicon glyphicon-chevron-up clickable" ng-click="moveDown($index)" data-toggle="tooltip" title="Move up in priority" ng-hide="$first"/>
+                        <div class="glyphicon glyphicon-chevron-down clickable" ng-click="moveUp($index)" data-toggle="tooltip" title="Move down in priority" ng-hide="$last"/>
+                        <div class="glyphicon glyphicon-stop" style="color:white;" ng-show="$last"/>
+                    </div>
+                </td>
+                
+                <td>
+                    <div class="col-xs-12" style="padding-right:5px; padding-left: 5px; width: 210px;">
+                        {{pattern.Name || 'No name'}}
+                        <span class="help-block" style="white-space:normal">{{pattern.SourceName || 'Manual Entry'}}</span>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="col-xs-12" style="padding-right:5px; padding-left: 5px; width: 240px;">
+                        {{pattern.Description || 'Description not provided'}}
+                        <span class="help-block" style="white-space:normal">{{pattern.Domains.join(', ')}}</span>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="col-xs-1" style="padding-right:0px; padding-left: 0px;">
+                        <button type="button" class="btn btn-xs btn-danger" data-toggle="tooltip" title="Delete pattern" ng-click="remove($index)"><span class="glyphicon glyphicon-remove"/></button>
+                        <br />
+                        <button style="margin-top: 5px;" type="button" class="btn btn-xs btn-default" data-toggle="tooltip" title="Edit pattern" ng-click="edit($index)"><span class="glyphicon glyphicon-pencil"/></button>
+                    </div>
+                </td>
+
+            </tr>
+
+            <tr ng-hide="sources.length===0">
+                <td colspan="4">
+                    <div class="col-xs-12 text-center">
+                        <a href="" ng-click="loadPatterns()">&lt;Reload Capture! patterns&gt;</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" style="padding-right:0px; padding-left: 0px;">
+
+                    <div class="col-xs-12 text-center">
+                        <div class="input-group">
+                            <span class="input-group-btn"><button class="btn btn-default" type="button" data-toggle="tooltip" title="Add a new source" ng-click="createSource()"><span class="glyphicon glyphicon-plus"/></button></span>
+                            <h3>Sources</h3>
+                        </div>
+                    </div>
+
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th style="width:50px;" class="text-center" data-toggle="tooltip" title="Importance">#</th>
+                            <th>Name</th>
+                            <th>Url</th>
+                            <th style="width:120px;">&nbsp;</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="source in sources">
+                            <td class="text-center">
+                                {{$index + 1}}
+                                <div class="col-xs-1 nopadding pull-left"  style="font-size:0.5em !important;">
+                                    <div class="glyphicon glyphicon-stop" style="color:white;" ng-show="$first"/>
+                                    <div class="glyphicon glyphicon-chevron-up clickable" ng-click="moveSourceDown($index)" data-toggle="tooltip" title="Move up in priority" ng-hide="$first"/>
+                                    <div class="glyphicon glyphicon-chevron-down clickable" ng-click="moveSourceUp($index)" data-toggle="tooltip" title="Move down in priority" ng-hide="$last"/>
+                                    <div class="glyphicon glyphicon-stop" style="color:white;" ng-show="$last"/>
+                                </div>
+                            </td>
+                            <td><div class="col-xs-12" style="width: 120px; white-space: normal;">{{source.Name}}</div></td>
+                            <td><div class="col-xs-12" style="width: 220px; white-space: normal; overflow-x: hidden; overflow-y:visible; overflow-wrap:break-word; ">{{source.Url}}</div></td>
+                            <td style="white-space: nowrap;">
+                                <div class="col-xs-1" style="padding-right:15px; padding-left: 0px;"><button type="button" class="btn btn-xs btn-default" data-toggle="tooltip" title="Check source" ng-click="openLink(source.Url)"><span class="glyphicon glyphicon-link"/></button></div>
+                                <div class="col-xs-1" style="padding-right:15px; padding-left: 15px;"><button type="button" class="btn btn-xs btn-default" data-toggle="tooltip" title="Edit source" ng-click="editSource($index)"><span class="glyphicon glyphicon-pencil"/></button></div>
+                                <div class="col-xs-1" style="padding-right:0px; padding-left: 15px;"><button type="button" class="btn btn-xs btn-danger" data-toggle="tooltip" title="Delete source" ng-click="removeSource($index)"><span class="glyphicon glyphicon-remove"/></button></div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <div class="col-xs-12 text-center">
+                        <a href="" ng-click="loadFactorySources()">&lt;Load default Capture! sources&gt;</a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <Div class="row">
+        <div class="col-xs-12 text-center">
+            <div class="well well-sm">Use a JSON editor like <a href="" ng-click="openLink('http://www.jsoneditoronline.org/')">this one </a>to edit patterns!</div>
+        </div>
+    </Div>
+    <div ng-include="'components/partials/footer.min.html'"/>
+</div>

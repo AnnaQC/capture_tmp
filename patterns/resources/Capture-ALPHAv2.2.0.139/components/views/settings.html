@@ -1,0 +1,839 @@
+<div id="wrapper" ng-controller="home">
+
+    <div id="page-wrapper" style="background-color: #f3f3f4; min-height: 600px">
+        <div class="wrapper wrapper-content animated fadeInRight" style="padding: 0">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="wrapper wrapper-content" style="padding: 0">
+                        <div class="row">
+
+
+                            <div ng-include="'components/dialogs/view.html'" />
+                            <div ng-include="'components/partials/header.min.html'" />
+
+                            <div class="col-lg-4">
+                                <div class="ibox float-e-margins" ng-controller="settings" ng-init="sett_tab=2">
+
+                                    <div class="ibox-title">
+                                        <h5>Settings</h5>
+                                    </div>
+
+                                    <div class="ibox-content" style1="padding: 0; border-width: 0px">
+
+                                        <loader loading="loading" message="Loading Settings...">
+
+                                            <div ng-show="settings.managed" class="bg-danger">
+                                                <p>Your settings are managed by parent account.</p>
+                                                <div class="spacer"></div>
+                                            </div>
+
+                                            <div class="text-center">
+
+                                                <a href="" type="button" class="btn btn-default {{sett_tab===2?'active':''}}" style="width: auto"
+                                                   ng-click="sett_tab=2" title="Manage export targets">Export</a>
+
+                                                <a href="" type="button" class="btn btn-default {{sett_tab===5?'active':''}}" style="width: auto"
+                                                   ng-click="sett_tab=5" title="Manage patterns">Patterns</a>
+
+                                                <a href="" type="button" class="btn btn-default {{sett_tab===3?'active':''}}" style="width: auto"
+                                                   ng-click="sett_tab=3" title="Manage data normalization settings">Data Shield</a>
+
+                                                <a href="" type="button" class="btn btn-default {{sett_tab===4?'active':''}}" style="width: auto"
+                                                   ng-click="sett_tab=4" title="Manage notifications">Notifications</a>
+
+                                                <a href="" type="button" class="btn btn-default {{sett_tab==='Misc'?'active':''}}" style="width: auto"
+                                                   ng-click="sett_tab='Misc'" title="Miscellaneous settings">Misc</a>
+
+                                            </div>
+
+                                            <form ng-submit="saveSettings(false, false)" role="form" novalidate class="css-form">
+
+
+
+                                                <div style="min-height: 350px">
+
+                                                    <!-- Miscellaneous -->
+                                                    <div ng-show="sett_tab==='Misc'">
+
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" ng-model="settings.mute">
+                                                                Mute Capture sound
+                                                            </label>
+                                                        </div>
+
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" ng-model="settings.showResearchSummary">
+                                                                Show Research Summary
+                                                            </label>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <!-- Exclusions -->
+                                                    <div ng-show="sett_tab==1">
+
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" ng-model="settings.exclusions" ng-disabled="settings.managed">
+                                                                Exclusions Enabled
+                                                            </label>
+                                                        </div>
+                                                        <p>
+                                                            Do not capture contacts having...<br />
+                                                            <small>(Separate items with commas)</small>
+                                                        </p>
+                                                        <div class="form-group">
+                                                            <label for="settInputDomains" ng-disabled="!settings.exclusions || settings.managed">Any of these names</label>
+                                                            <textarea id="settInputExclNames" class="form-control" rows="1" ng-model="settings.excludedNames" ng-disabled="!settings.exclusions"></textarea>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="settInputDomains" ng-disabled="!settings.exclusions || settings.managed">Any of these emails or email domains</label>
+                                                            <textarea id="settInputExclEmails" class="form-control" rows="1" ng-model="settings.excludedEmails" ng-disabled="!settings.exclusions || settings.managed"></textarea>
+                                                        </div>
+
+
+                                                        <div class="form-group">
+                                                            <label for="settInputDomains" ng-disabled="!settings.exclusions || settings.managed">Any of these phone numbers</label>
+                                                            <textarea id="settInputExclPhones" class="form-control" rows="1" ng-model="settings.excludedPhones" ng-disabled="!settings.exclusions || settings.managed"></textarea>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="settInputDomains" ng-disabled="!settings.exclusions || settings.managed">A company name containing any of these words</label>
+                                                            <textarea id="settInputExclCompaniess" class="form-control" rows="1" ng-model="settings.excludedCompanies" ng-disabled="!settings.exclusions || settings.managed"></textarea>
+                                                        </div>
+
+                                                        <!--                <div class="spacer"></div>
+                                                        <button type="submit" class="btn btn-default">Save Settings</button>-->
+
+                                                    </div>
+
+                                                    <!--Export-->
+                                                    <div class="form-group" ng-show="sett_tab==2">
+
+
+
+
+                                                        <table class="table table-hover table-condensed" style="margin-bottom: 0">
+
+                                                            <tbody>
+
+                                                                <tr>
+                                                                    <td style="width:33%">
+                                                                        Delete After Export
+                                                                    </td>
+                                                                    <td style="width:33%">
+                                                                        <b>{{settings.deleteAfterExport}}</b>
+                                                                    </td>
+                                                                    <td style="width:auto">
+                                                                        <button type="button" class="btn btn-default btn-xs btn-block" ng-disabled="settings.managed" ng-click="toggleDeleteAfterExport()">Change</button>
+                                                                    </td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td>
+                                                                        Open After Export
+                                                                    </td>
+                                                                    <td>
+                                                                        <b>{{settings.openAfterExport}}</b>
+                                                                    </td>
+                                                                    <td>
+                                                                        <button type="button" class="btn btn-default btn-xs btn-block" ng-disabled="settings.managed" ng-click="toggleOpenAfterExport()">Change</button>
+                                                                    </td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td>
+                                                                        Export To
+                                                                    </td>
+                                                                    <td>
+                                                                        <span>{{getExportServiceName()}}</span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <button type="button" class="btn btn-default btn-xs btn-block" ng-disabled="settings.managed" ng-click="changeTarget()">Change</button>
+                                                                    </td>
+                                                                </tr>
+
+                                                                <!--Dynamics-->
+                                                                <tr ng-show="settings.target==='ms'">
+
+                                                                    <td>
+                                                                        Instance URL
+                                                                    </td>
+                                                                    <td colspan="2">
+                                                                        <input type="url" style="width: 100%" ng-model="settings.targetParams['ms'].url" />
+                                                                    </td>
+
+                                                                    <!--<td colspan="3">
+
+                                                                        <table style="margin-left: 4em; width: 100%">
+                                                                            <tr>
+                                                                                <td style="width: 25%">
+                                                                                    Instance URL
+                                                                                </td>
+                                                                                <td style="width: 75%">
+                                                                                    <input type="url" style="width: 250px" ng-model="settings.targetParams['ms'].url" />
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+
+                                                                    </td>-->
+
+                                                                </tr>
+
+                                                                <!--Pipeliner-->
+                                                                <tr ng-show="settings.target==='pp'">
+
+                                                                    <!--<td colspan="3">
+
+                                                                        <table style="margin-left: 4em; width: 100%">
+                                                                            <tr>-->
+                                                                    <td>
+                                                                        API Token
+                                                                    </td>
+                                                                    <td colspan="2">
+                                                                        <input type="text" style="width: 250px" ng-model="settings.targetParams['pp'].username" />
+                                                                    </td>
+                                                                </tr>
+                                                                <tr ng-show="settings.target==='pp'">
+                                                                    <td>
+                                                                        API Password
+                                                                    </td>
+                                                                    <td colspan="2">
+                                                                        <input type="password" style="width: 250px" ng-model="settings.targetParams['pp'].password" />
+                                                                    </td>
+                                                                </tr>
+                                                                <tr ng-show="settings.target==='pp'">
+                                                                    <td>
+                                                                        Team Pipeline ID
+                                                                    </td>
+                                                                    <td colspan="2">
+                                                                        <input type="text" style="width: 250px" ng-model="settings.targetParams['pp'].teamPipelineId" />
+                                                                    </td>
+                                                                </tr>
+                                                                <tr ng-show="settings.target==='pp'">
+                                                                    <td>
+                                                                        Owner ID
+                                                                    </td>
+                                                                    <td>
+                                                                        <input type="text" style="width: 250px" ng-disabled="true" ng-model="settings.targetParams['pp'].ownerId" />
+                                                                    </td>
+                                                                    <td>
+                                                                        <button type="button" class="btn btn-primary btn-xs btn-block" ng-click="selectPipelinerOwnerId()">Change</button>
+                                                                    </td>
+                                                                    <!--</tr>
+                                                                        </table>
+
+                                                                    <td>-->
+
+                                                                </tr>
+
+                                                                <!--PCRecruiter-->
+                                                                <tr ng-show="settings.target==='pc'">
+
+                                                                    <!--<td colspan="3">
+
+                                                                        <table style="margin-left: 4em; width: 100%">
+                                                                            <tr>-->
+                                                                    <td>
+                                                                        Username
+                                                                    </td>
+                                                                    <td colspan="2">
+                                                                        <input type="text" style="width: 250px" ng-model="settings.targetParams['pc'].username" />
+                                                                    </td>
+                                                                </tr>
+                                                                <tr ng-show="settings.target==='pc'">
+                                                                    <td>
+                                                                        Password
+                                                                    </td>
+                                                                    <td colspan="2">
+                                                                        <input type="password" style="width: 250px" ng-model="settings.targetParams['pc'].password" />
+                                                                    </td>
+                                                                </tr>
+                                                                <tr ng-show="settings.target==='pc'">
+                                                                    <td>
+                                                                        Database ID
+                                                                    </td>
+                                                                    <td colspan="2">
+                                                                        <input type="text" style="width: 250px" ng-model="settings.targetParams['pc'].pcrDatabaseId" />
+                                                                    </td>
+                                                                    <!--</tr>
+                                                                        </table>
+
+                                                                    <td>-->
+
+                                                                </tr>
+
+
+                                                                <!--Marketo-->
+                                                                <!--<tr ng-show="settings.target==='mk'">
+
+                                                                    <td colspan="3">
+
+                                                                        <table style="margin-left: 4em; width: 100%">-->
+                                                                <tr ng-show="settings.target==='mk'">
+                                                                    <td>
+                                                                        Client ID
+                                                                    </td>
+                                                                    <td colspan="2">
+                                                                        <input type="text" style="width: 250px" ng-model="settings.targetParams['mk'].username" ng-change="saveSettings(true, true)"/>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr ng-show="settings.target==='mk'">
+                                                                    <td>
+                                                                        Client Secret
+                                                                    </td>
+                                                                    <td colspan="2">
+                                                                        <input type="password" style="width: 250px" ng-model="settings.targetParams['mk'].password" ng-change="saveSettings(true, true)"/>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr ng-show="settings.target==='mk'">
+                                                                    <td>
+                                                                        Marketo ID
+                                                                    </td>
+                                                                    <td colspan="2">
+                                                                        <input type="text" style="width: 250px" ng-model="settings.targetParams['mk'].marketoId" ng-change="saveSettings(true, true)" />
+                                                                    </td>
+                                                                </tr>
+                                                                 <tr ng-show="settings.target==='mk'">
+                                                                    <td>
+                                                                        
+                                                                    </td>
+                                                                    <td colspan="2">
+                                                                        <a ng-click="openLink('https://www.ringlead.com/faq/connecting-capture-to-marketo/', true)" href="" target="_blank" >What values do I enter here?</a>
+                                                                    </td>
+                                                                </tr>
+                                                                <!--</table>
+
+                                                                    <td>
+                                                                </tr>-->
+                                                                <!--Salesloft-->
+                                                                <!--<tr ng-show="settings.target==='sl'">
+
+                                                                    <td colspan="3">
+
+                                                                        <table style="margin-left: 4em; width: 100%">-->
+
+                                                                <tr ng-show="settings.target==='sl'">
+                                                                    <td>
+                                                                        Access Token
+                                                                    </td>
+                                                                    <td colspan="2">
+                                                                        <input type="text" style="width: 250px" ng-model="settings.targetParams['sl'].refreshToken" />
+                                                                    </td>
+                                                                </tr>
+
+                                                                <!--<tr>
+                                                                    <td>
+                                                                        <span class="label label-primary" ng-show="settings.targetParams['sl'].refreshToken">Connectied as {{settings.targetParams['sl'].connectedAs}}</span>
+                                                                        <span class="label label-danger" ng-show="!settings.targetParams['sl'].refreshToken">Not connected to SalesLoft</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <a href="" class="btn btn-primary btn-sm" ng-show="!settings.targetParams['sl'].refreshToken" ng-click="doOAuth(settings.target)">Connect</a>
+                                                                        <a href="" class="btn btn-default btn-sm" ng-show="settings.targetParams['sl'].refreshToken" ng-click="clearOAuth(settings.target)">Disconnect</a>
+                                                                    </td>
+
+                                                                </tr>-->
+                                                                <!--</table>
+
+                                                                    <td>
+                                                                </tr>-->
+                                                                <!--https://stratus.ringlead.com/v1/Authentication/adf6a83f-b4bf-4cbd-9f17-0d2b112706b0/_AUTHENTICATE?url=https%3A%2F%2Fcloud.ringlead.com%2F%23%2Fstart-->
+
+                                                                <tr ng-show="settings.target==='sf'">
+
+                                                                    <td>
+                                                                        Connected as
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="" ng-show="settings.targetParams['sf'].refreshToken">{{settings.targetParams['sf'].connectedAs}}</span>
+                                                                        <span class="text-danger" ng-show="!settings.targetParams['sf'].refreshToken">Not connected to Salesforce</span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <!--<a href="" class="btn btn-default btn-sm" ng-show="settings.targetParams['sf'].refreshToken" ng-click="doOAuth(settings.target)">Authorize Again</a>-->
+                                                                        <a href="" class="btn btn-primary btn-xs btn-block" ng-show="!settings.targetParams['sf'].refreshToken" ng-click="doOAuth(settings.target)">Connect</a>
+                                                                        <a href="" class="btn btn-danger btn-xs btn-block" ng-show="settings.targetParams['sf'].refreshToken" ng-click="clearOAuth(settings.target)">Disconnect</a>
+                                                                    </td>
+
+                                                                </tr>
+
+                                                                <!--Zoho-->
+                                                                <tr ng-show="settings.target==='zh'">
+                                                                    <td>Authentication Token</td>
+                                                                    <td colspan="2">
+                                                                        <input type="text" style1="width: 250px" class="form-control" id="zhToken" ng-model="settings.targetParams['zh'].token" />
+                                                                    </td>
+                                                                    <!--<td>
+                                                                        <button type="button" class="btn btn-primary btn-xs btn-block" ng-click="newZohoToken=true" ng-hide="newZohoToken">Generate New Token</button>
+                                                                    </td>-->
+                                                                </tr>
+                                                                <tr ng-show="settings.target==='zh' && !newZohoToken">
+                                                                    <td></td>
+                                                                    <td colspan="2">
+                                                                        <button type="button" class="btn btn-primary btn-xs btn-block" ng-click="newZohoToken=true" ng-hide="newZohoToken">Generate New Token</button>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr ng-show="settings.target==='zh' && newZohoToken">
+                                                                    <td>Username</td>
+                                                                    <td colspan="2">
+                                                                        <input type="text" style1="width: 250px" class="form-control" id="zhUsername" ng-model="settings.targetParams['zh'].username" />
+                                                                    </td>
+                                                                </tr>
+                                                                <tr ng-show="settings.target==='zh' && newZohoToken">
+                                                                    <td>Application Specific Password</td>
+                                                                    <td colspan="2">
+                                                                        <input type="password" style1="width: 250px" class="form-control" id="zhPassword" ng-model="settings.targetParams['zh'].password" />
+                                                                    </td>
+                                                                </tr>
+
+
+                                                                <tr ng-show="settings.target==='zh' && newZohoToken">
+
+                                                                    <td></td>
+                                                                    <td>
+                                                                        <button type="button" class="btn btn-default btn-xs btn-block" ng-click="newZohoToken=false">Cancel</button>
+                                                                    </td>
+                                                                    <td>
+                                                                        <button type="button" class="btn btn-primary btn-xs btn-block" ng-click="getZohoToken()">Generate Token</button>
+                                                                    </td>
+                                                                </tr>
+
+                                                                <!--<td colspan="3">
+
+
+                                                                    <div class="form-group row">
+                                                                        <label class="control-label col-xs-offset-1 col-xs-4" for="zhToken">Authentication Token</label>
+                                                                        <div class="col-xs-7">
+                                                                            <input type="text" style1="width: 250px" class="form-control" id="zhToken" ng-model="settings.targetParams['zh'].token" />
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group row" ng-hide="newZohoToken">
+                                                                        <div class="col-xs-12">
+                                                                            <button type="button" class="btn btn-primary btn-xs btn-block" ng-click="newZohoToken=true">Generate New Authentication Token</button>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group row" ng-show="newZohoToken">
+                                                                        <label class="control-label col-xs-offset-1 col-xs-4" for="zhUsername">Username</label>
+                                                                        <div class="col-xs-7">
+                                                                            <input type="text" style1="width: 250px" class="form-control" id="zhUsername" ng-model="settings.targetParams['zh'].username" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row" ng-show="newZohoToken">
+                                                                        <label class="control-label col-xs-offset-1 col-xs-4" for="zhPassword">Application Specific Password</label>
+                                                                        <div class="col-xs-7">
+                                                                            <input type="password" style1="width: 250px" class="form-control" id="zhPassword" ng-model="settings.targetParams['zh'].password" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row" ng-show="newZohoToken">
+                                                                        <div class="col-xs-4 col-xs-offset-1">
+                                                                            <button type="button" class="btn btn-default btn-xs btn-block" ng-click="newZohoToken=false">Cancel</button>
+                                                                        </div>
+                                                                        <div class="col-xs-7">
+                                                                            <button type="button" class="btn btn-primary btn-xs btn-block" ng-click="getZohoToken()">Generate Token</button>
+                                                                        </div>
+                                                                    </div>-->
+                                                                <!--<div class="form-group row">
+                                                                    <div class="col-xs-11 col-xs-offset-1">
+                                                                        <span>Using Two-factor Authentication? <a href="https://www.zoho.com/crm/help/api/using-authentication-token.html" target="_blank">Read how to get an application-specific password.</a></span>
+                                                                    </div>
+                                                                </div>-->
+                                                                <!--<table style="margin-left: 4em; width: 100%">
+                                                                    <tr>
+                                                                        <td>
+                                                                            <label class="control-label col-xs-3" for="zhToken">Username</label>
+                                                                        </td>
+                                                                        <td colspan="2">
+                                                                            <input type="text" style="width: 250px" class="form-control" id="zhUsername" ng-disabled="settings.managed" ng-model="settings.targetParams['zh'].username" />
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <label class="control-label col-xs-3" for="zhPassword">App-Specific Password</label>
+                                                                        </td>
+                                                                        <td colspan="2">
+                                                                            <input type="password" style="width: 250px" class="form-control" id="zhPassword" ng-disabled="settings.managed" ng-model="settings.targetParams['zh'].password" />
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr ng-class="{'has-error':!settings.targetParams['zh'].token}">
+                                                                        <td style="width: 25%">
+                                                                            <label class="control-label col-xs-3" for="zhToken">Authentication Token</label>
+                                                                        </td>
+                                                                        <td style="width: 50%">
+                                                                            <input type="text" style="width: 250px" class="form-control" id="zhToken" ng-disabled="settings.managed" ng-model="settings.targetParams['zh'].token" />
+                                                                        </td>
+                                                                        <td style="width: 25%">
+                                                                            <button type="button" class="btn btn-default btn-xs" ng-disabled="settings.managed" ng-click="getZohoToken()">Get Token</button>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <label class="control-label col-xs-3">Note</label>
+                                                                        </td>
+                                                                        <td>
+                                                                            <span>Using Two-factor Authentication? <a href="https://zohosso.wiki.zoho.com/TFA.html#qwnkyuyvsvon" target="_blank">Read how to get an application-specific password.</a></span>
+                                                                        </td>
+                                                                        <td></td>
+                                                                    </tr>
+                                                                </table>-->
+                                                                <!--<td>
+
+                                                                </tr>-->
+
+                                                                <tr ng-show="showMap">
+                                                                    <td colspan="2">{{getExportServiceName()}} Targets:</td>
+                                                                    <td><button type="button" class="btn btn-danger btn-xs btn-block" ng-disabled="settings.managed" ng-click="resetMaps()">Reset</button></td>
+                                                                </tr>
+                                                                <tr ng-show="showMap" ng-repeat="entity in settings.targetMap[settings.target].entities">
+                                                                    <td> <span title="{{entity.name}}">{{entity.label}}</span></td>
+                                                                    <td>
+                                                                        <button type="button" class="btn btn-primary btn-xs btn-block" ng-disabled="settings.managed" ng-click="editMap(entity)">Edit</button>
+                                                                    </td>
+                                                                    <td>
+                                                                        <button type="button" class="btn btn-danger btn-xs btn-block" ng-disabled="settings.managed" ng-click="removeMap(entity)">Remove</button>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr ng-show="showMap">
+                                                                    <td colspan="2">
+                                                                        <select ng-show="showAvailable" ng-model="selectedEntity" ng-options="entity.label for entity in allEntities" style="max-width: 200px">
+                                                                            <option value="">-- choose --</option>
+                                                                        </select>
+                                                                    </td>
+                                                                    <td>
+                                                                        <button type="button" class="btn btn-default btn-xs btn-block" ng-show="!showAvailable" ng-disabled="settings.managed" ng-click="loadEntities()">Add New Target</button>
+                                                                        <button type="button" class="btn btn-default btn-xs btn-block" ng-show="showAvailable" ng-disabled="settings.managed" ng-click="addEntity(selectedEntity)">Add New Target</button>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+
+                                                        <!--<div ng-show="showMap">
+
+                                                            <h5>{{getExportServiceName()}} Targets <button type="button" class="btn btn-default btn-xs" ng-disabled="settings.managed" ng-click="resetMaps()">Reset</button></h5>
+
+                                                            <table class="table table-hover table-condensed">
+                                                                <tbody>
+
+                                                                    <tr ng-repeat="entity in settings.targetMap[settings.target].entities">
+                                                                        <td>
+                                                                            <span title="{{entity.name}}">{{entity.label}}</span>
+                                                                        </td>
+                                                                        <td>
+                                                                            <button type="button" class="btn btn-default btn-xs" ng-disabled="settings.managed" ng-click="editMap(entity)">Edit</button>
+                                                                            <button type="button" class="btn btn-danger btn-xs" ng-disabled="settings.managed" ng-click="removeMap(entity)">Remove</button>
+                                                                        </td>
+                                                                    </tr>
+
+
+                                                                    <tr>
+                                                                        <td>
+                                                                            <div ng-show="!showAvailable">
+                                                                                <button type="button" class="btn btn-default btn-xs" ng-show="!showAvailable" ng-disabled="settings.managed" ng-click="loadEntities()">See More</button>
+                                                                            </div>
+                                                                            <div ng-show="showAvailable">
+                                                                                <select ng-model="selectedEntity" ng-options="entity.label for entity in allEntities" style="max-width: 200px">
+                                                                                    <option value="">-- choose --</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <button type="button" class="btn btn-default btn-xs" ng-show="showAvailable" ng-disabled="settings.managed" ng-click="addEntity(selectedEntity)">Add Target</button>
+                                                                        </td>
+                                                                    </tr>
+
+
+                                                                </tbody>
+                                                            </table>
+
+                                                        </div>-->
+
+
+                                                    </div>
+
+                                                    <!-- Data Shield -->
+                                                    <div ng-show="sett_tab==3">
+
+                                                        <div class="panel panel-info">
+                                                            <div class="panel-heading">Active Rules</div>
+                                                            <div class="panel-body" style="max-height: 250px; overflow-x: hidden; overflow-y: auto" ng-init="rules = formatScheme(settings.shield.scheme)">
+
+                                                                <div ng-repeat="rule in formatScheme(settings.shield.scheme)">
+                                                                    {{rule}}
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="panel-footer">
+
+                                                                <a class="btn btn-default" ng-disabled="settings.managed" ng-click="openNormalizationSettings()" title="Manage Data Shield rules">
+                                                                    <i class="glyphicon glyphicon-new-window"></i>
+                                                                    Modify
+                                                                </a>
+                                                                <a class="btn btn-default" href="" ng-click="checkNormalizationStatus()" title="Update local copy of Data Shield rules">
+                                                                    <i class="glyphicon glyphicon-refresh"></i>
+                                                                    Refresh
+                                                                </a>
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <!-- Notifications -->
+                                                    <div ng-show="sett_tab==4">
+
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" ng-disabled="settings.managed" ng-model="settings.notifications">
+                                                                Notifications Enabled
+                                                            </label>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="settRestrictedDomains" ng-disabled="!settings.notifications || settings.managed">Except for these domains <small>(Single domain per line)</small></label>
+                                                            <textarea id="settRestrictedDomains" class="form-control"
+                                                                      rows="10" ng-model="settings.notificationsRestrictedDomain" ng-disabled="!settings.notifications || settings.managed"></textarea>
+                                                        </div>
+
+                                                        <!--                <div class="spacer"></div>
+                                                        <button type="submit" class="btn btn-default">Save Settings</button>-->
+
+                                                    </div>
+
+                                                    <!--Patterns-->
+                                                    <div style="width: 100%; background-color: white; color: black; " ng-show="sett_tab==5" ng-init="patternView=1" ng-controller="pattern">
+
+                                                        <div ng-include="'components/views/pattern/edit.html'" />
+                                                        <div ng-include="'components/views/pattern/edit-source.html'" />
+
+                                                        <div class="panel panel-info">
+                                                            <div class="panel-heading" title="Total: {{patterns.length}} Loaded: {{patternDate}} ">Active Patterns</div>
+                                                            <div class="panel-body" style="max-height: 250px; overflow-x: hidden; overflow-y: auto" ng-init="rules = formatScheme(settings.shield.scheme)">
+
+                                                                <div ng-show="patternView===1">
+                                                                    <div ng-repeat="pattern in patterns track by $index">
+                                                                        <strong>{{pattern.Name || 'No name'}}</strong>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="content" style="padding: 0; height: 390px" ng-show="patternView===2">
+                                                                    <div class="scrollableContent">
+                                                                        <div class="paddingContent">
+
+
+
+
+
+                                                                            <table class="table table-hover" style="">
+                                                                                <colgroup>
+                                                                                    <col width="60" />
+                                                                                    <col width="381" />
+                                                                                    <col width="40" />
+                                                                                </colgroup>
+                                                                                <thead>
+
+                                                                                    <tr>
+                                                                                        <th class="text-center" data-toggle="tooltip" title="Matching importance">#</th>
+                                                                                        <th>Pattern</th>
+                                                                                        <th>Action</th>
+                                                                                    </tr>
+
+                                                                                </thead>
+                                                                                <tbody>
+
+                                                                                    <tr ng-repeat="pattern in patterns track by $index | filter:searchString">
+
+                                                                                        <td class="text-center">
+                                                                                            <span class="badge">{{$index + 1}}</span>
+                                                                                            <div class="nopadding pull-left">
+
+                                                                                                <div style="font-size:0.6em !important;">
+                                                                                                    <div class="glyphicon glyphicon-stop" style="color:white;" ng-show="$first" />
+                                                                                                    <div class="glyphicon glyphicon-chevron-up clickable" ng-click="moveDown($index)" data-toggle="tooltip" title="Move up in priority" ng-hide="$first" />
+                                                                                                    <div class="glyphicon glyphicon-chevron-down clickable" ng-click="moveUp($index)" data-toggle="tooltip" title="Move down in priority" ng-hide="$last" />
+                                                                                                    <div class="glyphicon glyphicon-stop" style="color:white;" ng-show="$last" />
+                                                                                                </div>
+
+                                                                                            </div>
+
+                                                                                        </td>
+
+                                                                                        <td>
+                                                                                            <div style="padding-right:5px; padding-left: 5px; width: 381px; overflow-x: hidden">
+                                                                                                <strong>{{pattern.Name || 'No name'}}</strong>
+                                                                                                <small class="pull-right">
+                                                                                                    <span class="label" ng-class="{'label-success' : pattern._state === 'New', 'label-primary': pattern._state === 'Updated'}" ng-show="pattern._state">{{pattern._state}}</span>
+                                                                                                    <span class="label label-default">{{pattern.SourceName || 'Manual Entry'}}</span>
+                                                                                                </small>
+                                                                                                <span class="help-block nowrap ellipsed" title="Domains:&#10;&#10;{{pattern.Domains.join('&#10;')}}">{{pattern.Domains.join(', ')}}</span>
+                                                                                                <p>{{pattern.Description || 'Description not provided'}}</p>
+                                                                                            </div>
+                                                                                        </td>
+
+                                                                                        <td>
+                                                                                            <button type="button" class="btn btn-xs btn-danger" data-toggle="tooltip" title="Delete pattern" ng-click="removePattern($index)"><span class="glyphicon glyphicon-remove" /></button>
+                                                                                            <button style="margin-top: 5px;" type="button" class="btn btn-xs btn-default" data-toggle="tooltip" title="Edit pattern" ng-click="edit($index)"><span class="glyphicon glyphicon-pencil" /></button>
+                                                                                        </td>
+
+                                                                                    </tr>
+
+                                                                                    <tr>
+                                                                                        <td colspan="3">
+
+                                                                                            <div class="col-xs-12 text-center">
+                                                                                                <h3>Sources</h3>
+                                                                                            </div>
+                                                                                            <div class="col-xs-12 text-center">
+                                                                                                <a href="" ng-click="createSource()" class="btn btn-primary btn-xs">Add new source</a>
+                                                                                                <a href="" ng-click="loadFactorySources()" class="btn btn-default btn-xs">Load default sources</a>
+                                                                                            </div>
+
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <th class="text-center" data-toggle="tooltip" title="Importance">#</th>
+                                                                                        <th>Name | Url</th>
+                                                                                        <th>Action</th>
+                                                                                    </tr>
+                                                                                    <tr ng-repeat="source in sources">
+                                                                                        <td class="text-center">
+                                                                                            <span class="badge">{{$index + 1}}</span>
+                                                                                            <div class="nopadding pull-left">
+                                                                                                <div style="font-size:0.6em !important;">
+                                                                                                    <div class="glyphicon glyphicon-stop" style="color:white;" ng-show="$first" />
+                                                                                                    <div class="glyphicon glyphicon-chevron-up clickable" ng-click="moveSourceDown($index)" data-toggle="tooltip" title="Move up in priority" ng-disabled="$first" />
+                                                                                                    <div class="glyphicon glyphicon-chevron-down clickable" ng-click="moveSourceUp($index)" data-toggle="tooltip" title="Move down in priority" ng-disabled="$last" />
+                                                                                                    <div class="glyphicon glyphicon-stop" style="color:white;" ng-show="$last" />
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <div style="width: 381px; white-space: normal;">
+                                                                                                <strong>{{source.Name}}</strong>
+                                                                                                <span class="help-block nowrap ellipsed" title="Source URL:&#10;&#10;{{source.Url}}">
+                                                                                                    {{source.Url}}
+                                                                                                </span>
+                                                                                            </div>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <button type="button" class="btn btn-xs btn-default" data-toggle="tooltip" title="Check source" ng-click="openLink(source.Url)"><span class="glyphicon glyphicon-link" /></button>
+                                                                                            <br />
+                                                                                            <button type="button" class="btn btn-xs btn-default" data-toggle="tooltip" title="Edit source" ng-click="editSource($index)"><span class="glyphicon glyphicon-pencil" /></button>
+                                                                                            <br />
+                                                                                            <button type="button" class="btn btn-xs btn-danger" data-toggle="tooltip" title="Delete source" ng-click="removeSource($index)"><span class="glyphicon glyphicon-remove" /></button>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    <!--<tr>
+                                                                                        <td colspan="3" style="padding-right:0px; padding-left: 0px;">
+
+                                                                                            <table class="table table-hover" style="width: 521px">
+                                                                                                <colgroup>
+                                                                                                    <col width="60" />
+                                                                                                    <col width="401" />
+                                                                                                    <col width="40" />
+                                                                                                </colgroup>
+                                                                                                <thead>
+                                                                                                    <tr>
+                                                                                                        <th class="text-center" data-toggle="tooltip" title="Importance">#</th>
+                                                                                                        <th>Name | Url</th>
+                                                                                                        <th>Action</th>
+                                                                                                    </tr>
+                                                                                                </thead>
+                                                                                                <tbody>
+                                                                                                    <tr ng-repeat="source in sources">
+                                                                                                        <td class="text-center">
+                                                                                                            {{$index + 1}}
+                                                                                                            <div class="col-xs-1 nopadding pull-left">
+                                                                                                                <div style="font-size:0.5em !important;">
+                                                                                                                    <div class="glyphicon glyphicon-stop" style="color:white;" ng-show="$first" />
+                                                                                                                    <div class="glyphicon glyphicon-chevron-up clickable" ng-click="moveSourceDown($index)" data-toggle="tooltip" title="Move up in priority" ng-hide="$first" />
+                                                                                                                    <div class="glyphicon glyphicon-chevron-down clickable" ng-click="moveSourceUp($index)" data-toggle="tooltip" title="Move down in priority" ng-hide="$last" />
+                                                                                                                    <div class="glyphicon glyphicon-stop" style="color:white;" ng-show="$last" />
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </td>
+                                                                                                        <td>
+                                                                                                            <div style="width: 349px; white-space: normal;">
+                                                                                                                <strong>{{source.Name}}</strong>
+                                                                                                                <span class="help-block nowrap ellipsed" title="Source URL:&#10;&#10;{{source.Url}}">
+                                                                                                                    {{source.Url}}
+                                                                                                                </span>
+                                                                                                            </div>
+                                                                                                        </td>
+                                                                                                        <td>
+                                                                                                            <button type="button" class="btn btn-xs btn-default" data-toggle="tooltip" title="Check source" ng-click="openLink(source.Url)"><span class="glyphicon glyphicon-link" /></button>
+                                                                                                            <br />
+                                                                                                            <button type="button" class="btn btn-xs btn-default" data-toggle="tooltip" title="Edit source" ng-click="editSource($index)"><span class="glyphicon glyphicon-pencil" /></button>
+                                                                                                            <br />
+                                                                                                            <button type="button" class="btn btn-xs btn-danger" data-toggle="tooltip" title="Delete source" ng-click="removeSource($index)"><span class="glyphicon glyphicon-remove" /></button>
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                </tbody>
+                                                                                            </table>
+
+                                                                                        </td>
+                                                                                    </tr>-->
+                                                                                </tbody>
+                                                                            </table>
+
+
+
+
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+
+
+                                                            </div>
+                                                            <div class="panel-footer">
+                                                                <a class="btn btn-default" href="" ng-show="patternView==2" ng-click="patternView=1" title="Exit advanced mode">
+                                                                    <i class="glyphicon glyphicon-list"></i>
+                                                                    Back to List
+                                                                </a>
+                                                                <a class="btn btn-default" ng-disabled="settings.managed" ng-show="patternView==1" ng-click="patternView=2" title="Manage Patterns">
+                                                                    <i class="glyphicon glyphicon-edit"></i>
+                                                                    Modify
+                                                                </a>
+                                                                <a href="" ng-show="patternView==2" ng-click="create()" class="btn btn-primary" title="Add a new pattern">
+                                                                    <i class="glyphicon glyphicon-plus" /> Add new
+                                                                </a>
+                                                                <a class="btn btn-default" href="" ng-click="loadPatterns()" title="Reload patterns">
+                                                                    <i class="glyphicon glyphicon-refresh"></i>
+                                                                    Refresh
+                                                                </a>
+                                                                <span class="label label-default text-muted pull-right" style="margin-top: 10px">Last updated: {{patterns_days}}</span>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                                <!-- Save / Cancel buttons-->
+                                                <div style="margin-bottom: 1em" class="text-center">
+                                                    <div class="spacer"></div>
+                                                    <button type="submit" class="btn btn-primary">Save Settings</button>
+                                                    <button type="button" class="btn btn-default" ng-click="back()">Cancel</button>
+                                                </div>
+
+
+                                            </form>
+
+                                        </loader>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,75 @@
+<div class="container" ng-show="contacts.length > 0 && pageOfFilteredContacts.length === 0" style="padding-left: 0px; padding-right: 8px ">
+
+    <div class="text-center" style="height: 400px; width: 100%; display: table">
+        <div style="vertical-align:middle; display: table-cell;">
+            <p class="text-muted">Your Contact list is empty.</p>
+            <!--<p class="text-muted">Learn how to <a href="" ng-click="showTips()">use Capture.</a></p>
+            <p class="text-muted">Get some practice on <a id="capture-sample" href="" ng-click="openLink('https://www.ringlead.com/capture-sample/', true)">Capture Sample Page.</a></p>-->
+        </div>
+
+    </div>
+
+</div>
+
+<div class="container" ng-show="contacts.length === 0" style="padding-left: 0px; padding-right: 8px ">
+
+    <div class="text-center" style="height: 400px; width: 100%; display: table">
+
+        <div style="vertical-align:middle; display: table-cell;">
+            <h1>Are you new to capture?</h1>
+            <p style="margin-top: 4em">
+                <h2>Open one of the pages:</h2>
+
+                <a id="capture-sample" href="" ng-click="openLink('https://www.google.com/search?num=100&q=site%3Awww.linkedin.com%2Fin+RingLead', true)">Google results</a>
+                |
+                <a id="capture-sample" href="" ng-click="openLink('https://www.linkedin.com/in/shaialfandary', true)">LinkedIn profile</a>
+                |
+                <a id="capture-sample" href="" ng-click="openLink('https://www.salesforce.com/company/leadership/', true)">Company Team page</a>
+
+
+            </p>
+            <p style="margin-top: 2em">
+                <h2>Click Capture Page button. </h2>
+            </p>
+            <p style="margin-top: 2em">
+                <h2>
+                    Then Research <!--<i class="fa fa-binoculars"></i>-->
+                    <!--<a href="" class="btn btn-xs btn-primary" title="This button will Research contact">
+                        <i class="fa fa-binoculars"></i>
+                    </a>-->
+                    and Export. <!--<i class="fa fa-upload"></i>-->
+                    <!--<a href="" class="btn btn-xs btn-primary" title="This button will Export contact">
+                        <i class="fa fa-upload"></i>
+                    </a>-->
+                </h2>
+            </p>
+
+
+            <p style="margin-top: 4em">
+                <h3>
+                    <a id="capture-sample" href="" ng-click="openLink('https://www.ringlead.com/faq/?q=How%20do%20I%20start%20Using%20Capture?', true)">Learn more</a>
+                </h3>
+            </p>
+
+            <!--<p class="text-muted">Your Contact list is empty.</p>
+            <p class="text-muted">Learn how to <a href="" ng-click="showTips()">use Capture.</a></p>
+            <p class="text-muted">Get some practice on <a id="capture-sample" href="" ng-click="openLink('https://www.ringlead.com/capture-sample/', true)">Capture Sample Page.</a></p>-->
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="container" ng-repeat="contact in pageOfFilteredContacts track by contact.id" style="padding-left: 0px; padding-right: 8px ">
+    <contact-card></contact-card>
+</div>
+
+
+
+<!--<p class="text-muted">Or, watch<br /><a href="" ng-click="openLink('https://vimeo.com/album/3652207', true)" target="_blank">Tutorials</a> | <a href="" ng-click="openLink('https://vimeo.com/album/3659413', true)" target="_blank">Best Practices</a> | <a href="" ng-click="openLink('https://vimeo.com/album/3654787', true)" target="_blank">Troubleshooting</a></p>-->
+<!--<div class="tooltipstered" title="This is my div's tooltip message!">
+    This div has a tooltip when you hover over it!
+</div>-->
+<!--<contact-card ng-if="isLocal"></contact-card>-->
+<!--<div ng-include="'components/partials/contacts/card2.html'"></div>-->

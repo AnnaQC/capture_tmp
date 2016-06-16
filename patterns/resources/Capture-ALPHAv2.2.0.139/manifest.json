@@ -1,0 +1,88 @@
+{
+"update_url": "https://clients2.google.com/service/update2/crx",
+
+  "manifest_version": 2,
+  "name": "Capture ALPHA",
+  "description": "Capture leads anywhere - on a page, on company website, in search results - and import easily into CRM systems such as Salesforce",
+  "icons": {
+    "16": "images/logo/blue-icon-16.png",
+    "48": "images/logo/blue-icon-48.png",
+    "128": "images/logo/blue-icon-128.png"
+  },
+  "background": {
+    "page": "bg.html"
+  },
+  "browser_action": {
+    "default_title": "Capture ALPHA",
+    "default_icon": {
+      "19": "images/logo/blue-icon-19.png",
+      "38": "images/logo/blue-icon-38.png"
+    },
+    "default_popup": "main.html"
+  },
+  "author": "Broadlook Technologies",
+  "permissions": [
+    "chrome://favicon/",
+    "http://*/*",
+    "https://*/*",
+    "identity",
+    "storage",
+    "tabs",
+    "unlimitedStorage",
+    "cookies",
+    "downloads"
+  ],
+  "web_accessible_resources": [
+    "images/*.png",
+    "css/button.css"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*",
+        "file://*/*"
+      ],
+      "js": [
+        "js/vendor0.js",
+        "background/selection.js"
+      ],
+      "css": [
+        "css/button.css"
+      ],
+      "run_at": "document_start",
+      "all_frames": false
+    },
+    {
+      "matches": [
+        "https://*.salesforce.com/*"
+      ],
+      "js": [
+        "background/selection2.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": false
+    },
+    {
+      "matches": [
+        "https://mail.google.com/*"
+      ],
+      "js": [
+        "background/gmail.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": false
+    }
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval' https://ssl.google-analytics.com; object-src 'self'",
+  "oauth2": {
+    "scopes": [
+      "profile",
+      "email",
+      "openid"
+    ],
+    "client_id": "787778210179-dplh2nots24ik3opfiekl6doe03i3aco.apps.googleusercontent.com"
+  },
+  "short_name": "Capture",
+  "version": "2.2.0.139"
+}

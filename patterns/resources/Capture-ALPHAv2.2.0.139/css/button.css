@@ -1,0 +1,255 @@
+/* Capture Contact Button */
+.Capture_Injected_Button_Logo {
+  position: relative;
+  display: inline-block;
+  opacity: 0.5;
+  /*background-color: #1ab394;*/
+  background-color: #0c7cba;
+  color: #FFFFFF;
+  /*background: white;
+    border: 1px solid #7CAED2;*/
+  /*background-size: 100% auto;*/
+  border-color: #1ab394;
+  border-image-source: initial;
+  border-image-slice: ;
+  border-image-outset: ;
+  border-image-repeat: ;
+  border-radius: 5px;
+  /*box-shadow: inset -2px -2px 7px #7CAED2;*/
+  width: 14px;
+  height: 14px !important;
+  text-align: center;
+  padding: 3px 3px 3px 5px;
+  cursor: pointer;
+}
+.Capture_Injected_Button_Logo IMG {
+  height: 100%;
+  content: url('chrome-extension://__MSG_@@extension_id__/images/logo/fullwhite-logo-70.png');
+  /*-webkit-clip-path: circle(12px at left);*/
+  -webkit-clip-path: polygon(0% 0%, 13px 0%, 13px 100%, 0% 100%);
+  /*content: url('chrome-extension://__MSG_@@extension_id__/images/logo/black-logo_small.png');*/
+  vertical-align: top;
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+}
+.Capture_Injected_Button_Logo.Visited {
+  box-shadow: inset 0 0 10px 3px rgba(0, 0, 0, 0.2);
+  opacity: 1.0;
+}
+.Capture_Injected_Button_Logo:hover {
+  /*background-color: #18a689;*/
+  background-color: #0c7cba;
+  border-color: #18a689;
+  color: #FFFFFF;
+  opacity: 1.0;
+  /*background: #428bca;
+        border-color: white;*/
+  box-shadow: initial;
+  width: 54px;
+  transition: width 0.4s;
+}
+.Capture_Injected_Button_Logo:hover IMG {
+  -webkit-clip-path: none;
+}
+.Capture_Injected_Button_Logo:active {
+  background-color: green;
+}
+.Capture_Injected_Button_Icon {
+  border: solid #7CAED2 1px;
+  -webkit-border-radius: 5px;
+  display: inline-block;
+  position: relative;
+  box-shadow: inset -2px -2px 7px #7caed2;
+  text-align: center;
+  padding: 3px 3px 3px 3px;
+}
+.Capture_Injected_Button_Icon IMG {
+  height: 100%;
+  content: url('chrome-extension://__MSG_@@extension_id__/images/logo/blue-icon_small.png');
+  vertical-align: top;
+}
+.Capture_Injected_Button_Icon:hover {
+  border-color: #B22323;
+  box-shadow: inset 2px 2px 7px #7CAED2;
+}
+.Capture_Injected_Button_Icon:active {
+  background-color: yellow;
+}
+/* Capture Group Button */
+.Capture_Injected_GroupButton_Logo {
+  border: solid #7CAED2 1px;
+  -webkit-border-radius: 5px;
+  display: inline-block;
+  position: relative;
+  box-shadow: inset -2px -2px 7px #7caed2;
+  text-align: center;
+  padding: 3px 3px 3px 3px;
+}
+.Capture_Injected_GroupButton_Logo IMG {
+  height: 100%;
+  content: url('chrome-extension://__MSG_@@extension_id__/images/color-logo.png');
+  vertical-align: top;
+}
+.Capture_Injected_GroupButton_Logo.Visited {
+  background-color: #333 !important;
+}
+.Capture_Injected_GroupButton_Logo:hover {
+  border-color: #B22323;
+  box-shadow: inset 2px 2px 7px #7CAED2;
+}
+.Capture_Injected_GroupButton_Logo:active {
+  background-color: yellow;
+}
+.Capture_Injected_GroupButton_Icon {
+  border: solid #7CAED2 1px;
+  -webkit-border-radius: 5px;
+  display: inline-block;
+  position: relative;
+  box-shadow: inset -2px -2px 7px #7caed2;
+  text-align: center;
+  padding: 3px 3px 3px 3px;
+}
+.Capture_Injected_GroupButton_Icon IMG {
+  height: 100%;
+  content: url('chrome-extension://__MSG_@@extension_id__/images/logo/blue-icon_small.png');
+  vertical-align: top;
+}
+.Capture_Injected_GroupButton_Icon:hover {
+  border-color: #B22323;
+  box-shadow: inset 2px 2px 7px #7CAED2;
+}
+.Capture_Injected_GroupButton_Icon:active {
+  background-color: yellow;
+}
+#broadlookCaptureNotificationBar {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  position: absolute;
+  top: -100px;
+  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  text-align: left;
+  z-index: 999999;
+  vertical-align: top;
+  line-height: 20px;
+}
+#broadlookCaptureNotificationBar .CaptureNotificationBarInner {
+  vertical-align: middle;
+  width: 28px;
+  /*23px;*/
+  padding-top: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-bottom: 4px;
+  float: left;
+  background-color: transparent;
+}
+#broadlookCaptureNotificationBar .CaptureNotificationBarInner IMG {
+  vertical-align: middle;
+  width: 24px;
+  /*19px*/
+  padding-top: 0px;
+  padding-left: 0px;
+  float: left;
+}
+#broadlookCaptureNotificationBar .GroupHeader {
+  font-weight: bold;
+}
+#broadlookCaptureNotificationBar .GroupStart {
+  color: rgba(255, 255, 255, 0.6);
+  display: none;
+}
+#broadlookCaptureNotificationBar .Capture_Notification_Dups {
+  text-align: left;
+}
+#broadlookCaptureNotificationBar .Capture_Notification_Dups TD,
+TH {
+  padding-right: 2px !important;
+  vertical-align: top;
+}
+#broadlookCaptureNotificationBar .Capture_Notification_Dups .FirstRow {
+  padding-top: 0.5em;
+}
+#broadlookCaptureNotificationBar .Capture_Notification_Dups .ContactCard {
+  box-sizing: border-box;
+  line-height: 20px;
+  padding-bottom: 15px;
+  padding-left: 0px;
+  padding-right: 15px;
+  padding-top: 15px;
+}
+#broadlookCaptureNotificationBar .Capture_Notification_Dups .ContactCard .ContactName {
+  font-weight: bold;
+}
+#broadlookCaptureNotificationBar .Capture_Notification_Dups .ContactCard .ContactPhone {
+  color: white !important;
+}
+#broadlookCaptureNotificationBar .Capture_Notification_Dups .SecondCol {
+  padding-left: 2em;
+}
+#captureNotificationBarMoreLink,
+#captureNotificationBarLessLink,
+.Capture_Notification_Dups A {
+  color: white !important;
+  text-decoration: underline !important;
+}
+#broadlookCaptureTopBarPlaceholder {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  position: sticky;
+  top: 0px;
+  left: 0px;
+  height: 50px;
+  width: 100%;
+  min-width: 600px;
+  z-index: 9999998;
+}
+#broadlookCaptureTopBar {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  background-color: #000000;
+  color: white !important;
+  position: fixed;
+  /*position: relative;*/
+  top: 0px;
+  left: 0px;
+  height: 58px;
+  width: 100%;
+  min-width: 600px;
+  z-index: 9999999;
+  padding: 5px;
+  line-height: 20px;
+  text-align: left;
+  vertical-align: top;
+}
+#broadlookCaptureTopBar td,
+#broadlookCaptureTopBar A {
+  color: white !important;
+}
+#broadlookCaptureTopBar .main td {
+  vertical-align: top;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+}
+#broadlookCaptureTopBar .main .col td {
+  border-style: none;
+}
+#broadlookCaptureTopBar .page-area {
+  display: inline-block;
+}
+#broadlookCaptureTopBar .page-area .page-btn {
+  display: inline-block;
+  margin-right: 2px;
+  cursor: pointer;
+  min-width: 16px;
+  text-align: center;
+}
+#broadlookCaptureTopBar .page-area .page-btn:hover {
+  background-color: white;
+  color: black;
+}

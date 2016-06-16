@@ -20,7 +20,7 @@ class LinkidinProfilePage(BasePage):
     twitter = (By.XPATH, "//*[@id='twitter-view']//li//a")  # twitter link is displayed in contact info tab
     linkedin = (By.XPATH, "//*[@class='public-profile']//a")  # linkidin profile link
     jobtitle = (By.XPATH,
-                ".//*[div[starts-with(@id, 'experience') and contains(@id, '-view')]][1]//h4")  # .//*[@class='position'][1]//h4[@class='item-title']")# for unlogined user
+                ".//*[div[starts-with(@id, 'experience') and contains(@id, '-view')]][1]//h4")  # .//*[@class='position'][1]//h4[@class='item-title']")# for user that is not logged in
     company = (By.XPATH,
                ".//*[div[starts-with(@id, 'experience') and contains(@id, '-view')]][1]//h5[last()]")  # (By.XPATH, ".//*[@class='position'][1]//h5[@class='item-subtitle']")# for unlogined user
     bio = (By.XPATH, ".//div[@class = 'summary']/p")
@@ -44,9 +44,9 @@ class LinkidinProfilePage(BasePage):
             self.locators = dict(bio=self.bio, full=self.full, company=self.company, linkedin=self.linkedin,
                                  twitter=self.twitter, city=self.city, jobtitle=self.jobtitle,
                                  email=self.email)#, experience=self.experience)
-            print "Simplified locators dictionary = " + str(self.locators)
+            # print "Simplified locators dictionary = " + str(self.locators)
 
-    @allure.step('Open page to parse :' + url)
+    @allure.step('Open page to parse :{1}' )
     def open(self, external_page_url=None):
         """
         Opens page url specified from config file if external_page_url is None else opens url that is specified as external_page_url
@@ -84,7 +84,10 @@ class LinkidinProfilePage(BasePage):
 
     def prepare_data_to_compare(self, parsed_data):
         linkidin = parsed_data['linkedin']
-        part_to_remove= linkidin.find("www.") + 4
+        if linkidin.find("www.") is not -1:
+            part_to_remove= linkidin.find("www.") + 4
+        else :
+            part_to_remove = linkidin.find("//") + 2
         parsed_data['linkedin'] = linkidin[part_to_remove:]
         print parsed_data['linkedin']
         return parsed_data
@@ -96,20 +99,29 @@ class LinkidinProfilePage(BasePage):
         return first, last
 
 
-class LinkidinLoginPage(BasePage):
+class LinkidinAuthPage(BasePage):
     config = ReadConfigs()
     config.read_linkedin_opt()
+    #to sign in
     sign_in_link = "https://www.linkedin.com/uas/login"
     default_user = {'login': config.login, 'pwd': config.pwd}
     login_form = {'user_field': (By.ID, "session_key-login"),
                   'pwd_field': (By.ID, "session_password-login"),
                   'submit_btn': (By.ID, "btn-primary")}
     scrollbar = (By.ID,
-                 "responsive-nav-scrollable")  # bar that is displayed only for loged in user, we use it presence to now if login was successfull
+                 "responsive-nav-scrollable")  # bar that is displayed only for logged in user, we use it presence to now if login was successfull
+    #to sign out
+    acc_settings = (By.XPATH, ".//*[contains(@class, 'account-toggle')]")
+    sign_out_ref = (By.XPATH, ".//*[@class='account-submenu-split-link']")
+
 
     @allure.step('Login by user account: {3}')#
     def login(self, sign_in_link, login_form, user_data):
         BasePage.login(self, sign_in_link, login_form, user_data, self.scrollbar)
+        return self
+
+    def logout(self):
+        self.move_to_element_and_click(self.acc_settings, self.sign_out_ref)
         return self
 
 

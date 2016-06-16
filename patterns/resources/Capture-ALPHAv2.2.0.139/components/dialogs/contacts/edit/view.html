@@ -1,0 +1,164 @@
+<!-- Edit Contact Modal -->
+<div class="modal fade" data-backdrop="static" id="edit-contact-modal" tabindex="-1" role="dialog" aria-labelledby="capture-clipboard-modal-Label" aria-hidden="true" ng-init="modalSelector='#edit-contact-modal'" ng-controller="contacts.edit">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!--<h5 class="modal-title text-center">{{title}} as {{getMapName()}}</h5>-->
+                <h5 class="modal-title text-left">
+                    {{title}}
+                    <!--<div class="btn-group pull-right" role="group" aria-label="Edit As" ng-show="runtime.maps.length > 1">
+                        <button type="button" class="btn btn-{{runtime.activeMap===map.name?'primary':'default'}} btn-xs"
+                                ng-repeat="map in runtime.maps" ng-click="runtime.activeMap = map.name">
+                            {{map.label}}
+                        </button>
+                    </div>-->
+
+                    <div class="btn-group pull-right" ng-show="runtime.maps.length > 1">
+                        <button class="btn btn-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Display as {{getMapName()}}&nbsp;<span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="map in runtime.maps"><a href="" ng-click="runtime.activeMap = map.name">{{map.label}}</a></li>
+                        </ul>
+                    </div>
+
+                </h5>
+
+            </div>
+            <div class="modal-body" style="height:420px !important; overflow-y: scroll;">
+                <div ng-show="errorMessage" class="alert alert-danger text-center">{{errorMessage}}</div>
+                <table class="table-condensed">
+                    <tbody>
+
+                        <!--<tr class="form-group">
+                            <td><label class="control-label" title="{{runtime.activeMap}}">Edit As:</label></td>
+                            <td>
+                                <div class="col-xs-12 nopadding">-->
+                        <!--<select class="form-control input-sm" ng-model="runtime.activeMap" title="">
+                            <option ng-repeat="map in runtime.maps" value="{{map.name}}">{{map.label}}</option>
+                        </select>-->
+                        <!--<div class="btn-group" role="group" aria-label="...">
+                                        <button type="button" class="btn btn-default btn-xs"
+                                                ng-repeat="map in runtime.maps" ng-click="runtime.activeMap = map.name">
+                                            {{map.label}}
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>-->
+
+                        <tr class="form-group {{isRequired('last')}}" ng-show="isVisible('last')">
+                            <td><label class="control-label">Name:</label></td>
+                            <td>
+                                <div class="col-xs-4 nopadding"><input type="text" class="form-control input-sm" title="First Name" placeholder="{{getLabel('first', 'First Name')}}" name="first" ng-model="c.first"></div>
+                                <div class="col-xs-4 nopadding"><input type="text" class="form-control input-sm" title="Middle Name" placeholder="{{getLabel('middle', 'Middle Name')}}" ng-model="c.middle"></div>
+                                <div class="col-xs-4 nopadding"><input type="text" class="form-control input-sm" title="Last Name" placeholder="{{getLabel('last', 'Last Name')}}" name="last" ng-model="c.last"></div>
+                            </td>
+                        </tr>
+
+                        <tr class="form-group {{isRequired('jobtitle')}}"  ng-show="isVisible('jobtitle')">
+                            <td><label class="control-label">{{getLabel('jobtitle', 'Job Title')}}:</label></td>
+                            <td>
+                                <div class="col-xs-12 nopadding"><input type="text" class="form-control input-sm" title="Job Title" placeholder="{{getLabel('jobtitle', 'Job Title')}}" ng-model="c.jobtitle"></div>
+                            </td>
+                        </tr>
+
+                        <tr class="form-group {{isRequired('company')}}" ng-show="isVisible('company')">
+                            <td><label class="control-label">{{getLabel('company', 'Company')}}:</label></td>
+                            <td>
+                                <div class="col-xs-12 nopadding"><input type="text" class="form-control input-sm" title="Company" placeholder="{{getLabel('company', 'Company')}}" ng-model="c.company" required></div>
+                            </td>
+                        </tr>
+
+                        <tr class="form-group {{isRequired('website')}}" ng-show="isVisible('website')">
+                            <td><label class="control-label">{{getLabel('website', 'Website')}}:</label></td>
+                            <td>
+                                <div class="col-xs-11 nopadding"><input type="text" class="form-control input-sm" title="Website URL" placeholder="{{getLabel('website', 'Website URL')}}" ng-model="c.website"></div>
+                                <div class="col-xs-1 nopadding"><div class="btn btn-sm btn-default btn-block" ng-click="lookupWebsite(c)"><span class="fa fa-search"></span></div></div>
+                            </td>
+                        </tr>
+
+                        <tr class="form-group {{isRequired('email')}}"  ng-show="isVisible('email')">
+                            <td><label class="control-label">{{getLabel('email', 'Email')}}:</label></td>
+                            <td>
+                                <div class="col-xs-6 nopadding"><input type="text" class="form-control input-sm" title="Primary Email" placeholder="{{getLabel('email', 'Primary')}}" ng-model="c.email"></div>
+                                <div class="col-xs-6 nopadding"><input type="text" class="form-control input-sm" title="Secondary Email" placeholder="{{getLabel('email2', 'Secondary')}}" ng-model="c.email2"></div>
+                            </td>
+                        </tr>
+
+                        <tr class="form-group {{isRequired('phone')}}" ng-show="isVisible('phone')">
+                            <td><label class="control-label">{{getLabel('phone', 'Phone')}}:</label></td>
+                            <td>
+                                <div class="col-xs-6 nopadding"><input type="text" class="form-control input-sm" title="Primary Phone" placeholder="{{getLabel('phone', 'Primary')}}" ng-model="c.phone"></div>
+                                <div class="col-xs-6 nopadding"><input type="text" class="form-control input-sm" title="Secondary Phone" placeholder="{{getLabel('phone2', 'Secondary')}}" ng-model="c.phone2"></div>
+                            </td>
+                        </tr>
+
+                        <tr class="form-group {{isRequired('city')}}" ng-show="isVisible('city')">
+                            <td><label class="control-label">Address:</label></td>
+                            <td>
+                                <div class="col-xs-12 nopadding"><input type="text" class="form-control input-sm" title="Address Line 1" placeholder="{{getLabel('address1', 'Address Line 1')}}" ng-model="c.address1"></div><br />
+                                <div class="col-xs-12 nopadding"><input type="text" class="form-control input-sm" title="Address Line 1" placeholder="{{getLabel('address2', 'Address Line 2')}}" ng-model="c.address2"></div><br />
+                                <div class="col-xs-6 nopadding"><input type="text" class="form-control input-sm" title="City" placeholder="{{getLabel('city', 'City')}}" ng-model="c.city"></div>
+                                <div class="col-xs-2 nopadding"><input type="text" class="form-control input-sm" title="State" placeholder="{{getLabel('state', 'State')}}" ng-model="c.state"></div>
+                                <div class="col-xs-4 nopadding"><input type="text" class="form-control input-sm" title="Postal Code" placeholder="{{getLabel('zip', 'Zip')}}" ng-model="c.zip"></div><br />
+                                <div class="col-xs-12 nopadding"><input type="text" class="form-control input-sm" title="Country" placeholder="{{getLabel('country', 'Country')}}" ng-model="c.country"></div>
+                            </td>
+                        </tr>
+
+                        <tr class="form-group" ng-show="isVisible('linkedin') || isVisible('twitter') || isVisible('facebook')">
+                            <td><label class="control-label">Social:</label></td>
+                            <td>
+                                <table style="width: 100%">
+                                    <tbody>
+                                        <tr ng-repeat="venue in c.venues">
+                                            <td>
+                                                <div class="col-xs-2"><img ng-src="images/social/{{getSocialIcon(venue.website)}}.jpg" style="height: 24px" /></div>
+                                                <div class="col-xs-9 nopadding"><input type="text" class="form-control input-sm" title="Social URL" placeholder="URL" ng-model="venue.website"></div>
+                                                <div class="col-xs-1 nopadding"><div class="btn btn-sm btn-default btn-block" ng-click="removeVenue($index)"><span class="glyphicon glyphicon-remove" style="color:red;"></span></div></div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="col-xs-12 nopadding text-center"><a href="" ng-click="addVenue()"><small>&lt;Add Venue&gt;</small></a></div>
+                            </td>
+                        </tr>
+
+                        <tr class="form-group {{isRequired('employees')}}"  ng-show="isVisible('employees')">
+                            <td><label class="control-label">{{getLabel('employees', 'Employees')}}:</label></td>
+                            <td>
+                                <div class="col-xs-12 nopadding"><input type="text" class="form-control input-sm" title="Number of Employees" placeholder="{{getLabel('employees', 'Employees')}}" ng-model="c.employees"></div>
+                            </td>
+                        </tr>
+
+                        <tr class="form-group {{isRequired('revenue')}}" ng-show="isVisible('revenue')">
+                            <td><label class="control-label">{{getLabel('revenue', 'Revenue')}}:</label></td>
+                            <td>
+                                <div class="col-xs-12 nopadding"><input type="text" class="form-control input-sm" title="Revenue" placeholder="{{getLabel('revenue', 'Revenue')}}" ng-model="c.revenue"></div>
+                            </td>
+                        </tr>
+
+                        <tr class="form-group {{isRequired('industry')}}" ng-show="isVisible('industry')">
+                            <td><label class="control-label">{{getLabel('industry', 'Industry')}}:</label></td>
+                            <td>
+                                <div class="col-xs-12 nopadding"><input type="text" class="form-control input-sm" title="Industry" placeholder="{{getLabel('industry', 'Industry')}}" ng-model="c.industry"></div>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <div class="col-xs-6">
+                    <button type="button" class="btn btn-primary btn-block" ng-click="errorMessage=confirm()">Save</button>
+                </div>
+                <div class="col-xs-6">
+                    <button type="button" class="btn btn-default btn-block" data-dismiss="modal" ng-click="cancel()">Cancel</button>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Edit Contact Modal -->

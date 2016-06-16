@@ -1,0 +1,23 @@
+<!-- Dialog -->
+<div ng-controller="dialogs.confirm" ng-init="modalSelector='#dialog-confirm'">
+    <div class="modal fade" id="dialog-confirm" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-12 text-center"><p>{{message}}</p></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4 col-xs-offset-2">
+                            <div ng-click="confirm()" class="btn btn-primary btn-block">OK</div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div ng-click="cancel()" class="btn btn-default btn-block">Cancel</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Dialog -->

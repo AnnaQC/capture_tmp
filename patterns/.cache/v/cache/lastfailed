@@ -1,0 +1,4 @@
+{
+  "tests/test_linkedin_pattern.py::test_profile_ptrn_without_log_in[profile_page_lin_may.ini]": true, 
+  "tests/test_linkedin_pattern.py::test_profile_ptrn_without_log_in[profile_page_max_pavlov.ini]": true
+}

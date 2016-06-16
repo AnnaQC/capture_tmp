@@ -10,14 +10,18 @@ from allure.constants import AttachmentType
 from selenium.common.exceptions import WebDriverException
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.common.action_chains import ActionChains
 
 
-# noinspection PyRedundantParentheses
 class BasePage():
 
     def __init__(self, driver):
         self.driver = driver
-        print "Base"
+
+    def open(self, url):
+        print url
+        self.driver.get(url)
+
 
     def set_checkbox(self, locator):
         """
@@ -41,13 +45,36 @@ class BasePage():
         :param user_data: dictionary with login and password
 
         """
-        self.driver.get(sign_in_link)
-        self.type(login_form['user_field'], user_data['login'])
-        self.type(login_form['pwd_field'], user_data['pwd'])
-        self.driver.find_element(*login_form['submit_btn']).click()
         if element_to_wait is not None:
+            if not self.is_element_present(element_to_wait,1):
+                self.driver.get(sign_in_link)
+                self.type(login_form['user_field'], user_data['login'])
+                self.type(login_form['pwd_field'], user_data['pwd'])
+                self.driver.find_element(*login_form['submit_btn']).click()
+                self.is_element_present(element_to_wait,timeout)
+        else:
+            self.driver.get(sign_in_link)
+            self.type(login_form['user_field'], user_data['login'])
+            self.type(login_form['pwd_field'], user_data['pwd'])
+            self.driver.find_element(*login_form['submit_btn']).click()
+
+    def move_to_element_and_click(self, locator_to_move, locator_to_click):
+        actions = ActionChains(self.driver)
+        if self.is_element_present(locator_to_move, 2):
+            element_to_move = self.driver.find_element(*locator_to_move)
+            actions.move_to_element(element_to_move)
+
+            if self.is_element_present(locator_to_click, 1):
+                element_to_click = self.driver.find_element(*locator_to_click)
+                actions.click(element_to_click).perform()
+
+    def is_element_present(self, locator, timeout=3):
+        try:
             wait = WebDriverWait(self.driver, timeout)
-            wait.until(expected_conditions.presence_of_element_located(element_to_wait))
+            wait.until(expected_conditions.presence_of_element_located(locator))
+        except WebDriverException:
+            return False
+        return True
 
     def type(self, locator, text):
         field = self.driver.find_element(*locator)
