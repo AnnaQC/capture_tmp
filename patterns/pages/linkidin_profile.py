@@ -13,7 +13,7 @@ from  core.config_reader import ReadConfigs
 
 
 class LinkidinProfilePage(BasePage):
-    url =  ReadConfigs().read_linkedin_opt()
+    url =  ReadConfigs().read_options_for('linkedin')
     # Locators
     full = (By.XPATH, "//span[@class='full-name']")  # user name
     companyTitle = (By.XPATH, "//*[@id='headline']/p'")  # is used in expirience as 'CompanyTitle' value
@@ -97,32 +97,6 @@ class LinkidinProfilePage(BasePage):
     def separate_fullname(fullname):
         first, last = fullname.split(" ", 1)
         return first, last
-
-
-class LinkidinAuthPage(BasePage):
-    config = ReadConfigs()
-    config.read_linkedin_opt()
-    #to sign in
-    sign_in_link = "https://www.linkedin.com/uas/login"
-    default_user = {'login': config.login, 'pwd': config.pwd}
-    login_form = {'user_field': (By.ID, "session_key-login"),
-                  'pwd_field': (By.ID, "session_password-login"),
-                  'submit_btn': (By.ID, "btn-primary")}
-    scrollbar = (By.ID,
-                 "responsive-nav-scrollable")  # bar that is displayed only for logged in user, we use it presence to now if login was successfull
-    #to sign out
-    acc_settings = (By.XPATH, ".//*[contains(@class, 'account-toggle')]")
-    sign_out_ref = (By.XPATH, ".//*[@class='account-submenu-split-link']")
-
-
-    @allure.step('Login by user account: {3}')#
-    def login(self, sign_in_link, login_form, user_data):
-        BasePage.login(self, sign_in_link, login_form, user_data, self.scrollbar)
-        return self
-
-    def logout(self):
-        self.move_to_element_and_click(self.acc_settings, self.sign_out_ref)
-        return self
 
 
 # all possible keys list, that will used to get expected text by pattern from page( and text

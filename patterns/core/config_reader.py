@@ -1,33 +1,49 @@
 # -*- coding: utf-8 -*-
 import ConfigParser
 import allure
-
+from ConfigParser import NoOptionError, NoSectionError
 
 class ReadConfigs():
 
     path_to_config = '../config.ini'
 
-    def __init__(self, _path_to_config = None):
+    def __init__(self, _path_to_config=None):
         self.config = ConfigParser.ConfigParser()
         if _path_to_config is not None:
             self.path_to_config = _path_to_config
         self.config.read(self.path_to_config)
         self.get_opt_to_setup_chromedriver()
 
-    def read_linkedin_opt(self, test_page_config=None):
+    def read_options_for(self, section, test_page_config=None, config_mode='project'):
         """
-        reads properties from section linkedin to open test page and authorize
-        :param test_page_config: path to test page file with section 'profile'
+        reads properties from section [linkedin,twitter,etc] to open test page and authorize
+        with default config_mode='project'
+        :param
+        test_page_config: path to test page file with section 'profile' to test
         if it is specified we read url from the test page config file
-        if not we read the option test_page from ../config.ini and than read url from the
+        if not we read the option test_page from ../config.ini and than read url from the read filename
+        config_mode: 'project' or 'page' - level of config file where we get login and pwd options,
+                project - method reads login and pwd from ../config.ini file,
+                    if there is no section or option in file reads options from test_page_config file
+                page - method reads login and pwd from the test_page_config file,
+                    if there is no section or option in file, reads options from the ../config.ini
         :return: first linkedin profile URL
         """
-        section = 'linkedin'
         if test_page_config is None:
             test_pages = self.config.get(section, 'tested_page').split()
-            test_page_config = '..' + self.config.get('project', 'linkedin_test_data')\
+            test_page_config = '..' + self.config.get('project', section +'_test_data')\
                                + test_pages[0]
-        return self.read_basic_opt(test_page_config, 'profile', section)
+        if config_mode is 'project':
+            try:
+                return self.read_basic_opt(test_page_config, 'profile', section)
+            except (NoSectionError, NoOptionError):
+                return self.read_basic_opt(test_page_config, 'profile', 'profile')
+        else:
+            try:
+                return self.read_basic_opt(test_page_config, 'profile', 'profile')
+            except (NoSectionError, NoOptionError):
+                return self.read_basic_opt(test_page_config, 'profile', section)
+
 
     def read_basic_opt(self, test_page_config, section_from_page_config, default_section):
         """
@@ -55,6 +71,7 @@ class ReadConfigs():
         self.chromdriver_mac = self.config.get(section, 'chromedriver_mac')
         self.test_extention_dir = self.config.get(section, 'test_extention_dir')
         self.linkedin_test_data = self.config.get(section, 'linkedin_test_data')
+        self.twitter_test_data = self.config.get(section, 'twitter_test_data')
 
     #---------------------
 

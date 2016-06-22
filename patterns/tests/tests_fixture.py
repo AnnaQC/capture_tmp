@@ -31,7 +31,7 @@ def chromedriver(request):
 
     options = webdriver.ChromeOptions()
     options.add_argument("load-extension=" + path_to_extension_dir)
-    driver = webdriver.Chrome('/home/user/git/capture-chrome-extension-tests/patterns/resources/drivers/chromedriver')
+    driver = webdriver.Chrome(path_to_driver, chrome_options=options, desired_capabilities=capabilities)
     driver.maximize_window()
     request.addfinalizer(driver.quit)
     return driver

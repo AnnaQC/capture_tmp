@@ -5,6 +5,7 @@ Contains functions to handle parsed data
 import json
 import time
 from copy import deepcopy
+from selenium.common.exceptions import WebDriverException
 
 import allure
 
@@ -16,8 +17,7 @@ def get_actual_data_from_js_console(driver):
     :param driver:
     :return: actual_res: dictionary of captured data without attributes which names contain 'c' and '_'
     """
-
-    url = driver.current_url
+    driver.current_url
     wd_log = driver.get_log('browser')
     print "**"*10 + "Data from captured results by pattern" + "**"*10
     for entry in wd_log:
@@ -40,6 +40,8 @@ def get_actual_data_from_js_console(driver):
                 allure.attach(value[0], json.dumps(value[1]))
             print "***" * 20
             return actual_res
+    raise WebDriverException("Captured results were not found within the WEB DRIVER log (browser console) \n.\
+    Check workabillity of selection.js of extension and debug driver.get_log('browser').")
 
 
 def handle_value_to_print(value):

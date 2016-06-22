@@ -18,9 +18,11 @@ class BasePage():
     def __init__(self, driver):
         self.driver = driver
 
+    @allure.step('Open page to parse :{1}')
     def open(self, url):
         print url
         self.driver.get(url)
+        self.attach_screen_to_report(url)
 
 
     def set_checkbox(self, locator):
@@ -51,7 +53,7 @@ class BasePage():
                 self.type(login_form['user_field'], user_data['login'])
                 self.type(login_form['pwd_field'], user_data['pwd'])
                 self.driver.find_element(*login_form['submit_btn']).click()
-                self.is_element_present(element_to_wait,timeout)
+                self.is_element_present(element_to_wait, timeout)
         else:
             self.driver.get(sign_in_link)
             self.type(login_form['user_field'], user_data['login'])
@@ -87,6 +89,7 @@ class BasePage():
         wait.until(expected_conditions.presence_of_element_located(locator)).click()
         if element_to_wait is not None:
             wait.until(expected_conditions.presence_of_element_located(element_to_wait))
+
 
     def get_text_of_element(self, locator):
         """

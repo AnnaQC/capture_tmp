@@ -1,2 +1,5 @@
 *.pyc
 *~
+*.cache
+/patterns/reports/allure_info/*
+/patterns/reports/allure_report/*

@@ -8,10 +8,10 @@ from tests_fixture import chromedriver
 from core import comparator
 from core import pattern_handler
 from core import config_reader
-from pages import linkidin_profile
+from pages import linkidin_profile, authorization
 
 config = config_reader.ReadConfigs()
-
+print config
 @allure.feature('Linkedin patterns')
 @allure.story('Linkedin user profile pattern. User is logged in to linkedin')
 @pytest.mark.parametrize("test_page", config.get_tested_pages_for('linkedin'))
@@ -26,9 +26,9 @@ def test_profile_ptrn_for_logged_in_user(chromedriver, test_page):
     handler = pattern_handler
     test_page = '..' + config.linkedin_test_data + test_page
     linkidin = linkidin_profile.LinkidinProfilePage(chromedriver)
-    linkidin_auth= linkidin_profile.LinkidinAuthPage(chromedriver)
+    linkidin_auth = authorization.LinkidinAuthPage(chromedriver, test_page, 'project')
     linkidin_auth.login(linkidin_auth.sign_in_link, linkidin_auth.login_form, linkidin_auth.default_user)
-    linkidin.open(config.read_linkedin_opt(test_page))
+    linkidin.open(config.read_options_for('linkedin', test_page))
     time.sleep(3)
     with allure.step('Read expected result from profile page'):
         expected = config.read_expected_results_from_file(test_page, 'profile after log in')
@@ -53,9 +53,9 @@ def test_profile_ptrn_without_log_in(chromedriver, test_page):
     handler = pattern_handler
     test_page = '..' + config.linkedin_test_data + test_page
     linkidin = linkidin_profile.LinkidinProfilePage(chromedriver)
-    linkidin_auth = linkidin_profile.LinkidinAuthPage(chromedriver)
+    linkidin_auth = authorization.LinkidinAuthPage(chromedriver)
     linkidin_auth.logout()
-    linkidin.open(config.read_linkedin_opt(test_page))
+    linkidin.open(config.read_options_for('linkedin', test_page))
     time.sleep(3)
     with allure.step('Read expected result from profile page'):
         expected = config.read_expected_results_from_file(test_page, 'profile without log in')
@@ -93,12 +93,12 @@ def test_profile_ptrn_by_logged_in_user(chromedriver,profile):
      """  # initialization
     profile = '..' + config.linkedin_test_data + profile
     handler = pattern_handler
-    linkidin = linkidin_profile.LinkidinAuthPage(chromedriver)
+    linkidin = authorization.LinkidinAuthPage(chromedriver)
     test_page = linkidin_profile.LinkidinProfilePage(chromedriver, is_logged=True)
     # login by test user
     linkidin.login(linkidin.sign_in_link, linkidin.login_form, linkidin.default_user)
     # Open test page and get parsed data by Webdriver as expected results
-    test_page.open(config.read_linkedin_opt(profile))
+    test_page.open(config.read_options_for('linkedin', test_page, 'project'))
     with allure.step('Read attributes from profile page'):
         expected = config.read_expected_results_from_file(profile, 'profile_after_log_in')
         expected_wd = test_page.parse_text()

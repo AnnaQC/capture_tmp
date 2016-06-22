@@ -24,6 +24,10 @@ Run test:
 =========================================
 $ cd ./patterns/tests
 $ py.test test_linkedin_pattern.py --alluredir ../reports/allure_info/
+======================
+To run all tests in scope
+======================
+$ py.test --alluredir ../reports/allure_info/
 
 If you want to change url of tested page or version of tested extention change their values in /patterns/config.ini
 =========================================

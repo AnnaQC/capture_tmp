@@ -5,7 +5,7 @@ read -p "Do You want to run the test ( Y / N)? " REQUEST1
 if [[ $REQUEST1 =~ ^(yes|y) ]]; then
   echo "Starting test"
   cd ./patterns/tests
-  py.test test_linkedin_pattern.py --alluredir ../reports/allure_info/
+  py.test --alluredir ../reports/allure_info/
 else
   exit 0
 fi
