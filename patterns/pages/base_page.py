@@ -90,6 +90,12 @@ class BasePage():
         if element_to_wait is not None:
             wait.until(expected_conditions.presence_of_element_located(element_to_wait))
 
+    def wait_until_element_is_not_present(self, locator, timeout=5):
+        wait = WebDriverWait(self.driver, timeout)
+        try:
+            wait.until_not(expected_conditions.presence_of_element_located(locator))
+            return True
+        except WebDriverException: return False
 
     def get_text_of_element(self, locator):
         """

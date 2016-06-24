@@ -1,0 +1,74 @@
+{
+  "hash" : "9ae4a52f46fbba0c959575303f697deb73e72d63",
+  "data" : [ {
+    "statistic" : {
+      "total" : 8,
+      "passed" : 4,
+      "pending" : 0,
+      "canceled" : 2,
+      "failed" : 2,
+      "broken" : 0
+    },
+    "time" : {
+      "start" : 1466679905745,
+      "stop" : 1466679974727,
+      "duration" : 68982
+    },
+    "name" : "total",
+    "type" : "TOTAL"
+  }, {
+    "name" : "defects",
+    "type" : "DEFECTS",
+    "data" : [ {
+      "count" : 1,
+      "message" : "AssertionError: Incorrect data was found in captured results. See mismatches in attached detailes.\nassert <function is_pattern_data_according_to_page at 0x7f9dd6e78938>({'address1': '', 'address2': '', 'bio': '', 'city': '', ...}, {'company': 'hire-tester.com', 'full': 'Max Pavlov', 'jobtitle': 'Software Tester'})\n +  where <function is_pattern_data_according_to_page at 0x7f9dd6e78938> = comparator.is_pattern_data_according_to_page",
+      "status" : "FAILED"
+    }, {
+      "count" : 1,
+      "message" : "AssertionError: Incorrect data was found in captured results. See mismatches in attached detailes.\nassert <function is_pattern_data_according_to_page at 0x7f9dd6e78938>({'address1': '', 'address2': '', 'bio': '', 'city': '', ...}, {'company': 'Test ht', 'full': 'Lin May', 'jobtitle': 'QA Engineer'})\n +  where <function is_pattern_data_according_to_page at 0x7f9dd6e78938> = comparator.is_pattern_data_according_to_page",
+      "status" : "FAILED"
+    } ]
+  }, {
+    "name" : "xunit",
+    "type" : "TITLE_STATISTICS",
+    "data" : [ {
+      "title" : "Test linkedin pattern",
+      "statistic" : {
+        "total" : 8,
+        "passed" : 4,
+        "pending" : 0,
+        "canceled" : 2,
+        "failed" : 2,
+        "broken" : 0
+      }
+    } ]
+  }, {
+    "name" : "behaviors",
+    "type" : "TITLE_STATISTICS",
+    "data" : [ {
+      "title" : "Linkedin patterns",
+      "statistic" : {
+        "total" : 6,
+        "passed" : 2,
+        "pending" : 0,
+        "canceled" : 2,
+        "failed" : 2,
+        "broken" : 0
+      }
+    }, {
+      "title" : "Twitter patterns",
+      "statistic" : {
+        "total" : 2,
+        "passed" : 2,
+        "pending" : 0,
+        "canceled" : 0,
+        "failed" : 0,
+        "broken" : 0
+      }
+    } ]
+  }, {
+    "name" : "environment",
+    "type" : "KEY_VALUE",
+    "data" : [ ]
+  } ]
+}

@@ -1,0 +1,102 @@
+********************Data from captured results by pattern********************
+{"c":"2016-06-23T11:05:23.215Z","_dived":false,"_enhanced":false,"_enhancing":false,"_hidden":false,"_new":true,"id":null,"flags":null,"phone1src":null,"mark":null,"sourceurl":"","first":"Lin","last":"May","jobtitle":"QA Engineer","company":"Test ht","email":"testc293@gmail.com","phone":"","phone2":"","website":"","bio":"","address1":"","address2":"","city":"Ukraine","state":"","zip":"","country":"","middle":"","experience":"CompanyTitle: QA Engineer at Test ht\nTeniorLocation: July 1993 – Present (23 years)\n","data":[{"Name":"CompanyTitle","Value":"QA Engineer at Test ht"},{"Name":"TeniorLocation","Value":"July 1993 – Present (23 years)"}],"venues":[{"website":"ua.linkedin.com/in/lin-may-323782122","type":"social","top":true,"personal":true}],"linkedin":"ua.linkedin.com/in/lin-may-323782122","twitter":null,"facebook":null,"employeesAvg":null,"revenueAvg":null,"_hasOtherVenues":false,"full":"Lin May","emailverbool":false,"email2verbool":false}
+----------------------------------------
+phone1src :
+None
+----------------------------------------
+bio :
+
+----------------------------------------
+twitter :
+None
+----------------------------------------
+venues :
+[{u'website': u'ua.linkedin.com/in/lin-may-323782122', u'personal': True, u'top': True, u'type': u'social'}]
+----------------------------------------
+middle :
+
+----------------------------------------
+id :
+None
+----------------------------------------
+city :
+Ukraine
+----------------------------------------
+sourceurl :
+
+----------------------------------------
+zip :
+
+----------------------------------------
+jobtitle :
+QA Engineer
+----------------------------------------
+mark :
+None
+----------------------------------------
+state :
+
+----------------------------------------
+flags :
+None
+----------------------------------------
+company :
+Test ht
+----------------------------------------
+website :
+
+----------------------------------------
+employeesAvg :
+None
+----------------------------------------
+full :
+Lin May
+----------------------------------------
+phone2 :
+
+----------------------------------------
+address1 :
+
+----------------------------------------
+address2 :
+
+----------------------------------------
+phone :
+
+----------------------------------------
+facebook :
+None
+----------------------------------------
+linkedin :
+ua.linkedin.com/in/lin-may-323782122
+----------------------------------------
+emailverbool :
+False
+----------------------------------------
+data :
+[{u'Name': u'CompanyTitle', u'Value': u'QA Engineer at Test ht'}, {u'Name': u'TeniorLocation', u'Value': u'July 1993 \u2013 Present (23 years)'}]
+----------------------------------------
+last :
+May
+----------------------------------------
+country :
+
+----------------------------------------
+experience :
+CompanyTitle: QA Engineer at Test ht
+TeniorLocation: July 1993 – Present (23 years)
+
+----------------------------------------
+revenueAvg :
+None
+----------------------------------------
+email2verbool :
+False
+----------------------------------------
+email :
+testc293@gmail.com
+----------------------------------------
+first :
+Lin
+************************************************************
+{u'phone1src': None, u'bio': u'', u'twitter': None, u'venues': [{u'website': u'ua.linkedin.com/in/lin-may-323782122', u'personal': True, u'top': True, u'type': u'social'}], u'middle': u'', u'id': None, u'city': u'Ukraine', u'sourceurl': u'', u'zip': u'', u'jobtitle': u'QA Engineer', u'mark': None, u'state': u'', u'flags': None, u'company': u'Test ht', u'website': u'', u'employeesAvg': None, u'full': u'Lin May', u'phone2': u'', u'address1': u'', u'address2': u'', u'phone': u'', u'facebook': None, u'linkedin': u'ua.linkedin.com/in/lin-may-323782122', u'emailverbool': False, u'data': [{u'Name': u'CompanyTitle', u'Value': u'QA Engineer at Test ht'}, {u'Name': u'TeniorLocation', u'Value': u'July 1993 \u2013 Present (23 years)'}], u'last': u'May', u'country': u'', u'experience': u'CompanyTitle: QA Engineer at Test ht\nTeniorLocation: July 1993 \u2013 Present (23 years)\n', u'revenueAvg': None, u'email2verbool': False, u'email': u'testc293@gmail.com', u'first': u'Lin'}

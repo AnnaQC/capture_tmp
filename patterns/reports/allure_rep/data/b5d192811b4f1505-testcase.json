@@ -1,0 +1,380 @@
+{
+  "uid" : "b5d192811b4f1505",
+  "name" : "test_profile_ptrn_for_logged_in_user[profile_page_lin_may.ini]",
+  "title" : "Test profile ptrn for logged in user [profile_page_lin_may.ini]",
+  "time" : {
+    "start" : 1466679918464,
+    "stop" : 1466679924787,
+    "duration" : 6323
+  },
+  "summary" : {
+    "attachments" : 42,
+    "steps" : 5
+  },
+  "failure" : null,
+  "description" : {
+    "value" : "\n     As logged in to linkedin user I open some user profiles in browser.\n     Get actual data from result is captured by extension.\n     Read expected results that should be present on the test page from patterns/data/linkedin/profile_page*.ini\n     And check if expected data from the page is present within the captured results.\n\n    ",
+    "type" : "TEXT"
+  },
+  "severity" : "NORMAL",
+  "status" : "PASSED",
+  "testId" : null,
+  "suite" : {
+    "uid" : "8b9b04459911f3e4",
+    "name" : "tests.test_linkedin_pattern",
+    "title" : "Test linkedin pattern"
+  },
+  "steps" : [ {
+    "name" : "Login by user account: {'login': 'lintest64@gmail.com', 'pwd': 'qazxswtestc293'}",
+    "title" : "Login by user account: {'login': 'lintest64@gmail.com', 'pwd': 'qazxswtestc293'}",
+    "time" : {
+      "start" : 1466679918464,
+      "stop" : 1466679918469,
+      "duration" : 5
+    },
+    "summary" : {
+      "attachments" : 0,
+      "steps" : 0
+    },
+    "status" : "PASSED",
+    "attachments" : [ ],
+    "steps" : [ ]
+  }, {
+    "name" : "Open page to parse :https://linkedin.com/in/lin-may-323782122",
+    "title" : "Open page to parse :https://linkedin.com/in/lin-may-323782122",
+    "time" : {
+      "start" : 1466679918469,
+      "stop" : 1466679921515,
+      "duration" : 3046
+    },
+    "summary" : {
+      "attachments" : 1,
+      "steps" : 0
+    },
+    "status" : "PASSED",
+    "attachments" : [ {
+      "title" : "https://linkedin.com/in/lin-may-323782122",
+      "source" : "1475cbb9-5510-4e4c-81a5-fabb0644b700-attachment.png",
+      "type" : "image/png",
+      "size" : 577056,
+      "uid" : "b88d5d143c1d1aca"
+    } ],
+    "steps" : [ ]
+  }, {
+    "name" : "Read expected result from profile page",
+    "title" : "Read expected result from profile page",
+    "time" : {
+      "start" : 1466679924515,
+      "stop" : 1466679924516,
+      "duration" : 1
+    },
+    "summary" : {
+      "attachments" : 7,
+      "steps" : 0
+    },
+    "status" : "PASSED",
+    "attachments" : [ {
+      "title" : "full",
+      "source" : "da9f1bc8-1f95-4e88-a864-f92eb45aca17-attachment.txt",
+      "type" : "text/plain",
+      "size" : 7,
+      "uid" : "c1c954a13a6fc517"
+    }, {
+      "title" : "last",
+      "source" : "af345535-ea21-47e4-827a-ead90917e211-attachment.txt",
+      "type" : "text/plain",
+      "size" : 3,
+      "uid" : "35aaf01ef92fc24e"
+    }, {
+      "title" : "jobtitle",
+      "source" : "01a3a53a-9c7f-4416-9bea-e7fbff645073-attachment.txt",
+      "type" : "text/plain",
+      "size" : 11,
+      "uid" : "dbf30cbf0484c6f"
+    }, {
+      "title" : "company",
+      "source" : "1e3cb589-2cc3-412d-9be4-4397a1e3da3e-attachment.txt",
+      "type" : "text/plain",
+      "size" : 7,
+      "uid" : "b0960e623db569d7"
+    }, {
+      "title" : "linkedin",
+      "source" : "500e3117-e461-4b11-868d-12b3fa28eee2-attachment.txt",
+      "type" : "text/plain",
+      "size" : 36,
+      "uid" : "d2eaa4da1b62e34f"
+    }, {
+      "title" : "email",
+      "source" : "35a5ffa0-b39d-4d25-8096-24869e8af060-attachment.txt",
+      "type" : "text/plain",
+      "size" : 18,
+      "uid" : "1f754f97e03e1456"
+    }, {
+      "title" : "first",
+      "source" : "9846cd88-c612-42a7-94c5-da6740edc3b8-attachment.txt",
+      "type" : "text/plain",
+      "size" : 3,
+      "uid" : "817622675f6786a2"
+    } ],
+    "steps" : [ ]
+  }, {
+    "name" : "Read attributes from result is captured by extension",
+    "title" : "Read attributes from result is captured by extension",
+    "time" : {
+      "start" : 1466679924516,
+      "stop" : 1466679924787,
+      "duration" : 271
+    },
+    "summary" : {
+      "attachments" : 33,
+      "steps" : 0
+    },
+    "status" : "PASSED",
+    "attachments" : [ {
+      "title" : "After Log from js",
+      "source" : "0b7d789c-3265-4498-b4ee-e1290f245c54-attachment.png",
+      "type" : "image/png",
+      "size" : 577056,
+      "uid" : "77beb7b9baadff64"
+    }, {
+      "title" : "phone1src",
+      "source" : "a26b418c-2186-47c6-ac7b-ce6441673a3a-attachment.txt",
+      "type" : "text/plain",
+      "size" : 4,
+      "uid" : "37aea1d194c887f3"
+    }, {
+      "title" : "bio",
+      "source" : "8714b0d2-3229-4173-bdf0-d03d92068fc5-attachment.txt",
+      "type" : "text/plain",
+      "size" : 2,
+      "uid" : "1499d770eeed6638"
+    }, {
+      "title" : "twitter",
+      "source" : "cdc932f2-18de-45d5-be16-b7a501fa63a3-attachment.txt",
+      "type" : "text/plain",
+      "size" : 4,
+      "uid" : "810c6257f7a691e5"
+    }, {
+      "title" : "venues",
+      "source" : "db9a230a-3227-405b-a163-23050eefd7d9-attachment.txt",
+      "type" : "text/plain",
+      "size" : 102,
+      "uid" : "9668c2c21ade4950"
+    }, {
+      "title" : "middle",
+      "source" : "469970f3-8dc1-41cf-9d78-1ddaca08f07e-attachment.txt",
+      "type" : "text/plain",
+      "size" : 2,
+      "uid" : "3d51a95f0bd3362"
+    }, {
+      "title" : "id",
+      "source" : "bedc58ed-99b6-439a-badc-2292749762d9-attachment.txt",
+      "type" : "text/plain",
+      "size" : 4,
+      "uid" : "866867d916132eb0"
+    }, {
+      "title" : "city",
+      "source" : "5b1f2f1c-20f5-4afb-bb4f-e46f8698c6be-attachment.txt",
+      "type" : "text/plain",
+      "size" : 9,
+      "uid" : "a0f1d95814179c1e"
+    }, {
+      "title" : "sourceurl",
+      "source" : "a75e5635-5a20-40fa-8706-74123bbdd362-attachment.txt",
+      "type" : "text/plain",
+      "size" : 2,
+      "uid" : "2f5aab4e811c9e0a"
+    }, {
+      "title" : "zip",
+      "source" : "87ba0531-090c-4fac-a2cb-23bd374df190-attachment.txt",
+      "type" : "text/plain",
+      "size" : 2,
+      "uid" : "79de0a0ac0a3ff8b"
+    }, {
+      "title" : "jobtitle",
+      "source" : "642f4948-42d4-41ce-bf7d-da11415d861d-attachment.txt",
+      "type" : "text/plain",
+      "size" : 13,
+      "uid" : "e3c70678690b811a"
+    }, {
+      "title" : "mark",
+      "source" : "65ee1a2a-64f4-4274-8a69-8fb182ca2ce7-attachment.txt",
+      "type" : "text/plain",
+      "size" : 4,
+      "uid" : "2c5acff3ad91f072"
+    }, {
+      "title" : "state",
+      "source" : "9b66692a-4010-4fd0-83e4-1ea3c710a808-attachment.txt",
+      "type" : "text/plain",
+      "size" : 2,
+      "uid" : "120b970e3e62a00d"
+    }, {
+      "title" : "flags",
+      "source" : "328d1830-7773-4d8e-a1fc-a8004a3b48d6-attachment.txt",
+      "type" : "text/plain",
+      "size" : 4,
+      "uid" : "6ecca04249f81cef"
+    }, {
+      "title" : "company",
+      "source" : "ca62ee27-5341-475b-9d11-0211770ae03a-attachment.txt",
+      "type" : "text/plain",
+      "size" : 9,
+      "uid" : "391a8ab2e3ea987d"
+    }, {
+      "title" : "website",
+      "source" : "dadba5da-93b3-42be-8d26-2074d1777406-attachment.txt",
+      "type" : "text/plain",
+      "size" : 2,
+      "uid" : "e346ad7d264253d5"
+    }, {
+      "title" : "employeesAvg",
+      "source" : "3137192b-5efe-4d1f-be59-04bfff854626-attachment.txt",
+      "type" : "text/plain",
+      "size" : 4,
+      "uid" : "e566aa73a696df91"
+    }, {
+      "title" : "full",
+      "source" : "b6ba55f7-0f00-4557-a396-afd84f5e71c5-attachment.txt",
+      "type" : "text/plain",
+      "size" : 9,
+      "uid" : "6cd574f5d0831048"
+    }, {
+      "title" : "phone2",
+      "source" : "ac5881c6-019f-4849-a9dc-62d4143787bc-attachment.txt",
+      "type" : "text/plain",
+      "size" : 2,
+      "uid" : "f72592f52a6a39ed"
+    }, {
+      "title" : "address1",
+      "source" : "e54ba6e3-6c3a-4e09-a8bf-9cc697f2cb5d-attachment.txt",
+      "type" : "text/plain",
+      "size" : 2,
+      "uid" : "98febe1e38294162"
+    }, {
+      "title" : "address2",
+      "source" : "6fbbfc39-030a-44bb-aab6-7b5625b9e1d4-attachment.txt",
+      "type" : "text/plain",
+      "size" : 2,
+      "uid" : "e66e855dd2ee3108"
+    }, {
+      "title" : "phone",
+      "source" : "a471d558-476d-44c3-8d53-a9dcf675d1da-attachment.txt",
+      "type" : "text/plain",
+      "size" : 2,
+      "uid" : "2f4f97cb7631669a"
+    }, {
+      "title" : "facebook",
+      "source" : "8a4be55d-8108-4b10-96d5-17b1643a2c3f-attachment.txt",
+      "type" : "text/plain",
+      "size" : 4,
+      "uid" : "33b4213bd96c5cbc"
+    }, {
+      "title" : "linkedin",
+      "source" : "03808676-b9eb-4914-9ee9-1f9a78bc5057-attachment.txt",
+      "type" : "text/plain",
+      "size" : 38,
+      "uid" : "16c306c8496979d3"
+    }, {
+      "title" : "emailverbool",
+      "source" : "28759336-f427-44bc-9861-83da482249d1-attachment.txt",
+      "type" : "text/plain",
+      "size" : 5,
+      "uid" : "4d6264379994facc"
+    }, {
+      "title" : "data",
+      "source" : "afe4fc54-7c34-41ea-804d-2b2ab23a67b7-attachment.txt",
+      "type" : "text/plain",
+      "size" : 137,
+      "uid" : "9930b1e7a1ec6868"
+    }, {
+      "title" : "last",
+      "source" : "f9b58f50-84ac-4532-a5e1-86254795acbf-attachment.txt",
+      "type" : "text/plain",
+      "size" : 5,
+      "uid" : "65e2f395a87d0f51"
+    }, {
+      "title" : "country",
+      "source" : "b259781e-8eda-40d1-8120-adaba30bc68f-attachment.txt",
+      "type" : "text/plain",
+      "size" : 2,
+      "uid" : "47a5991b6596eafd"
+    }, {
+      "title" : "experience",
+      "source" : "ce9f45aa-110b-44d5-bcb5-5e24173355c7-attachment.txt",
+      "type" : "text/plain",
+      "size" : 93,
+      "uid" : "e30444d1d38965a"
+    }, {
+      "title" : "revenueAvg",
+      "source" : "27be48f4-2337-455d-b0ef-d1b7f86b655b-attachment.txt",
+      "type" : "text/plain",
+      "size" : 4,
+      "uid" : "f77b2a0767f66032"
+    }, {
+      "title" : "email2verbool",
+      "source" : "6467623d-ce3a-45e0-99ed-93937426599b-attachment.txt",
+      "type" : "text/plain",
+      "size" : 5,
+      "uid" : "c6d1542246b462b2"
+    }, {
+      "title" : "email",
+      "source" : "776ebb3d-84eb-447f-93dd-981206592d1f-attachment.txt",
+      "type" : "text/plain",
+      "size" : 20,
+      "uid" : "164ea86f388da13b"
+    }, {
+      "title" : "first",
+      "source" : "dd2ebeed-c6af-420d-b250-8ef2f77c18d5-attachment.txt",
+      "type" : "text/plain",
+      "size" : 5,
+      "uid" : "a9175deb3f88a0de"
+    } ],
+    "steps" : [ ]
+  }, {
+    "name" : "Check if captured results contain data expected data",
+    "title" : "Check if captured results contain data expected data",
+    "time" : {
+      "start" : 1466679924787,
+      "stop" : 1466679924787,
+      "duration" : 0
+    },
+    "summary" : {
+      "attachments" : 0,
+      "steps" : 0
+    },
+    "status" : "PASSED",
+    "attachments" : [ ],
+    "steps" : [ ]
+  } ],
+  "attachments" : [ {
+    "title" : "Captured stdout call",
+    "source" : "f549fb20-a8be-47c5-9253-52357079301e-attachment.txt",
+    "type" : "text/plain",
+    "size" : 4206,
+    "uid" : "dee8fbaf83bb89ad"
+  } ],
+  "issues" : [ ],
+  "labels" : [ {
+    "name" : "suite-name",
+    "value" : "tests.test_linkedin_pattern"
+  }, {
+    "name" : "feature",
+    "value" : "Linkedin patterns"
+  }, {
+    "name" : "thread",
+    "value" : "14869-MainThread"
+  }, {
+    "name" : "host",
+    "value" : "user-H81M-HD3"
+  }, {
+    "name" : "suite-title",
+    "value" : null
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "story",
+    "value" : "Linkedin user profile pattern. User is logged in to linkedin"
+  } ],
+  "parameters" : [ ]
+}

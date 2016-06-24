@@ -1,0 +1,110 @@
+********************Data from captured results by pattern********************
+{"c":"2016-06-23T11:05:38.706Z","_dived":false,"_enhanced":false,"_enhancing":false,"_hidden":false,"_new":true,"id":null,"flags":null,"phone1src":null,"mark":null,"sourceurl":"","first":"","last":"","jobtitle":"QA Engineer","company":"Test ht","email":"","phone":"","phone2":"","website":"","bio":"","address1":"","address2":"","city":"","state":"","zip":"","country":"","experience":"CompanyTitle: QA Engineer at Test ht\n","data":[{"Name":"CompanyTitle","Value":"QA Engineer at Test ht"}],"venues":[],"linkedin":null,"twitter":null,"facebook":null,"employeesAvg":null,"revenueAvg":null,"_hasOtherVenues":false,"full":"","emailverbool":false,"email2verbool":false}
+----------------------------------------
+phone1src :
+None
+----------------------------------------
+bio :
+
+----------------------------------------
+twitter :
+None
+----------------------------------------
+venues :
+[]
+----------------------------------------
+email :
+
+----------------------------------------
+id :
+None
+----------------------------------------
+city :
+
+----------------------------------------
+sourceurl :
+
+----------------------------------------
+zip :
+
+----------------------------------------
+jobtitle :
+QA Engineer
+----------------------------------------
+mark :
+None
+----------------------------------------
+state :
+
+----------------------------------------
+flags :
+None
+----------------------------------------
+company :
+Test ht
+----------------------------------------
+website :
+
+----------------------------------------
+employeesAvg :
+None
+----------------------------------------
+full :
+
+----------------------------------------
+phone2 :
+
+----------------------------------------
+address1 :
+
+----------------------------------------
+address2 :
+
+----------------------------------------
+phone :
+
+----------------------------------------
+facebook :
+None
+----------------------------------------
+linkedin :
+None
+----------------------------------------
+emailverbool :
+False
+----------------------------------------
+data :
+[{u'Name': u'CompanyTitle', u'Value': u'QA Engineer at Test ht'}]
+----------------------------------------
+last :
+
+----------------------------------------
+country :
+
+----------------------------------------
+experience :
+CompanyTitle: QA Engineer at Test ht
+
+----------------------------------------
+revenueAvg :
+None
+----------------------------------------
+email2verbool :
+False
+----------------------------------------
+first :
+
+************************************************************
+{u'phone1src': None, u'bio': u'', u'twitter': None, u'venues': [], u'email': u'', u'id': None, u'city': u'', u'sourceurl': u'', u'zip': u'', u'jobtitle': u'QA Engineer', u'mark': None, u'state': u'', u'flags': None, u'company': u'Test ht', u'website': u'', u'employeesAvg': None, u'full': u'', u'phone2': u'', u'address1': u'', u'address2': u'', u'phone': u'', u'facebook': None, u'linkedin': None, u'emailverbool': False, u'data': [{u'Name': u'CompanyTitle', u'Value': u'QA Engineer at Test ht'}], u'last': u'', u'country': u'', u'experience': u'CompanyTitle: QA Engineer at Test ht\n', u'revenueAvg': None, u'email2verbool': False, u'first': u''}
+ 
+[ERROR]Page data was incorrectly parsed for next attributes:
+
+ For attribute name: "full"
+--------------------
+ EXPECTED : 
+--------------------
+"Lin May"
+--------------------
+ BUT FOUND : 
+--------------------
+"None"

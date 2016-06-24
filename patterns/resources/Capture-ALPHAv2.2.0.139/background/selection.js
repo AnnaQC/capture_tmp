@@ -4565,6 +4565,7 @@ var testPattern = function () {
             contactUtility.readPatternRecord(record, captureRecord);
             console.log('Capture Record > ', captureRecord);
             console.log(JSON.stringify(captureRecord));
+
         } catch (e) {
             console.error('Error > ', e.message);
         }

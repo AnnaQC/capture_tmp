@@ -12,7 +12,7 @@ from pages import authorization
 
 config = config_reader.ReadConfigs()
 
-
+@pytest.mark.skip(reason=None)
 @allure.feature('Twitter patterns')
 @allure.story('Twitter user profile pattern. User is logged in to twitter')
 @pytest.mark.parametrize("test_page", config.get_tested_pages_for('twitter'))
@@ -29,12 +29,12 @@ def test_profile_ptrn_for_logged_in_user(chromedriver, test_page):
     twitter = authorization.TwitterAuthPage(chromedriver, test_page, 'project')
     twitter.login(twitter.sign_in_link, twitter.login_form, twitter.default_user)
     twitter.open(config.read_options_for('twitter', test_page))
+    twitter.attach_screen_to_report("read config")
     time.sleep(3)
     with allure.step('Read expected result from profile page'):
         expected = config.read_expected_results_from_file(test_page, 'profile after log in')
     with allure.step('Read attributes from result is captured by extension'):
         actual = handler.get_actual_data_from_js_console(chromedriver)
-    print actual
     with allure.step('Check if captured results contain data expected data'):
         assert comparator.is_pattern_data_according_to_page(actual, expected),\
                  "Incorrect data was found in captured results. See mismatches in attached detailes."
@@ -53,16 +53,15 @@ def test_profile_ptrn_without_log_in(chromedriver, test_page):
     """
     handler = pattern_handler
     test_page = '..' + config.twitter_test_data + test_page
-    twitter= authorization.TwitterAuthPage(chromedriver)
+    twitter= authorization.TwitterAuthPage(chromedriver, test_page)
     twitter.logout()
     twitter.open(config.read_options_for('twitter', test_page))
-    time.sleep(3)
+    time.sleep(2)
     with allure.step('Read expected result from profile page'):
         expected = config.read_expected_results_from_file(test_page, 'profile without log in')
     with allure.step('Read attributes from result is captured by extension'):
         actual = handler.get_actual_data_from_js_console(chromedriver)
-    print actual
+        twitter.attach_screen_to_report("after log")
     with allure.step('Check if captured results contain data expected data'):
         assert comparator.is_pattern_data_according_to_page(actual, expected),\
                  "Incorrect data was found in captured results. See mismatches in attached detailes."
-    print test_page

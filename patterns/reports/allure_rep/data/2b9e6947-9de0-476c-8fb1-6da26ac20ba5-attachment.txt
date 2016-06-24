@@ -1,0 +1,12 @@
+ 
+[ERROR]Page data was incorrectly parsed for next attributes:
+
+ For attribute name: "full"
+--------------------
+ EXPECTED : 
+--------------------
+"Lin May"
+--------------------
+ BUT FOUND : 
+--------------------
+"None"
