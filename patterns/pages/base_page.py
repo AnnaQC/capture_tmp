@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on Apr 25, 2016
-
 @author: user
-
 """
 import allure
 from allure.constants import AttachmentType
@@ -45,7 +43,6 @@ class BasePage():
         :param sign_in_link: link on sign in form
         :param login_form: dictionary with locators on login form elements
         :param user_data: dictionary with login and password
-
         """
         if element_to_wait is not None:
             if not self.is_element_present(element_to_wait,1):
@@ -90,6 +87,12 @@ class BasePage():
         if element_to_wait is not None:
             wait.until(expected_conditions.presence_of_element_located(element_to_wait))
 
+    def wait_until_element_is_not_present(self, locator, timeout=5):
+        wait = WebDriverWait(self.driver, timeout)
+        try:
+            wait.until_not(expected_conditions.presence_of_element_located(locator))
+            return True
+        except WebDriverException: return False
 
     def get_text_of_element(self, locator):
         """

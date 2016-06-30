@@ -46,7 +46,7 @@ class TwitterAuthPage(BasePage):
                   'pwd_field': (By.XPATH, ".//div[@class = 'clearfix field'][2]/input"),
                   'submit_btn': (By.XPATH, ".//button[contains(@class, 'primary-btn')]")}
     acc_settings = (By.ID,
-                 "'user-dropdown-toggle")  # bar that is displayed only for logged in user, we use it presence to now if login was successfull
+                 "user-dropdown-toggle")  # bar that is displayed only for logged in user, we use it presence to now if login was successfull
     #to sign out
     sign_out_ref = (By.ID, "signout-button")
 
@@ -62,9 +62,12 @@ class TwitterAuthPage(BasePage):
         return self
 
     def logout(self):
+        old_url = self.driver.current_url
         try:
-            self.click(self.acc_settings,timeout=3)
+            self.click(self.acc_settings,timeout=2)
         except TimeoutException:
+            print "USER is LOGED OUT"
             return self
         self.click(self.sign_out_ref,timeout=2)
+        self.wait_until_element_is_not_present(self.acc_settings, 6)
         return self

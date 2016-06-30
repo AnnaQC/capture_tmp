@@ -12,7 +12,7 @@ from pages import authorization
 
 config = config_reader.ReadConfigs()
 
-@pytest.mark.skip(reason=None)
+
 @allure.feature('Twitter patterns')
 @allure.story('Twitter user profile pattern. User is logged in to twitter')
 @pytest.mark.parametrize("test_page", config.get_tested_pages_for('twitter'))
@@ -62,4 +62,4 @@ def test_profile_ptrn_without_log_in(chromedriver, test_page):
         twitter.attach_screen_to_report("after log")
     with allure.step('Check if captured results contain data expected data'):
         assert comparator.is_pattern_data_according_to_page(actual, expected),\
-"Incorrect data was found in captured results. See mismatches in attached detailes."
+            "Incorrect data was found in captured results. See mismatches in attached detailes."

@@ -41,6 +41,7 @@ def handle_value_to_print(value):
          value = value.encode("utf-8")
     return value.replace('. ', '.')
 
+
 def read_capture_result_message_from_js(wd_log):
     for entry in wd_log:
         if '{"c"' in entry['message']:
@@ -61,4 +62,4 @@ def read_capture_result_message_from_js(wd_log):
                 allure.attach(value[0], json.dumps(value[1]))
             print "***" * 20
             return actual_res
-return None
+    return None

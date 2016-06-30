@@ -103,4 +103,4 @@ def test_profile_ptrn_by_logged_in_user(chromedriver,profile):
         actual = handler.get_actual_data_from_js_console(chromedriver)
     with allure.step('Check if captured results contain data from page'):
         assert comparator.is_pattern_data_according_to_page(actual, expected),\
-"Incorrect data was found in captured results. See mismatches in attached detailes."
+            "Incorrect data was found in captured results. See mismatches in attached detailes."
