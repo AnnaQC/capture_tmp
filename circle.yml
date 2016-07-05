@@ -1,0 +1,44 @@
+## Customize the test machine
+machine:
+
+  timezone:
+    America/Los_Angeles # Set the timezone
+
+  # Version of python to use
+  python:
+    version: pypy-2.7.6
+
+  # Add some environment variables
+  environment:
+    CIRCLE_ENV: test
+    DATABASE_URL: postgres://ubuntu:@127.0.0.1:5432/circle_test
+
+## Customize checkout
+checkout:
+  post:
+    - git submodule sync
+    - git submodule update --init # use submodules
+
+## Customize dependencies
+dependencies:
+  pre:
+    - sudo apt-add-repository ppa:yandex-qatools/allure-framework --yes
+    - sudo apt-get update
+    - sudo apt-get install allure-commandline
+
+  override:
+    - sudo pip install selenium
+    - sudo pip install pytest
+    - sudo pip install pytest-allure-adaptor
+
+## Customize test commands
+test:
+  override:
+    - phpunit test/unit-tests # use PHPunit for testing
+  post:
+    - bundle exec rake jasmine:ci: # add an extra test type
+        environment:
+          RAILS_ENV: test
+          RACK_ENV: test
+general:
+  build_dir: patterns
