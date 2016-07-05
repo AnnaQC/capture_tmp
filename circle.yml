@@ -6,7 +6,7 @@ machine:
 
   # Version of python to use
   python:
-    version: pypy-2.7.5
+    version: 2.7.5
 
   # Add some environment variables
   environment:
