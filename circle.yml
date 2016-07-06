@@ -1,9 +1,7 @@
 ## Customize the test machine
 machine:
-
-  timezone:
-    America/Los_Angeles # Set the timezone
-
+  environment:
+  CIRCLE_ARTIFACTS:${HOME}/patterns/reports/allure_report/
   # Version of python to use
   python:
     version: 2.7.6
@@ -27,8 +25,8 @@ test:
   pre:
     - cd tests
   override:
-    - py.test --alluredir ../reports/allure_info/
+    - pwd
+    - py.test --alluredir patterns/tests/reports/allure_info/
   post:
     - allure generate ../reports/allure_info/ -o ../reports/allure_report/
-    - allure report open -o ../reports/allure_report/
 
