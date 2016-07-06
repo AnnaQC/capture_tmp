@@ -1,7 +1,7 @@
 ## Customize the test machine
 machine:
 #  environment:
-#  CIRCLE_ARTIFACTS:${HOME}/patterns/reports/allure_report/
+#  CIRCLE_ARTIFACTS:"${HOME}/patterns/reports/allure_report/"
   # Version of python to use
   python:
     version: 2.7.6
@@ -19,7 +19,7 @@ dependencies:
     - sudo pip install pytest-allure-adaptor
 
 general:
-##  build_dir: patterns
+build_dir: patterns
   artifacts:
     - "patterns/tests/reports/allure_info/"
 ## Customize test commands
