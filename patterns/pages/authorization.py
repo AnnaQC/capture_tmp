@@ -31,9 +31,9 @@ class LinkidinAuthPage(BasePage):
     @allure.step('Login by user account: {3}')#
     def login(self, sign_in_link, login_form, user_data):
         print self.sign_in_link
-        print driver.current_url
+        print self.driver.current_url
         BasePage.login(self, sign_in_link, login_form, user_data, self.scrollbar)
-        print driver.current_url
+        print self.driver.current_url
         return self
 
     def logout(self):
