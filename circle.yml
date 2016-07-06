@@ -8,17 +8,6 @@ machine:
   python:
     version: 2.7.6
 
-  # Add some environment variables
-  environment:
-    CIRCLE_ENV: test
-    DATABASE_URL: postgres://ubuntu:@127.0.0.1:5432/circle_test
-
-## Customize checkout
-checkout:
-  post:
-    - git submodule sync
-    - git submodule update --init # use submodules
-
 ## Customize dependencies
 dependencies:
   pre:
