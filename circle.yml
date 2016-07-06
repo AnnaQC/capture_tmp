@@ -21,12 +21,12 @@ dependencies:
 general:
   build_dir: patterns/tests
   artifacts:
-    - "../reports/allure_info/"
+    - "../reports/allure_report/"
 ## Customize test commands
 test:
   override:
     - pwd
-    - py.test --alluredir ../reports/allure_report/
+    - py.test --alluredir ../reports/allure_info/
 
   post:
     - allure generate ../reports/allure_info/ -o ../reports/allure_report/
