@@ -26,7 +26,8 @@ general:
 test:
   override:
     - pwd
-    - py.test --alluredir ../reports/allure_info/
+    - py.test test_twitter_pattern.py test_linkedin_pattern.py --alluredir ../reports/allure_info/
+
   post:
     - allure generate ../reports/allure_info/ -o ../reports/allure_report/
 
