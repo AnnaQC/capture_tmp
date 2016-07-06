@@ -19,7 +19,7 @@ dependencies:
     - sudo pip install pytest-allure-adaptor
 
 general:
-build_dir: patterns
+  build_dir: patterns
   artifacts:
     - "patterns/tests/reports/allure_info/"
 ## Customize test commands
