@@ -24,12 +24,12 @@ def test_profile_ptrn_for_logged_in_user(chromedriver, test_page):
     """
     handler = pattern_handler
     test_page = '..' + config.linkedin_test_data + test_page
-    linkidin = linkidin_profile.LinkidinProfilePage(chromedriver)
-    linkidin_auth = authorization.LinkidinAuthPage(chromedriver, test_page, 'project')
-    linkidin_auth.login(linkidin_auth.sign_in_link, linkidin_auth.login_form, linkidin_auth.default_user)
+    linkidin = authorization.LinkidinAuthPage(chromedriver, test_page, 'project')
+    linkidin.login(linkidin_auth.sign_in_link, linkidin_auth.login_form, linkidin_auth.default_user)
     print "goto "+config.read_options_for('linkedin', test_page)
     linkidin.open(config.read_options_for('linkedin', test_page))
     time.sleep(3)
+    print chromedriver.current_url
     with allure.step('Read expected result from profile page'):
         expected = config.read_expected_results_from_file(test_page, 'profile after log in')
     with allure.step('Read attributes from result is captured by extension'):
@@ -51,9 +51,8 @@ def test_profile_ptrn_without_log_in(chromedriver, test_page):
     """
     handler = pattern_handler
     test_page = '..' + config.linkedin_test_data + test_page
-    linkidin = linkidin_profile.LinkidinProfilePage(chromedriver)
-    linkidin_auth = authorization.LinkidinAuthPage(chromedriver)
-    linkidin_auth.logout()
+    linkidin = authorization.LinkidinAuthPage(chromedriver)
+    linkidin.logout()
     linkidin.open(config.read_options_for('linkedin', test_page))
     time.sleep(3)
     with allure.step('Read expected result from profile page'):
