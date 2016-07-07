@@ -19,7 +19,10 @@ class BasePage():
 
     @allure.step('Open page to parse :{1}')
     def open(self, url):
+        print url
         self.driver.get(url)
+        time.sleep(3)
+        print "current " + self.driver.current_url
         self.attach_screen_to_report(url)
 
 
@@ -47,15 +50,11 @@ class BasePage():
         if element_to_wait is not None:
             if not self.is_element_present(element_to_wait,1):
                 self.driver.get(sign_in_link)
-                print sign_in_link
-                print "url"+ self.driver.current_url
                 self.type(login_form['user_field'], user_data['login'])
                 self.type(login_form['pwd_field'], user_data['pwd'])
                 self.driver.find_element(*login_form['submit_btn']).click()
                 self.is_element_present(element_to_wait, timeout)
         else:
-            print sign_in_link
-            print "url"+ self.driver.current_url
             self.driver.get(sign_in_link)
             self.type(login_form['user_field'], user_data['login'])
             self.type(login_form['pwd_field'], user_data['pwd'])
