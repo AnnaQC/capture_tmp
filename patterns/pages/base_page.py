@@ -22,7 +22,7 @@ class BasePage():
         print url
         self.driver.get(url)
         time.sleep(3)
-        print "current " + self.driver.current_url
+        print "current open25 " + self.driver.current_url
         self.attach_screen_to_report(url)
 
 
