@@ -19,11 +19,7 @@ class BasePage():
 
     @allure.step('Open page to parse :{1}')
     def open(self, url):
-        print "before" + self.driver.current_url
-        print "open" + url
         self.driver.get(url)
-        time.sleep(3)
-        print "after" + self.driver.current_url
         self.attach_screen_to_report(url)
 
 
