@@ -54,6 +54,8 @@ class BasePage():
                 self.driver.find_element(*login_form['submit_btn']).click()
                 self.is_element_present(element_to_wait, timeout)
         else:
+            print sign_in_link
+            print "url"+ self.driver.current_url
             self.driver.get(sign_in_link)
             self.type(login_form['user_field'], user_data['login'])
             self.type(login_form['pwd_field'], user_data['pwd'])
