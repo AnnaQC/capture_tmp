@@ -24,10 +24,11 @@ def test_profile_ptrn_for_logged_in_user(chromedriver, test_page):
     """
     handler = pattern_handler
     test_page = '..' + config.linkedin_test_data + test_page
-    #linkidin = linkidin_profile.LinkidinProfilePage(chromedriver)
+    linkidin = linkidin_profile.LinkidinProfilePage(chromedriver)
     linkidin_auth = authorization.LinkidinAuthPage(chromedriver, test_page, 'project')
     linkidin_auth.login(linkidin_auth.sign_in_link, linkidin_auth.login_form, linkidin_auth.default_user)
-    linkidin_auth.open(config.read_options_for('linkedin', test_page))
+    print "goto "+config.read_options_for('linkedin', test_page)
+    linkidin.open(config.read_options_for('linkedin', test_page))
     time.sleep(3)
     with allure.step('Read expected result from profile page'):
         expected = config.read_expected_results_from_file(test_page, 'profile after log in')
