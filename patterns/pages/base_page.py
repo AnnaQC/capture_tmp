@@ -4,6 +4,7 @@ Created on Apr 25, 2016
 @author: user
 """
 import allure
+import time
 from allure.constants import AttachmentType
 from selenium.common.exceptions import WebDriverException
 from selenium.webdriver.support import expected_conditions
@@ -18,8 +19,11 @@ class BasePage():
 
     @allure.step('Open page to parse :{1}')
     def open(self, url):
-        print url
+        print "before" + self.driver.current_url
+        print "open" + url
         self.driver.get(url)
+        time.sleep(3)
+        print "after" + self.driver.current_url
         self.attach_screen_to_report(url)
 
 
