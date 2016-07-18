@@ -25,7 +25,7 @@ def test_profile_ptrn_for_logged_in_user(chromedriver, test_page):
     handler = pattern_handler
     test_page = '..' + config.linkedin_test_data + test_page
     linkidin = authorization.LinkidinAuthPage(chromedriver, test_page, 'project')
-    linkidin.login(linkidin_auth.sign_in_link, linkidin_auth.login_form, linkidin_auth.default_user)
+    linkidin.login(linkidin.sign_in_link, linkidin.login_form, linkidin.default_user)
     print "goto "+config.read_options_for('linkedin', test_page)
     linkidin.open(config.read_options_for('linkedin', test_page))
     time.sleep(3)
