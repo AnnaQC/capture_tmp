@@ -5,6 +5,7 @@ import allure
 import time
 
 from tests_fixture import chromedriver
+
 from core import comparator
 from core import pattern_handler
 from core import config_reader
@@ -26,7 +27,7 @@ def test_profile_ptrn_for_logged_in_user(chromedriver, test_page):
     test_page = '..' + config.linkedin_test_data + test_page
     linkidin = authorization.LinkidinAuthPage(chromedriver, test_page, 'project')
     linkidin.login(linkidin.sign_in_link, linkidin.login_form, linkidin.default_user)
-    print "goto "+config.read_options_for('linkedin', test_page)
+    print "goto " + config.read_options_for('linkedin', test_page)
     linkidin.open(config.read_options_for('linkedin', test_page))
     time.sleep(3)
     print chromedriver.current_url
