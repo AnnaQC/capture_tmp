@@ -19,7 +19,7 @@ class BasePage():
 
     @allure.step('Open page to parse :{1}')
     def open(self, url):
-        print " expected url" url
+        print " expected url" + url
         self.driver.get(url)
         time.sleep(3)
         print "current open25 " + self.driver.current_url
