@@ -40,11 +40,13 @@ def test_profile_ptrn_for_logged_in_user(chromedriver, test_page):
         assert comparator.is_pattern_data_according_to_page(actual, expected),\
                  "Incorrect data was found in captured results. See mismatches in attached detailes."
 
+@pytest.mark.skip(reason=None)
 @allure.feature('Linkedin patterns')
 @allure.story('Linkedin user profile pattern. User is not logged in to linkedin')
 @pytest.mark.parametrize("test_page", config.get_tested_pages_for('linkedin'))
 def test_profile_ptrn_without_log_in(chromedriver, test_page):
     """
+    SHOULD BE USED ONLY FOR UKRAINE AND SOME OTHER COUNTRIES. THIS TEST CASE IS NOT reproducible for American variant of Linkedin.
      As user that is not logged in to linkedin I open some user profiles in browser.
      Get actual data from result is captured by extension.
      Read expected results that should be present on the test page from patterns/data/linkedin/profile_page*.ini
