@@ -26,7 +26,8 @@ general:
 test:
   override:
     - pwd
-    - py.test --alluredir ../reports/allure_info/
+    - mkdir -p $CIRCLE_TEST_REPORTS/allure
+    - py.test --alluredir $CIRCLE_TEST_REPORTS/allure
 
   post:
-    - allure generate ../reports/allure_info/ -o ../reports/allure_report/
+    - allure generate $CIRCLE_TEST_REPORTS/allure -o $CIRCLE_TEST_REPORTS/allure
