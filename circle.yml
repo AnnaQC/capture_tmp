@@ -1,12 +1,12 @@
 ## Customize the test machine
-machine:
+# machine:
 #  environment:
 #  CIRCLE_ARTIFACTS:"${HOME}/patterns/reports/allure_report/"
   # Version of python to use
-  python:
-    version: 2.7.6
+#  python:
+#    version: 2.7.6
 
-## Customize dependencies
+# Customize dependencies
 dependencies:
   pre:
     - sudo apt-add-repository ppa:yandex-qatools/allure-framework --yes
@@ -22,7 +22,7 @@ general:
   build_dir: patterns/tests
   artifacts:
     - "../reports/allure_report/"
-## Customize test commands
+# Customize test commands
 test:
   override:
     - pwd
