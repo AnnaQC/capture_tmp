@@ -3,8 +3,8 @@ machine:
 #  environment:
 #  CIRCLE_ARTIFACTS:"${HOME}/patterns/reports/allure_report/"
   # Version of python to use
-  python:
-    version: 2.7.6
+#  python:
+#    version: 2.7.6
 
 ## Customize dependencies
 dependencies:
@@ -25,9 +25,9 @@ general:
 ## Customize test commands
 test:
   override:
-    - pwd
+    - mkdir -p $CIRCLE_TEST_REPORTS/allure_report
     - py.test --alluredir ../reports/allure_info/
 
   post:
-    - allure generate ../reports/allure_info/ -o ../reports/allure_report/
+    - allure generate ../reports/allure_info/ -o $CIRCLE_TEST_REPORTS/allure_report/
 
