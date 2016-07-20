@@ -27,10 +27,8 @@ def test_profile_ptrn_for_logged_in_user(chromedriver, test_page):
     test_page = '..' + config.linkedin_test_data + test_page
     linkidin = authorization.LinkidinAuthPage(chromedriver, test_page, 'project')
     linkidin.login(linkidin.sign_in_link, linkidin.login_form, linkidin.default_user)
-    print "goto " + config.read_options_for('linkedin', test_page)
     linkidin.open(config.read_options_for('linkedin', test_page))
     time.sleep(3)
-    print chromedriver.current_url
     with allure.step('Read expected result from profile page'):
         expected = config.read_expected_results_from_file(test_page, 'profile after log in')
     with allure.step('Read attributes from result is captured by extension'):
@@ -62,6 +60,7 @@ def test_profile_ptrn_without_log_in(chromedriver, test_page):
         expected = config.read_expected_results_from_file(test_page, 'profile without log in')
     with allure.step('Read attributes from result is captured by extension'):
         actual = handler.get_actual_data_from_js_console(chromedriver)
+        print actual
     with allure.step('Check if captured results contain data expected data'):
         assert comparator.is_pattern_data_according_to_page(actual, expected),\
                  "Incorrect data was found in captured results. See mismatches in attached detailes."
@@ -104,6 +103,7 @@ def test_profile_ptrn_by_logged_in_user(chromedriver,profile):
     # read actual data from captured results
     with allure.step('Read attributes from result is captured by extension'):
         actual = handler.get_actual_data_from_js_console(chromedriver)
+        print actual
     with allure.step('Check if captured results contain data from page'):
         assert comparator.is_pattern_data_according_to_page(actual, expected),\
             "Incorrect data was found in captured results. See mismatches in attached detailes."

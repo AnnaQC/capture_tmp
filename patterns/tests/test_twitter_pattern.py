@@ -34,6 +34,7 @@ def test_profile_ptrn_for_logged_in_user(chromedriver, test_page):
         expected = config.read_expected_results_from_file(test_page, 'profile after log in')
     with allure.step('Read attributes from result is captured by extension'):
         actual = handler.get_actual_data_from_js_console(chromedriver)
+        print actual
     with allure.step('Check if captured results contain data expected data'):
         assert comparator.is_pattern_data_according_to_page(actual, expected),\
                  "Incorrect data was found in captured results. See mismatches in attached detailes."
@@ -59,6 +60,7 @@ def test_profile_ptrn_without_log_in(chromedriver, test_page):
         expected = config.read_expected_results_from_file(test_page, 'profile without log in')
     with allure.step('Read attributes from result is captured by extension'):
         actual = handler.get_actual_data_from_js_console(chromedriver)
+        print actual
         twitter.attach_screen_to_report("after log")
     with allure.step('Check if captured results contain data expected data'):
         assert comparator.is_pattern_data_according_to_page(actual, expected),\
