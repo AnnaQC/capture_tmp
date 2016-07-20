@@ -21,7 +21,7 @@ dependencies:
 general:
   build_dir: patterns/tests
   artifacts:
-    - "../reports/allure_report/"
+    - "$CIRCLE_TEST_REPORTS/allure"
 ## Customize test commands
 test:
   override:
