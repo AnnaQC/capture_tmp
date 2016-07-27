@@ -30,10 +30,11 @@ Set Up Environment for OS LINUX:
 
 =======================================
 Run test:
+--------------------------------------
 
     $ cd ./patterns/tests
     $ py.test test_linkedin_pattern.py --alluredir ../reports/allure_info/
------------------------
+
 To run all tests in scope:
 
     $ py.test --alluredir ../reports/allure_info/
