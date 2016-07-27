@@ -5,7 +5,7 @@
 
 * Generate And Open report
 
-*Set Up Environment and Run Tests via scripts
+* Set Up Environment and Run Tests via scripts
 
 ==========================================
 Set Up Environment for OS LINUX:
