@@ -10,8 +10,10 @@
 ==========================================
 Set Up Environment for OS LINUX:
 ------------------------------------------
+
 1. Install selenium, pytest, pytest-allure-adaptor using pip to run tests
-2. Install allure-commandline to generate report    
+2. Install allure-commandline to generate report 
+
 ------------------------------------------
 
 ------------------------------------------
