@@ -11,12 +11,18 @@ Set Up Environment for OS LINUX:
 2. Install allure-commandline to generate report      
 
    $ sudo apt-get install libxml2-dev libxslt-dev python-dev
+   
    $ sudo pip install selenium
+   
    $ sudo pip install pytest
+   
    $ sudo pip install pytest-allure-adaptor
 
+   
    $ sudo apt-add-repository ppa:yandex-qatools/allure-framework
+   
    $ sudo apt-get update 
+   
    $ sudo apt-get install allure-commandline
 
 ------------------------------------------
