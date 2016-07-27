@@ -1,9 +1,9 @@
 
-*Set Up Environment
+* Set Up Environment
 
-*Run test
+* Run test
 
-*Generate And Open report
+* Generate And Open report
 
 *Set Up Environment and Run Tests via scripts
 
@@ -11,14 +11,18 @@
 Set Up Environment for OS LINUX:
 ------------------------------------------
 1. Install selenium, pytest, pytest-allure-adaptor using pip to run tests
-2. Install allure-commandline to generate report      
+2. Install allure-commandline to generate report    
+------------------------------------------
+
+------------------------------------------
 
     $ sudo apt-get install libxml2-dev libxslt-dev python-dev
     $ sudo pip install selenium
     $ sudo pip install pytest
     $ sudo pip install pytest-allure-adaptor
+    
+---------------------------------------------
 
-   
     $ sudo apt-add-repository ppa:yandex-qatools/allure-framework
     $ sudo apt-get update 
     $ sudo apt-get install allure-commandline
