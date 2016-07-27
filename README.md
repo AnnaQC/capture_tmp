@@ -14,7 +14,6 @@ Set Up Environment for OS LINUX:
 1. Install selenium, pytest, pytest-allure-adaptor using pip to run tests
 2. Install allure-commandline to generate report 
 
-------------------------------------------
 
 ------------------------------------------
 
@@ -29,7 +28,7 @@ Set Up Environment for OS LINUX:
     $ sudo apt-get update 
     $ sudo apt-get install allure-commandline
 
-------------------------------------------
+=======================================
 Run test:
 
     $ cd ./patterns/tests
@@ -38,9 +37,9 @@ Run test:
 To run all tests in scope:
 
     $ py.test --alluredir ../reports/allure_info/
-
 If you want to change url of tested page or version of tested extention change their values in /patterns/config.ini
-=========================================
+
+==================
 Generate report:
 
     $ allure generate ../reports/allure_info/ -o ../reports/allure_report/
