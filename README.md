@@ -8,7 +8,8 @@
 * Set Up Environment and Run Tests via scripts
 
 -----------------------------------
-Before we start. By default we use python 2.7.6 
+Before we start. By default we use python 2.7.6 on x64 system. Also pip and Chrome browser should be installed on your computer.
+
 ==========================================
 Set Up Environment for OS LINUX:
 ------------------------------------------
