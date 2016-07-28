@@ -70,7 +70,7 @@ Set Up Environment for OS Windows 10:
 ------------------------------------------
 1. Download binary file for lxml to install pytest-allure-adaptor for your python version and OS (we use python 2.7) from here : http://www.lfd.uci.edu/~gohlke/pythonlibs/#lxml 
 2. Install selenium, pytest, pytest-allure-adaptor using pip to run tests
-3. Download allure-commandline to generate report, unzip it and add allure-cli/bin/ to the system PATH (link to download allure-cli:  https://github.com/allure-framework/allure-cli/releases/tag/allure-cli-2.4)
+3. Download allure-commandline to generate report, unzip it and add C:\Program Files\allure-commandline\bin to the system PATH (link to download allure-commandline: https://github.com/allure-framework/allure-core/releases/tag/allure-core-1.4.23.HOTFIX1)
 
 
 ------------------------------------------
@@ -92,4 +92,10 @@ To run all tests in scope:
 
     $ py.test --alluredir ../reports/allure_info/
 If you want to change url of tested page or version of tested extention change their values in /patterns/config.ini
+
+==================
+Generate report:
+
+    $ allure generate ../reports/allure_info/ -o ../reports/allure_report/
+    $ allure report open -o ../reports/allure_report/
 
